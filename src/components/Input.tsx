@@ -6,7 +6,12 @@ import check from "../assets/shared/icon-check.svg";
 export const TextField = ({ error }: { error?: boolean }) => {
   return <Text error={error} placeholder="Hello" />;
 };
-const options = ["Most Upvotes", "Least Upvotes", "Most Comments","Least Comments"];
+const options = [
+  "Most Upvotes",
+  "Least Upvotes",
+  "Most Comments",
+  "Least Comments",
+];
 
 export const DropDown = () => {
   const [show, setShow] = useState(false);
@@ -14,8 +19,7 @@ export const DropDown = () => {
   return (
     <Drop>
       <div className="heading" onClick={() => setShow(!show)}>
-        Sort by :
-        {select}
+        Sort by :<b>{select}</b>
         <IoIosArrowDown />
       </div>
       {show && (

@@ -40,7 +40,7 @@ export const Cat = styled.button`
   padding: 6px 16px;
   height: 30px;
   width: max-content;
-  color:${colors.deepBlue};
+  color:${colors.lightBlue};
 `;
 
 export const Vote = styled(Cat)`

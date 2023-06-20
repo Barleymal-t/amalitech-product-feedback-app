@@ -2,11 +2,18 @@ import { styled } from "styled-components";
 import { colors } from "../colors";
 
 export const Suggestions = styled.main`
-  padding: 95px 165px;
+  max-width:1110px;
+  margin:auto;
+  margin-top:94px;
   background-color: ${colors.lightGrey};
   display: grid;
   gap: 30px;
   grid-template-columns: 1fr 4fr;
+  @media (max-width: 768px) {
+    margin-top:56px;
+    max-width:689px;
+    display:block;
+  }
 `;
 
 export const SuggestionsSection = styled.section`
@@ -39,7 +46,7 @@ export const SuggestionsSection = styled.section`
 // `;
 
 export const CustomizationPane = styled.aside`
-min-width:255px;
+width:255px;
 display:flex;
 flex-direction:column;
 gap:24px;
@@ -48,6 +55,10 @@ gap:24px;
   border-radius:10px;
   background:${colors.white};
   padding:24px;
+  @media (max-width: 768px) {
+    height:auto;
+    margin-bottom:2rem;
+  }
 }
 > .label {
   display:flex;
@@ -56,11 +67,16 @@ gap:24px;
   color:${colors.white};
   background: url('../assets/suggestions/desktop/background-header.png');
   height:137px;
+  @media (max-width: 768px) {
+    height:auto;
+    background: url('../assets/suggestions/tablet/background-header.png');
+  }
 }
 > .categories {
   display:flex;
   flex-wrap:wrap;
   gap:8px;
+  padding-right:0;
 }
 > .roadmap {
   > .heading {
@@ -75,5 +91,13 @@ gap:24px;
       justify-content:space-between;
     }
   }
+}
+@media (max-width: 768px) {
+  height:max-content;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+  margin-bottom:2rem;
 }
 `;

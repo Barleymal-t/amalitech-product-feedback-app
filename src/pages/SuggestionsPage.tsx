@@ -12,8 +12,10 @@ const SuggestionsPage = () => {
   const [activeCategory,setActiveCategory]= useState("All")
   const categories =Array.from(new Set<string>(data.productRequests.map(item=>item.category)))
   categories.push("All","UI","UX")
-  categories.sort()
   console.log(categories)
+  categories.sort()
+
+  const showSuggestions = activeCategory === "All"?data.productRequests : data.productRequests.filter(suggestion=>suggestion.category===activeCategory)
 
   return (<Suggestions>
   <CustomizationPane>
@@ -30,9 +32,9 @@ const SuggestionsPage = () => {
         <a href="#">View</a>
       </div>
       <div className="content">
-        <li>Planned <span>{data.productRequests.filter(x=> x.status==="planned").length}</span></li>
-        <li>In-Progress <span>{data.productRequests.filter(x=> x.status==="in-progress").length}</span></li>
-        <li>Live <span>{data.productRequests.filter(x=> x.status==="live").length}</span></li>
+        <li>Planned <span>{showSuggestions.filter(x=> x.status==="planned").length}</span></li>
+        <li>In-Progress <span>{showSuggestions.filter(x=> x.status==="in-progress").length}</span></li>
+        <li>Live <span>{showSuggestions.filter(x=> x.status==="live").length}</span></li>
       </div>
     </div>
     
@@ -50,7 +52,7 @@ const SuggestionsPage = () => {
         </Btn>
       </section>
       <section className="suggestions">
-        {data.productRequests.map((item) => (
+        {showSuggestions.map((item) => (
           <SuggestionCard {...item} />
         ))}
       </section>
