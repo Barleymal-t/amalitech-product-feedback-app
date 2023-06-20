@@ -6,7 +6,7 @@ export const Button = styled.button.attrs((props) => ({
   hoverColor: colors[`hover${props.color}` as keyof typeof colors],
 }))`
   background-color: ${({ color }) => color || "transparent"};
-  color: ${({ color }) => (color ? "white" : colors.lightBlue)};
+  color: ${({ color }) => (color ? "white" : colors.lightGrey)};
   min-width: 158px;
   height: 44px;
   border-radius: 10px;
@@ -15,6 +15,8 @@ export const Button = styled.button.attrs((props) => ({
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight:bold;
+  gap:0.5rem;
   &:hover {
     cursor: pointer;
     background-color: ${({ color, hoverColor }) =>
@@ -29,33 +31,47 @@ export const BackButton = styled(Button)`
   }
 `;
 
-export const Vote = styled.button`
+export const Cat = styled.button`
+  background-color: ${colors.scorchedBlue};
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  text-transform: capitalize;
+  padding: 6px 16px;
+  height: 30px;
+  width: max-content;
+  color:${colors.deepBlue};
+`;
+
+export const Vote = styled(Cat)`
   width: 40px;
   height: 53px;
-  color: ${colors.deepBlue};
-  background-color: ${colors.scorchedBlue};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  font-weight: bold;
-  border-radius: 10px;
-  border: none;
   &:hover {
     cursor: pointer;
     background-color: ${colors.hoverscorchedBlue};
   }
   &:active {
+    > svg path {
+      stroke: ${colors.white};
+    }
     color: ${colors.white};
     background-color: ${colors.lightBlue};
   }
 `;
+export const CatBtn = styled(Vote)<{$active?:boolean}>`
+height:auto;
+width:auto;
+${props=>props.$active && `
+color: ${colors.white};
+background-color: ${colors.lightBlue};
+`}
 
-export const Cat = styled(Vote)`
-  min-width: 48px;
-  height: 30px;
-`;
+`
 
 export const Text = styled.input<{ error?: boolean }>`
   height: 48px;
@@ -65,7 +81,6 @@ export const Text = styled.input<{ error?: boolean }>`
   align-items: center;
   padding-left: 24px;
   outline: none;
-  color: ${colors.deepBlue};
   border-radius: 5px;
   border: 1px solid ${(props) => (props.error ? colors.red : "transparent")};
   background: ${colors.scorchedBlue};
@@ -77,11 +92,12 @@ export const Text = styled.input<{ error?: boolean }>`
 `;
 
 export const Drop = styled.div`
+  z-index: 10;
   height: 48px;
   width: 255px;
   > div {
     cursor: pointer;
-    background: ${colors.scorchedBlue};
+    background: transparent;
     height: 100%;
     width: 100%;
     display: flex;
@@ -93,24 +109,50 @@ export const Drop = styled.div`
 `;
 
 export const Menu = styled.menu`
-margin-top:1rem;
-box-shadow: 2px 2px 10px rgba(55, 63, 104, 0.3505);
-height: max-content;
-width: 255px;
-border-radius: 10px;
-> li {
-  padding: 0 24px;
-  cursor: pointer;
-  height: 47px;
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  justify-content:space-between;
-  &:hover {
-    color:${colors.purple};
+  background-color: ${colors.white};
+  color: ${colors.deepBlue};
+  margin-top: 1rem;
+  box-shadow: 2px 2px 10px rgba(55, 63, 104, 0.3505);
+  height: max-content;
+  width: 255px;
+  border-radius: 10px;
+  > li {
+    padding: 0 24px;
+    cursor: pointer;
+    height: 47px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:hover {
+      color: ${colors.purple};
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid ${colors.deepBlue};
+    }
   }
-  &:not(:last-child) {
-    border-bottom: 1px solid ${colors.deepBlue};
+`;
+
+export const Suggestion = styled.div`
+  background-color: ${colors.white};
+  border-radius: 10px;
+  max-width: 825px;
+  padding: 32px 28px;
+  display: grid;
+  grid-template-columns: 40px auto 44px;
+  gap: 40px;
+  > .main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    > p {
+      margin-bottom: 8px;
+    }
   }
-}
-`
+  > .comments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+`;

@@ -8,6 +8,7 @@
   src: url(/assets/font/Jost-VariableFont_wght.ttf);
 }
 :root {
+  color:#3A4374;
   font-family: 'Jost', sans-serif;
 }
 
