@@ -1,21 +1,40 @@
 import { CustomizationPane, SuggestionsSection, Suggestions } from "./page_styles";
 import data from "../assets/data.json";
 import SuggestionCard from "../components/SuggestionCard";
-import { Btn } from "../components/Button";
-import plus from "../assets/shared/icon-plus.svg";
 import bulb from "../assets/suggestions/icon-suggestions.svg";
 import { DropDown } from "../components/Input";
 import { CatBtn } from "../components/components_styles";
 import { useState } from "react";
+import Empty from "./Empty";
+import { AddFeedback } from "../components/Button";
 
 const SuggestionsPage = () => {
   const [activeCategory,setActiveCategory]= useState("All")
+  const [sortParameter,setSortParameter] = useState("")
   const categories =Array.from(new Set<string>(data.productRequests.map(item=>item.category)))
   categories.push("All","UI","UX")
-  console.log(categories)
   categories.sort()
 
   const showSuggestions = activeCategory === "All"?data.productRequests : data.productRequests.filter(suggestion=>suggestion.category===activeCategory)
+
+    if (sortParameter==="Least Upvotes"){
+  showSuggestions.sort((a,b)=> {
+    return a.upvotes-b.upvotes
+    })
+  }else if (sortParameter==="Most Upvotes"){
+      showSuggestions.sort((a,b)=> {
+        return b.upvotes-a.upvotes
+        })
+
+    }else if (sortParameter==="Least Comments") {
+      showSuggestions.sort((a,b)=> {
+        return (a.comments?.length || 0) - (b.comments?.length || 0)
+        })
+    }else if (sortParameter==="Most Comments") {
+      showSuggestions.sort((a,b)=> {
+        return (b.comments?.length || 0) - (a.comments?.length || 0)
+        })
+    }
 
   return (<Suggestions>
   <CustomizationPane>
@@ -44,17 +63,19 @@ const SuggestionsPage = () => {
       <section className="headbar">
         <div className="left">
           <img src={bulb} alt="" /><p>{data.productRequests.length}</p>
-          <DropDown />
+          <DropDown setSortParameter={setSortParameter}/>
         </div>
-        <Btn color="purple">
-          <img src={plus} alt="plus" />
-          Add Feedback
-        </Btn>
+        <AddFeedback/>
       </section>
       <section className="suggestions">
-        {showSuggestions.map((item) => (
-          <SuggestionCard {...item} />
+        {
+        showSuggestions.length===0 ?
+          <Empty/>
+        :
+          showSuggestions.map((item) => (
+          <SuggestionCard key={item.id} {...item} />
         ))}
+          
       </section>
     </SuggestionsSection>
   </Suggestions>

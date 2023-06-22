@@ -76,7 +76,9 @@ gap:24px;
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-  padding-right:0;
+  @media (max-width: 768px) {
+    padding-right:0;
+  }
 }
 > .roadmap {
   > .heading {
@@ -101,3 +103,16 @@ gap:24px;
   margin-bottom:2rem;
 }
 `;
+
+export const EmptySuggestions= styled.section`
+background-color:${colors.white};
+height:70vh;
+width:100%;
+border-radius:10px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:2rem;
+text-align:center;
+`
