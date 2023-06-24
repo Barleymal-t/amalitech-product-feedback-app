@@ -11,14 +11,15 @@
   color:#3A4374;
   font-family: 'Jost', sans-serif;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
   }
   button {
     background-color: #f9f9f9;

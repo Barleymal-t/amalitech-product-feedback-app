@@ -5,7 +5,7 @@ import plus from "../assets/shared/icon-plus.svg";
 
 
 
-export const Btn = ({children,color}:{children:React.ReactNode,color:string}) => {
+export const Btn = ({children,color}:{children:React.ReactNode,color?:string}) => {
   return (
     <Button color={color}>
         {children}

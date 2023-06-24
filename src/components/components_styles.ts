@@ -6,8 +6,8 @@ export const Button = styled.button.attrs((props) => ({
   hoverColor: colors[`hover${props.color}` as keyof typeof colors],
 }))`
   background-color: ${({ color }) => color || "transparent"};
-  color: ${({ color }) => (color ? "white" : colors.lightGrey)};
-  min-width: 158px;
+  color: ${({ color }) => (color ? "white" : colors.midGrey)};
+  min-width:${({ color }) => color ? "158px": 0};
   height: 44px;
   border-radius: 10px;
   border: none;

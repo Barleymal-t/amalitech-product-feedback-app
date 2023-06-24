@@ -1,16 +1,21 @@
 import { styled } from "styled-components";
 import { colors } from "../colors";
 
+/*
+SuggestionsPage Styles
+*/
+
 export const Suggestions = styled.main`
   max-width:1110px;
-  margin:auto;
-  margin-top:94px;
+  width:90%;
+  margin: 94px auto ;
   background-color: ${colors.lightGrey};
   display: grid;
   gap: 30px;
   grid-template-columns: 1fr 4fr;
   @media (max-width: 768px) {
-    margin-top:56px;
+    margin:39px;
+    margin:56px 39px;
     max-width:689px;
     display:block;
   }
@@ -40,10 +45,6 @@ export const SuggestionsSection = styled.section`
     gap: 2rem;
   }
 `;
-
-// export const Par = styled.p`
-//   color: white;
-// `;
 
 export const CustomizationPane = styled.aside`
 width:255px;
@@ -115,4 +116,81 @@ justify-content:center;
 align-items:center;
 gap:2rem;
 text-align:center;
+`
+
+/*
+Feedback Details
+*/
+
+export const FeedbackDetail = styled.main`
+background-color: ${colors.lightGrey};
+width:730px;
+margin: 80px auto;
+display:grid;
+gap:24px;
+`
+
+export const FeedbackTop = styled.div`
+display:flex;
+justify-content:space-between;
+`
+
+export const CommentsSection = styled.section`
+width:100%;
+border-radius:10px;
+background:${colors.white};
+padding:34px 24px;
+> h1{
+  font-size:18px;
+}
+
+`
+
+export const Comment = styled.div`
+b {
+  color:${colors.purple}
+}
+.main {
+  display:grid;
+  grid-template-columns:auto 90%;
+  gap:17px 32px;
+}
+padding:32px 0;
+&:not(:last-child) {
+  border-bottom:1px solid ${colors.scorchedBlue};
+}
+img {
+  width:40px;
+  height:40px;
+  border-radius:50%;
+}
+ h3,span {
+  font-size:14px;
+}
+
+`
+
+export const Reply = styled(Comment)`
+margin-left:40px;
+border-bottom:0 !important;
+`
+export const AddComment = styled.section`
+background-color:${colors.white};
+width:100%;
+display:grid;
+gap:16px;
+padding:32px;
+border-radius:10px;
+textarea {
+  background-color:${colors.lightGrey};
+  width:100%;
+  border:1px solid ${colors.deepBlue};
+  border-radius:10px;
+  padding:24px 16px;
+}
+.flex {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 `
