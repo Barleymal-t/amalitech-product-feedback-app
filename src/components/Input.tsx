@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, Drop, Menu } from "./components_styles";
+import { Text, Drop, Menu, Select } from "./components_styles";
 import { IoIosArrowDown } from "react-icons/io";
 import check from "../assets/shared/icon-check.svg";
 
@@ -41,3 +41,27 @@ export const DropDown = ({setSortParameter}:{setSortParameter: React.Dispatch<Re
     </Drop>
   );
 };
+
+
+export const DropSelect = ()=> {
+  const [show, setShow] = useState(false);
+  const [select, setSelect] = useState(options[0]);
+  return (
+    <Select>
+      <div className="heading" onClick={() => setShow(!show)}>
+        {select}
+        <IoIosArrowDown />
+      </div>
+      {show && (
+        <Menu>
+          {options.map((option) => (
+            <li onClick={() => setSelect(option)}>
+              {option}
+              {option === select && <img src={check} alt="" />}
+            </li>
+          ))}
+        </Menu>
+      )}
+    </Select>
+  );
+}

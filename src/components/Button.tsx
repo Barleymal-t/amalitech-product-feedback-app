@@ -2,20 +2,23 @@ import React from 'react'
 import { Button,BackButton,Vote } from './components_styles'
 import {IoIosArrowBack } from "react-icons/io"
 import plus from "../assets/shared/icon-plus.svg";
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
-export const Btn = ({children,color}:{children:React.ReactNode,color?:string}) => {
+export const Btn = ({children,color,onClick}:{children:React.ReactNode,color?:string,onClick?:()=>void}) => {
   return (
-    <Button color={color}>
+    <Button color={color} onClick={onClick}>
         {children}
         </Button>
   )
 }
 
 export const BackBtn = ({color}:{color?:string})=> {
+  const navigate =useNavigate()
   return (
-    <BackButton color={color}>
+  
+    <BackButton onClick={()=>navigate("../")} color={color}>
       <IoIosArrowBack/>
       Go Back
     </BackButton>
@@ -33,10 +36,13 @@ export const UpVote = ({value,setValue}:{value:number,setValue:React.Dispatch<an
 }
 
 export const AddFeedback =()=> {
+
   return (
-    <Btn color="purple">
+    <Link to="feedback/new">
+    <Button color="purple">
     <img src={plus} alt="plus" />
     Add Feedback
-  </Btn>
+  </Button>
+    </Link>
   )
 }

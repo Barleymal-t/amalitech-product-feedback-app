@@ -7,7 +7,8 @@ export const Button = styled.button.attrs((props) => ({
 }))`
   background-color: ${({ color }) => color || "transparent"};
   color: ${({ color }) => (color ? "white" : colors.midGrey)};
-  min-width:${({ color }) => color ? "158px": 0};
+  // max-width: ${({ color }) => (color ? "158px" : 0)};
+  padding: 0 1.5rem;
   height: 44px;
   border-radius: 10px;
   border: none;
@@ -15,8 +16,8 @@ export const Button = styled.button.attrs((props) => ({
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight:bold;
-  gap:0.5rem;
+  font-weight: bold;
+  gap: 0.5rem;
   &:hover {
     cursor: pointer;
     background-color: ${({ color, hoverColor }) =>
@@ -40,7 +41,7 @@ export const Cat = styled.button`
   padding: 6px 16px;
   height: 30px;
   width: max-content;
-  color:${colors.lightBlue};
+  color: ${colors.lightBlue};
 `;
 
 export const Vote = styled(Cat)`
@@ -63,19 +64,21 @@ export const Vote = styled(Cat)`
     background-color: ${colors.lightBlue};
   }
 `;
-export const CatBtn = styled(Vote)<{$active?:boolean}>`
-height:auto;
-width:auto;
-${props=>props.$active && `
+export const CatButton = styled(Vote)<{ $active?: boolean }>`
+  height: auto;
+  width: auto;
+  ${(props) =>
+    props.$active &&
+    `
 color: ${colors.white};
 background-color: ${colors.lightBlue};
 `}
-
-`
+`;
 
 export const Text = styled.input<{ error?: boolean }>`
   height: 48px;
-  width: 255px;
+  // width: 255px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,12 +87,39 @@ export const Text = styled.input<{ error?: boolean }>`
   border-radius: 5px;
   border: 1px solid ${(props) => (props.error ? colors.red : "transparent")};
   background: ${colors.scorchedBlue};
+  &:hover {
+    cursor:pointer;
+
+  }
   &:active,
   &:focus {
     border: 1px solid
       ${(props) => (props.error ? colors.red : colors.lightBlue)};
   }
 `;
+
+export const TextArea = styled.textarea<{ error?: boolean }>`
+height:96px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 24px;
+  padding-top: 24px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid ${(props) => (props.error ? colors.red : "transparent")};
+  background: ${colors.scorchedBlue};
+  &:hover {
+    cursor:pointer;
+
+  }
+  &:active,
+  &:focus {
+    border: 1px solid
+      ${(props) => (props.error ? colors.red : colors.lightBlue)};
+  }
+  ` 
 
 export const Drop = styled.div`
   z-index: 10;
@@ -107,6 +137,13 @@ export const Drop = styled.div`
     border-radius: 5px;
   }
 `;
+export const Select = styled(Drop)`
+  > div {
+    background: ${colors.lightGrey};
+  }
+  border-radius: 10px;
+  width: 100%;
+`;
 
 export const Menu = styled.menu`
   background-color: ${colors.white};
@@ -114,7 +151,7 @@ export const Menu = styled.menu`
   margin-top: 1rem;
   box-shadow: 2px 2px 10px rgba(55, 63, 104, 0.3505);
   height: max-content;
-  width: 255px;
+  width: 100%;
   border-radius: 10px;
   > li {
     padding: 0 24px;
@@ -134,6 +171,7 @@ export const Menu = styled.menu`
 `;
 
 export const Suggestion = styled.div`
+  
   background-color: ${colors.white};
   border-radius: 10px;
   max-width: 825px;
@@ -141,7 +179,7 @@ export const Suggestion = styled.div`
   display: grid;
   grid-template-columns: 40px auto 44px;
   gap: 40px;
-  > .main {
+   .main {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -149,7 +187,7 @@ export const Suggestion = styled.div`
       margin-bottom: 8px;
     }
   }
-  > .comments {
+   .comments {
     display: flex;
     justify-content: center;
     align-items: center;
