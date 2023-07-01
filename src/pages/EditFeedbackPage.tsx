@@ -1,4 +1,3 @@
-import React from 'react'
 import { NewFeedback,InputSection } from './page_styles'
 import { DropSelect } from '../components/Input';
 import { Text,Button, TextArea } from '../components/components_styles';

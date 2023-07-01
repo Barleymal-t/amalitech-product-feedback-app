@@ -23,7 +23,7 @@ const FeedbackDetailsPage = () => {
   console.log(params);
   const navigate = useNavigate();
   const productRequests = useSelector(
-    (state: RootState) => state.request.requests
+    (state: RootState) => state.request
   );
   const dispatch = useDispatch();
 

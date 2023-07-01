@@ -1,26 +1,24 @@
 import { useState } from 'react'
-import { Suggestion, Cat } from "./components_styles";
+import { Suggestion, Cat, Comments } from "./components_styles";
 import { UpVote } from "./Button";
 import  comment  from "../assets/shared/icon-comments.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const SuggestionCard = ({...suggestion}) => {
-  const [value, setValue] = useState(suggestion.upvotes)
+  const navigate = useNavigate()
   return (
     <Suggestion >
-      <UpVote value={value} setValue={setValue} />
+      <UpVote value={suggestion.upvotes}  />
       <div className="main">
-      <Link to={`feedback/${suggestion.id}`} >
-        <h3>{suggestion.title}</h3>
-      </Link>
+        <h3 onClick={()=>navigate(`feedback/${suggestion.id}`)}>{suggestion.title}</h3>
         <p>{suggestion.description}</p>
         <Cat>{suggestion.category}</Cat>
       </div>
-      <div className="comments">
+      <Comments>
         <img src={comment} alt="comment" />
         <p>{suggestion["comments"]?.length || 0}</p>
-      </div>
+      </Comments>
     </Suggestion>
   );
 };

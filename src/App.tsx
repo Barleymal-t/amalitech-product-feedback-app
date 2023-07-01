@@ -5,7 +5,7 @@ import NewFeedbackPage from './pages/NewFeedbackPage';
 import EditFeedbackPage from './pages/EditFeedbackPage';
 import { Provider } from 'react-redux';
 import store from "../store/store"
-import Roadmap from './pages/Roadmap';
+import Roadmap from './pages/RoadmapPage';
 
 
 function App() {

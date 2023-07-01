@@ -44,7 +44,7 @@ export const Cat = styled.button`
   color: ${colors.lightBlue};
 `;
 
-export const Vote = styled(Cat)`
+export const Vote = styled(Cat)<{ $active?: boolean }>`
   width: 40px;
   height: 53px;
   display: flex;
@@ -56,23 +56,19 @@ export const Vote = styled(Cat)`
     cursor: pointer;
     background-color: ${colors.hoverscorchedBlue};
   }
-  &:active {
-    > svg path {
-      stroke: ${colors.white};
-    }
-    color: ${colors.white};
-    background-color: ${colors.lightBlue};
-  }
-`;
-export const CatButton = styled(Vote)<{ $active?: boolean }>`
-  height: auto;
-  width: auto;
   ${(props) =>
     props.$active &&
     `
-color: ${colors.white};
-background-color: ${colors.lightBlue};
-`}
+    > svg path {
+      stroke: ${colors.white};
+    }
+  color: ${colors.white};
+  background-color: ${colors.lightBlue};
+  `}
+`;
+export const CatButton = styled(Vote)`
+  height: auto;
+  width: auto;
 `;
 
 export const Text = styled.input<{ error?: boolean }>`
@@ -187,10 +183,37 @@ export const Suggestion = styled.div`
       margin-bottom: 8px;
     }
   }
-   .comments {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
 `;
+
+export const Comments = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 8px;
+`
+
+export const Card = styled.div`
+height:max-content;
+background-color:${colors.white};
+padding:32px;
+border-radius:10px;
+h3 {
+  &:hover {
+    cursor:pointer;
+    color:${colors.lightBlue};
+
+  }
+}
+.category {
+  margin:1rem 0;
+}
+.bottom {
+  display:flex;
+  justify-content:space-between;
+  button {
+    flex-direction:row;
+    width:fit-content;
+    height:40px;
+  }
+}
+`

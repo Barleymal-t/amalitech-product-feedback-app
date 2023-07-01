@@ -51,6 +51,13 @@ export const CustomizationPane = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  span {
+    &:hover {
+      cursor: pointer;
+      color: ${colors.lightBlue};
+      text-decoration: underline;
+    }
+  }
   > * {
     width: 100%;
     border-radius: 10px;
@@ -89,26 +96,26 @@ export const CustomizationPane = styled.aside`
     }
     > .content {
       .dot {
-        height:10px;
-        width:10px;
-        border-radius:50%;
-        display:inline-block;
-        margin-right:5px;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 5px;
       }
       .planned {
-        background-color:${colors.orange};
+        background-color: ${colors.orange};
       }
       .in-progress {
-        background-color:${colors.purple};
+        background-color: ${colors.purple};
       }
       .live {
-        background-color:${colors.aqua};
+        background-color: ${colors.aqua};
       }
       li {
-        list-style-type:none;
+        list-style-type: none;
         display: flex;
         justify-content: space-between;
-        align-items:center;
+        align-items: center;
         flex-wrap: nowrap;
       }
     }
@@ -120,6 +127,32 @@ export const CustomizationPane = styled.aside`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     margin-bottom: 2rem;
+  }
+`;
+export const Status = styled.div`
+  .dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .planned {
+    background-color: ${colors.orange};
+  }
+  .in-progress {
+    background-color: ${colors.purple};
+  }
+  .live {
+    background-color: ${colors.aqua};
+  }
+  li {
+    text-transform: capitalize;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
   }
 `;
 
@@ -254,7 +287,7 @@ export const NewFeedback = styled.main`
     translate: 0 -50%;
   }
   .flex {
-    display:flex;
+    display: flex;
     justify-content: space-between;
   }
   .buttons {
@@ -271,3 +304,50 @@ export const InputSection = styled.div`
   }
 `;
 
+/**
+ *
+ * Roadmap
+ *
+ */
+
+export const Roadmap = styled.main`
+  max-width: 1110px;
+  margin: 78px auto;
+  .back > button {
+    padding: 0;
+    height: auto;
+  }
+  > .headbar {
+    margin-bottom: 48px;
+    height: 113px;
+    border-radius: 10px;
+    padding: 27px 32px;
+    color: ${colors.white};
+    background-color: ${colors.deepBlue};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    h2 {
+      text-transform: capitalize;
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .planned > div {
+      border-top: 6px solid ${colors.orange};
+    }
+    .in-progress > div {
+      border-top: 6px solid ${colors.purple};
+    }
+    .live > div {
+      border-top: 6px solid ${colors.aqua};
+    }
+  }
+`;
