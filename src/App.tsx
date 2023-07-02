@@ -9,7 +9,8 @@ import Roadmap from './pages/RoadmapPage';
 
 
 function App() {
-
+// const state = store.getState()
+// console.log(state)
   return (
     <Provider store={store}>
 

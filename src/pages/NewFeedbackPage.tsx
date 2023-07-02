@@ -3,18 +3,8 @@ import newIcon from "../assets/shared/icon-new-feedback.svg";
 import { DropSelect } from "../components/Input";
 import { Text, Button, TextArea } from "../components/components_styles";
 
-// import { useDispatch, useSelector } from "react-redux";
-// import { RootState } from "../../store/store";
-// import { IoMdOptions } from "react-icons/io";
 
 const NewFeedbackPage = () => {
-  // const productRequests = useSelector(
-  //   (state: RootState) => state.request.requests
-  // );
-  // // To be fixed later
-  // const options = Array.from( new Set(productRequests.map(request=>request.category)))
-  // options.push('UI','UX')
-  // options.sort()
   return (
     <NewFeedback>
       <img src={newIcon} alt="" />

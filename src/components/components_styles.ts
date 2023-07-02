@@ -7,7 +7,6 @@ export const Button = styled.button.attrs((props) => ({
 }))`
   background-color: ${({ color }) => color || "transparent"};
   color: ${({ color }) => (color ? "white" : colors.midGrey)};
-  // max-width: ${({ color }) => (color ? "158px" : 0)};
   padding: 0 1.5rem;
   height: 44px;
   border-radius: 10px;
@@ -73,7 +72,6 @@ export const CatButton = styled(Vote)`
 
 export const Text = styled.input<{ error?: boolean }>`
   height: 48px;
-  // width: 255px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -191,19 +189,19 @@ justify-content: center;
 align-items: center;
 gap: 8px;
 `
+export const H3 = styled.h3`
+&:hover {
+  cursor:pointer;
+  color:${colors.lightBlue};
+
+}
+`
 
 export const Card = styled.div`
 height:max-content;
 background-color:${colors.white};
 padding:32px;
 border-radius:10px;
-h3 {
-  &:hover {
-    cursor:pointer;
-    color:${colors.lightBlue};
-
-  }
-}
 .category {
   margin:1rem 0;
 }

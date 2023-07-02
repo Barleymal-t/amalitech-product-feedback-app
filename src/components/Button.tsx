@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Button,BackButton,Vote } from './components_styles'
 import {IoIosArrowBack } from "react-icons/io"
 import plus from "../assets/shared/icon-plus.svg";
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { suggestionUnUpvoted, suggestionUpvoted } from '../../store/suggestionsSlice';
 
 
 export const Btn = ({children,color,onClick}:{children:React.ReactNode,color?:string,onClick?:()=>void}) => {
@@ -24,12 +26,20 @@ export const BackBtn = ({color}:{color?:string})=> {
   )
 }
 
-export const UpVote = ({value}:{value:number})=>{
-  const [upvoted,setUpvoted] = useState(false)
+export const UpVote = ({value,id,upvoted}:{value:number,id:number,upvoted:boolean})=>{
+  const dispatch = useDispatch()
+  const handleUpvoteClick = () => {
+    if (!upvoted) {
+        dispatch(suggestionUpvoted(id))
+    } else {
+        dispatch(suggestionUnUpvoted(id));
+    }
+}  
+  
   return (
-    <Vote  onClick={()=>setUpvoted(!upvoted)} $active={upvoted}>
+    <Vote  onClick={()=> handleUpvoteClick()} $active={upvoted}>
       <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
-      {upvoted ?value +1:value}
+      {value}
     </Vote>
   )
 }

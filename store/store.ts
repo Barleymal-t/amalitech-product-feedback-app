@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import requestReducer from './requestSlice'
+import requestReducer from './suggestionsSlice'
 
 const store = configureStore({
     

@@ -1,13 +1,11 @@
-import React from "react";
 import RoadmapCard from "../components/RoadmapCard";
-import { requestsType } from "../../store/requestSlice";
+import { requestsType } from "../../store/suggestionsSlice";
 
 const RoadmapColumn = ({
   productRequests,
 }: {
   productRequests: requestsType;
 }) => {
-  console.log(productRequests);
   const description: { [key: string]: string } = {
     planned: "Ideas prioritized for research",
     "in-progress": "Currently being developed",

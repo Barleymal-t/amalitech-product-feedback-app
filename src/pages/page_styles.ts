@@ -195,6 +195,7 @@ export const Comment = styled.div`
   position: relative;
   b {
     color: ${colors.purple};
+    font-size:15px;
   }
   .main {
     display: grid;
@@ -254,6 +255,7 @@ export const FeedbackTop = styled.div`
   justify-content: space-between;
   b {
     color: ${colors.lightBlue};
+    font-size:13px;
     &:hover {
       text-decoration: underline;
       cursor: pointer;
@@ -271,7 +273,6 @@ export const NewFeedback = styled.main`
   position: relative;
   background: ${colors.white};
   width: 540px;
-  // height: 659px;
   margin: 92px auto;
   padding: 52px 42px;
   h1 {

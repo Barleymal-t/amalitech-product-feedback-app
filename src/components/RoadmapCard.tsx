@@ -1,4 +1,4 @@
-import { Card, Cat, Comments } from "./components_styles";
+import { Card, Cat, Comments,H3 } from "./components_styles";
 import { UpVote } from "./Button";
 import comment from "../assets/shared/icon-comments.svg";
 import { Status } from "../pages/page_styles";
@@ -21,7 +21,7 @@ const RoadmapCard = ({ ...suggestion }) => {
           </div>
         </div>
       </Status>
-      <h3 onClick={()=>navigate(`feedback/${id}`)}>{title}</h3>
+      <H3 onClick={()=>navigate(`feedback/${id}`)}>{title}</H3>
       <p>{description}</p>
       <div className="category">
 

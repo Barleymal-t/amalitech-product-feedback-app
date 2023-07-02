@@ -8,9 +8,8 @@ import {
 } from "./page_styles";
 import { useNavigate, useParams } from "react-router-dom";
 import SuggestionCard from "../components/SuggestionCard";
-import { Btn, BackBtn } from "../components/Button";
+import { BackBtn } from "../components/Button";
 import { Button } from "../components/components_styles";
-// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
@@ -95,12 +94,6 @@ const CommentComponent = ({ ...comment }) => {
 };
 
 const AddCommentComponent = () => {
-  // const {request} = useLocation()
-
-  // Create function to add new comment
-  // const addComment = (comment)=> {
-  //   request.comments.push(comment)
-  // }
 
   return (
     <AddComment>
@@ -110,7 +103,6 @@ const AddCommentComponent = () => {
         255 characters left
         <Button
           color="purple"
-          // onClick={addComment}
         >
           Post Comment
         </Button>
