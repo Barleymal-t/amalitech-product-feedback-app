@@ -82,8 +82,7 @@ export const Text = styled.input<{ error?: boolean }>`
   border: 1px solid ${(props) => (props.error ? colors.red : "transparent")};
   background: ${colors.scorchedBlue};
   &:hover {
-    cursor:pointer;
-
+    cursor: pointer;
   }
   &:active,
   &:focus {
@@ -93,7 +92,7 @@ export const Text = styled.input<{ error?: boolean }>`
 `;
 
 export const TextArea = styled.textarea<{ error?: boolean }>`
-height:96px;
+  height: 96px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -105,21 +104,23 @@ height:96px;
   border: 1px solid ${(props) => (props.error ? colors.red : "transparent")};
   background: ${colors.scorchedBlue};
   &:hover {
-    cursor:pointer;
-
+    cursor: pointer;
   }
   &:active,
   &:focus {
     border: 1px solid
       ${(props) => (props.error ? colors.red : colors.lightBlue)};
   }
-  ` 
+`;
 
 export const Drop = styled.div`
-  z-index: 10;
-  height: 48px;
-  width: 255px;
-  > div {
+// z-index: 10;
+height: 72px;
+position:relative;
+text-transform: capitalize;
+> div {
+  
+    width: 255px;
     cursor: pointer;
     background: transparent;
     height: 100%;
@@ -132,16 +133,38 @@ export const Drop = styled.div`
   }
 `;
 export const Select = styled(Drop)`
-  > div {
+height:48px;
+> div {
     background: ${colors.lightGrey};
+    
   }
   border-radius: 10px;
-  width: 100%;
 `;
-
-export const Menu = styled.menu`
+export const RealSelect = styled.select`
+height: 48px;
+position:relative;
+text-transform: capitalize;
+background: ${colors.lightGrey};
+> option {
+  z-index:10;
   background-color: ${colors.white};
   color: ${colors.deepBlue};
+  position:absolute;
+  top:100%;
+  margin-top: 1rem;
+  box-shadow: 2px 2px 10px rgba(55, 63, 104, 0.3505);
+  height: max-content;
+  width: 100%;
+  border-radius: 10px;
+}
+`
+
+export const Menu = styled.menu`
+z-index:10;
+  background-color: ${colors.white};
+  color: ${colors.deepBlue};
+  position:absolute;
+  top:100%;
   margin-top: 1rem;
   box-shadow: 2px 2px 10px rgba(55, 63, 104, 0.3505);
   height: max-content;
@@ -165,7 +188,6 @@ export const Menu = styled.menu`
 `;
 
 export const Suggestion = styled.div`
-  
   background-color: ${colors.white};
   border-radius: 10px;
   max-width: 825px;
@@ -173,7 +195,8 @@ export const Suggestion = styled.div`
   display: grid;
   grid-template-columns: 40px auto 44px;
   gap: 40px;
-   .main {
+  .main {
+    cursor:pointer;
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -184,34 +207,34 @@ export const Suggestion = styled.div`
 `;
 
 export const Comments = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 8px;
-`
+cursor:pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
 export const H3 = styled.h3`
-&:hover {
-  cursor:pointer;
-  color:${colors.lightBlue};
-
-}
-`
+  &:hover {
+    cursor: pointer;
+    color: ${colors.lightBlue};
+  }
+`;
 
 export const Card = styled.div`
-height:max-content;
-background-color:${colors.white};
-padding:32px;
-border-radius:10px;
-.category {
-  margin:1rem 0;
-}
-.bottom {
-  display:flex;
-  justify-content:space-between;
-  button {
-    flex-direction:row;
-    width:fit-content;
-    height:40px;
+  height: max-content;
+  background-color: ${colors.white};
+  padding: 32px;
+  border-radius: 10px;
+  .category {
+    margin: 1rem 0;
   }
-}
-`
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    button {
+      flex-direction: row;
+      width: fit-content;
+      height: 40px;
+    }
+  }
+`;

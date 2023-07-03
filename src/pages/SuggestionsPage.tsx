@@ -16,12 +16,10 @@ import { RootState } from "../../store/store";
 import { Status } from "./page_styles";
 
 const SuggestionsPage = () => {
-  const productRequests = useSelector(
-    (state: RootState) => state.request
-  );
+  const productRequests = useSelector((state: RootState) => state.request);
 
   const [activeCategory, setActiveCategory] = useState("All");
-  const [sortParameter, setSortParameter] = useState("");
+  const [sortParameter, setSortParameter] = useState("most upvotes");
   const categories = Array.from(
     new Set<string>(productRequests.map((item) => item.category))
   );
@@ -37,37 +35,34 @@ const SuggestionsPage = () => {
       : productRequests.filter(
           (suggestion) => suggestion.category === activeCategory
         );
-        
 
+  let sortedSuggestions;
 
-
-  let sortedSuggestions
-
-switch (sortParameter) {
-  case "Least Upvotes":
-    sortedSuggestions = showSuggestions.slice().sort((a, b) => {
-      return a.upvotes - b.upvotes;
-    });
-    break;
-  case "Most Upvotes":
-    sortedSuggestions = showSuggestions.slice().sort((a, b) => {
-      return b.upvotes - a.upvotes;
-    });
-    break;
-  case "Least Comments":
-    sortedSuggestions = showSuggestions.slice().sort((a, b) => {
-      return (a.comments?.length || 0) - (b.comments?.length || 0);
-    });
-    break;
-  case "Most Comments":
-    sortedSuggestions = showSuggestions.slice().sort((a, b) => {
-      return (b.comments?.length || 0) - (a.comments?.length || 0);
-    });
-    break;
-  default:
-    sortedSuggestions = showSuggestions
-}
-const navigate = useNavigate()
+  switch (sortParameter) {
+    case "least upvotes":
+      sortedSuggestions = showSuggestions.slice().sort((a, b) => {
+        return a.upvotes - b.upvotes;
+      });
+      break;
+    case "most upvotes":
+      sortedSuggestions = showSuggestions.slice().sort((a, b) => {
+        return b.upvotes - a.upvotes;
+      });
+      break;
+    case "least comments":
+      sortedSuggestions = showSuggestions.slice().sort((a, b) => {
+        return (a.comments?.length || 0) - (b.comments?.length || 0);
+      });
+      break;
+    case "most comments":
+      sortedSuggestions = showSuggestions.slice().sort((a, b) => {
+        return (b.comments?.length || 0) - (a.comments?.length || 0);
+      });
+      break;
+    default:
+      sortedSuggestions = showSuggestions;
+  }
+  const navigate = useNavigate();
   return (
     <Suggestions>
       <CustomizationPane>
@@ -76,9 +71,9 @@ const navigate = useNavigate()
           <p>Feedback Board</p>
         </div>
         <div className="categories">
-          {categories.map((category,index) => (
+          {categories.map((category, index) => (
             <CatButton
-            key={index}
+              key={index}
               $active={category === activeCategory}
               onClick={() => setActiveCategory(category)}
             >
@@ -89,7 +84,7 @@ const navigate = useNavigate()
         <div className="roadmap">
           <div className="heading">
             <h1>Roadmap</h1>
-            <span onClick={()=>navigate("/roadmap")}>View</span>
+            <span onClick={() => navigate("/roadmap")}>View</span>
           </div>
           <Status>
             <div>
@@ -127,7 +122,7 @@ const navigate = useNavigate()
             <p>{productRequests.length}</p>
             <DropDown setSortParameter={setSortParameter} />
           </div>
-            <AddFeedback />
+          <AddFeedback />
         </section>
         <section className="suggestions">
           {showSuggestions.length === 0 ? (

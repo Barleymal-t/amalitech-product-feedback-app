@@ -9,12 +9,12 @@ const SuggestionCard = ({...suggestion}) => {
   return (
     <Suggestion >
       <UpVote value={suggestion.upvotes} id={suggestion.id} upvoted={suggestion.upvoted}  />
-      <div className="main">
-        <H3 onClick={()=>navigate(`feedback/${suggestion.id}`)}>{suggestion.title}</H3>
+      <div onClick={()=>navigate(`/feedback/${suggestion.id}`)} className="main">
+        <H3 >{suggestion.title}</H3>
         <p>{suggestion.description}</p>
         <Cat>{suggestion.category}</Cat>
       </div>
-      <Comments>
+      <Comments onClick={()=>navigate(`/feedback/${suggestion.id}`)}>
         <img src={comment} alt="comment" />
         <p>{suggestion["comments"]?.length || 0}</p>
       </Comments>

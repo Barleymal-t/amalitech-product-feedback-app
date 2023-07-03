@@ -17,10 +17,10 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route index element={<SuggestionsPage/>}/>
-      <Route path="feedback/:requestId" element={<FeedbackDetailsPage/>}/>
-        <Route path="feedback/new" element={<NewFeedbackPage />} />
-        <Route path="feedback/edit" element={<EditFeedbackPage />} />
-        <Route path="roadmap" element={<Roadmap />} />
+      <Route path="/feedback/:id" element={<FeedbackDetailsPage/>}/>
+        <Route path="/feedback/new" element={<NewFeedbackPage />} />
+        <Route path="/feedback/:id/edit" element={<EditFeedbackPage />} />
+        <Route path="/roadmap" element={<Roadmap />} />
 
 
 

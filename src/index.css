@@ -16,6 +16,12 @@ a {
   color: inherit;
   cursor: pointer;
 }
+input {
+  color:#3A4374;
+}
+/* input[type="radio"] {
+  visibility: hidden;
+} */
 
 @media (prefers-color-scheme: light) {
   :root {

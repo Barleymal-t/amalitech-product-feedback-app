@@ -2,9 +2,20 @@ import data from "../src/assets/data.json";
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { original } from 'immer'
+import { category } from "../src/pages/NewFeedbackPage";
+import { status } from "../src/pages/EditFeedbackPage";
     
   
-type comment = {
+export type reply ={
+  content: string;
+  replyingTo: string;
+  user: {
+    image: string;
+    name: string;
+    username: string;
+  };
+}
+export type comment = {
   id: number;
   content: string;
   user: {
@@ -12,22 +23,14 @@ type comment = {
     name: string;
     username: string;
   };
-  replies?: {
-    content: string;
-    replyingTo: string;
-    user: {
-      image: string;
-      name: string;
-      username: string;
-    };
-  }[];
+  replies?: reply[];
 };
 export type request = {
   id: number;
   title: string;
-  category: string;
+  category: category;
   upvotes: number;
-  status: string;
+  status: status;
   description: string;
   upvoted: boolean;
   comments?: comment[];
@@ -35,11 +38,11 @@ export type request = {
 
 export type requestsType = request[];
 
-const initialState: requestsType = data.productRequests.map((request) => {
-  return { ...request, upvoted: false };
+const initialState: requestsType = data.productRequests.map((request):request => {
+  return { ...request, upvoted: false } as request;
 });
 
-const requestSlice = createSlice({
+const suggestionSlice = createSlice({
   name: "suggestions",
   initialState,
   reducers: {
@@ -49,9 +52,9 @@ const requestSlice = createSlice({
       },
       prepare(
         title: string,
-        category: string,
-        status: string,
-        description: string
+        category: category,
+        description: string,
+        
       ) {
         return {
           payload: {
@@ -59,19 +62,19 @@ const requestSlice = createSlice({
             title,
             category,
             upvotes: 0,
-            status: status || "suggestion",
+            status: "suggestion",
             description,
             upvoted: false,
             comments: [],
-          },
+          } as request,
         };
       },
     },
     suggestionEdited: (state, action) => {
-      const { suggestionId, title, category, status, description } =
+      const { id, title, category, status, description } =
         action.payload;
       const suggestion = state.find(
-        (suggestion) => suggestion.id === +suggestionId
+        (suggestion) => suggestion.id === +id
       );
       if (suggestion) {
         suggestion.title = title;
@@ -111,6 +114,6 @@ export const {
   suggestionDeleted,
   suggestionUpvoted,
   suggestionUnUpvoted,
-} = requestSlice.actions;
+} = suggestionSlice.actions;
 
-export default requestSlice.reducer;
+export default suggestionSlice.reducer;

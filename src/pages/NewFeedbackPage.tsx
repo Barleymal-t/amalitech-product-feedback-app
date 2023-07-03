@@ -2,9 +2,26 @@ import { NewFeedback, InputSection } from "./page_styles";
 import newIcon from "../assets/shared/icon-new-feedback.svg";
 import { DropSelect } from "../components/Input";
 import { Text, Button, TextArea } from "../components/components_styles";
+import { useForm, SubmitHandler } from "react-hook-form";
 
+export type category = "UI" | "UX" | "feature" | "bug" | "enhancement";
+
+type Inputs = {
+  title: string;
+  category: category;
+  description: string;
+};
+
+export const categoryOptions:category[] = ["feature", "UI", "UX", "enhancement", "bug"];
 
 const NewFeedbackPage = () => {
+  const {register,handleSubmit,watch} = useForm<Inputs>({
+    defaultValues: {
+title: "",
+category: "feature",
+description:""
+    }
+  })
   return (
     <NewFeedback>
       <img src={newIcon} alt="" />
@@ -15,24 +32,24 @@ const NewFeedbackPage = () => {
             <h3>Feedback Title</h3>
             <p>Add a short descriptive headline</p>
           </label>
-          <Text />
+          <Text {...register("title")}/>
         </InputSection>
         <InputSection>
           <label htmlFor="category">
             <h3>Category</h3>
             <p>Choose a category for your feedback</p>
           </label>
-          <DropSelect />
+          <DropSelect options={categoryOptions} {...register("category")} />
         </InputSection>
         <InputSection>
-          <label htmlFor="category">
+          <label htmlFor="description">
             <h3>Feedback Detail</h3>
             <p>
               Include any specific comments on what should be improved, added,
               etc.
             </p>
           </label>
-          <TextArea name="category" id="" />
+          <TextArea  {...register("description")}  />
         </InputSection>
         <div className="buttons">
           <Button color="deepBlue">Cancel</Button>

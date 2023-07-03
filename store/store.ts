@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import requestReducer from './suggestionsSlice'
+import suggestionReducer from './suggestionsSlice'
 
 const store = configureStore({
     
   reducer: {
-    request:requestReducer
+    request:suggestionReducer
 },
 })
 

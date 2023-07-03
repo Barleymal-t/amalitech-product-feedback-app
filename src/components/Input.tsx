@@ -1,26 +1,30 @@
-import { useState } from "react";
-import { Text, Drop, Menu, Select } from "./components_styles";
+import React, { useState } from "react";
+import { Text, Drop, Menu, Select, RealSelect } from "./components_styles";
 import { IoIosArrowDown } from "react-icons/io";
 import check from "../assets/shared/icon-check.svg";
 
 export const TextField = ({ error }: { error?: boolean }) => {
   return <Text error={error} placeholder="Hello" />;
 };
-const options = [
-  "Most Upvotes",
-  "Least Upvotes",
-  "Most Comments",
-  "Least Comments",
+const sortOptions = [
+  "most upvotes",
+  "least upvotes",
+  "most comments",
+  "least comments",
 ];
 
-export const DropDown = ({setSortParameter}:{setSortParameter: React.Dispatch<React.SetStateAction<string>>}) => {
+export const DropDown = ({
+  setSortParameter,
+}: {
+  setSortParameter: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const [show, setShow] = useState(false);
-  const [select, setSelect] = useState(options[0]);
+  const [select, setSelect] = useState(sortOptions[0]);
 
-  const setParameter= (option:string) =>{
-    setSelect(option)
-    setSortParameter(option)
-  }
+  const setParameter = (option: string) => {
+    setSelect(option);
+    setSortParameter(option);
+  };
 
   return (
     <Drop>
@@ -30,7 +34,7 @@ export const DropDown = ({setSortParameter}:{setSortParameter: React.Dispatch<Re
       </div>
       {show && (
         <Menu>
-          {options.map((option) => (
+          {sortOptions.map((option) => (
             <li onClick={() => setParameter(option)}>
               {option}
               {option === select && <img src={check} alt="" />}
@@ -42,26 +46,72 @@ export const DropDown = ({setSortParameter}:{setSortParameter: React.Dispatch<Re
   );
 };
 
-
-export const DropSelect = ()=> {
-  const [show, setShow] = useState(false);
-  const [select, setSelect] = useState(options[0]);
+export const DropSelect = React.forwardRef<
+  HTMLSelectElement,
+  {
+    options: string[];
+    value?: string;
+  }
+>((props, ref) => {
   return (
-    <Select>
-      <div className="heading" onClick={() => setShow(!show)}>
-        {select}
-        <IoIosArrowDown />
-      </div>
-      {show && (
-        <Menu>
-          {options.map((option) => (
-            <li onClick={() => setSelect(option)}>
-              {option}
-              {option === select && <img src={check} alt="" />}
-            </li>
-          ))}
-        </Menu>
-      )}
-    </Select>
+    <RealSelect {...props} ref={ref}>
+      {props.options.map((option) => (
+        <option value={option}>{option}</option>
+      ))}
+    </RealSelect>
   );
-}
+});
+
+// export const DropSelect = React.forwardRef<
+//   HTMLInputElement,
+//   {
+//     options: string[];
+//     value?: string;
+//   }
+// >((props, ref) => {
+//   // useEffect(() => {
+//   //   ref.current = select
+//   // });
+
+//   const [show, setShow] = useState(false);
+//   const [select, setSelect] = useState(props.value || props.options[0]);
+//   const submit = useRef(null)
+// // console.log()
+//   return (
+//     <Select>
+//       <div className="heading" onClick={() => setShow(!show)}>
+//         {select}
+//         {/* <input
+//         type="hidden"
+//         // id={`${props.name} hidden`}
+//         value={select}
+//         ref={ref}
+//         onChange={(e) => setSelect(e.target.value)}
+
+//         {...props}
+//         /> */}
+//         <IoIosArrowDown />
+//       </div>
+//       {show && (
+//         <Menu>
+//           {props.options.map((option) => (
+//             <li
+
+//               onClick={() => {
+//                 setSelect(option);
+//                 setShow(false);
+//                 // ref.current = select
+//                 // ref && ref.value = select
+//                 // document.getElementById(`${props.name} hidden`) && document.getElementById(`${props.name} hidden`).value = select;
+//               }}
+//             >
+//               {option}
+//               {option === select && <img src={check} alt="" />}
+//             </li>
+//           ))}
+//         </Menu>
+//       )}
+//     </Select>
+//   );
+
+// });

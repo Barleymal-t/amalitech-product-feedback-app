@@ -10,45 +10,47 @@ import { useNavigate, useParams } from "react-router-dom";
 import SuggestionCard from "../components/SuggestionCard";
 import { BackBtn } from "../components/Button";
 import { Button } from "../components/components_styles";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { comment, reply } from "../../store/suggestionsSlice";
 
-type Params = {
+export type Params = {
   id: string;
 };
 
 const FeedbackDetailsPage = () => {
   const params = useParams<Params>();
-  
   console.log(params);
   const navigate = useNavigate();
-  const request = useSelector(
-    (state: RootState) => state.request.find(
-      (request) => request.id === Number(params.id)
-    )
-  )
-  // const dispatch = useDispatch();
+  const productRequests = useSelector(
+    (state: RootState) => state.request
+  );
 
+  const suggestion = productRequests.find(
+    (suggestion) => suggestion.id === parseInt(params.id ?? "0")
+  );
+  console.log(suggestion,productRequests)
+  
+    
       return (
         <FeedbackDetail>
           <FeedbackTop>
             <BackBtn />
-            <Button color="lightBlue" onClick={()=>navigate("edit")}>Edit Feedback</Button>
+            <Button color="lightBlue" onClick={()=>navigate(`feedback/${params.id}/edit`)}>Edit Feedback</Button>
           </FeedbackTop>
-          <SuggestionCard {...request} />
+          <SuggestionCard {...suggestion} />
           <CommentsSection>
-            <h1>{request?.comments?.length} Comments</h1>
-            {request?.comments?.map((comment: comment) => (
+            <h1>{suggestion?.comments?.length} Comments</h1>
+            {suggestion?.comments?.map((comment: comment) => (
               <CommentComponent {...comment} />
             ))}
           </CommentsSection>
           <AddCommentComponent />
         </FeedbackDetail>
       );
-  //   } else {
-  //     return <h1>No request found</h1>;
-  //   }
+    // } else {
+    //   return <h1>No request found</h1>;
+    // }
   // }
 };
 
