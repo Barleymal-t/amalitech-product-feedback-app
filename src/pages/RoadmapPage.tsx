@@ -1,6 +1,7 @@
 import { BackBtn } from "../components/Button";
 import { AddFeedback } from "../components/Button";
 import { Roadmap } from "./page_styles";
+import { H1, H2, H3 } from "../components/components_styles";
 import RoadmapCard from "../components/RoadmapCard";
 import RoadmapColumn from "../components/RoadmapColumn";
 import { useSelector } from "react-redux";
@@ -13,7 +14,7 @@ const RoadmapPage = () => {
       <div className="headbar">
         <div className="back">
           <BackBtn color="deepBlue" />
-          <h2>Roadmap</h2>
+          <H2>Roadmap</H2>
         </div>
         <AddFeedback />
       </div>

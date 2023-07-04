@@ -9,7 +9,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import SuggestionCard from "../components/SuggestionCard";
 import { BackBtn } from "../components/Button";
-import { Button } from "../components/components_styles";
+import {H1, H2,H3, Button } from "../components/components_styles";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { comment, reply } from "../../store/suggestionsSlice";
@@ -37,7 +37,7 @@ const FeedbackDetailsPage = () => {
           </FeedbackTop>
           <SuggestionCard {...request} />
           <CommentsSection>
-            <h1>{request?.comments?.length} Comments</h1>
+            <H1>{request?.comments?.length} Comments</H1>
             {request?.comments?.map((comment: comment) => (
               <CommentComponent {...comment} />
             ))}
@@ -46,7 +46,7 @@ const FeedbackDetailsPage = () => {
         </FeedbackDetail>
       );
   //   } else {
-  //     return <h1>No request found</h1>;
+  //     return <H1>No request found</H1>;
   //   }
   // }
 };
@@ -59,7 +59,7 @@ const CommentComponent = ({ ...comment }:comment) => {
         <div className="greyline"> </div>
         <FeedbackTop>
           <div className="">
-            <h3>{comment.user.name}</h3>
+            <H3>{comment.user.name}</H3>
             <span>@{comment.user.username}</span>
           </div>
           <b>Reply</b>
@@ -68,13 +68,13 @@ const CommentComponent = ({ ...comment }:comment) => {
         <div className=""></div>
         <p>{comment.content}</p>
       </div>
-      {comment.replies?.map((reply: reply,index:number) => (
+      {comment.replies?.map((reply: reply) => (
         <Reply>
           <div className="main">
             <img src={`.${reply.user.image}`} alt="" />
             <FeedbackTop>
               <div className="">
-                <h3>{reply.user.name}</h3>
+                <H3>{reply.user.name}</H3>
                 <span>@{reply.user.username}</span>
               </div>
               <b>Reply</b>
@@ -95,7 +95,7 @@ const AddCommentComponent = () => {
 
   return (
     <AddComment>
-      <h1>Add Comment</h1>
+      <H1>Add Comment</H1>
       <textarea placeholder="Type your comment here"/>
       <div className="flex">
         255 characters left

@@ -1,5 +1,6 @@
 import RoadmapCard from "../components/RoadmapCard";
 import { request,requestsType } from "../../store/suggestionsSlice";
+import { H1,H2,H3 } from "./components_styles";
 
 const RoadmapColumn = ({
   productRequests,
@@ -30,7 +31,7 @@ const RoadmapColumn = ({
   const content = Object.keys(columns).map((key) => (
     <div className={`${key} column`}>
       <span className="">
-        <h2>{`${key} (${columns[key].length})`}</h2>
+        <H2>{`${key} (${columns[key].length})`}</H2>
         <p>{description[key]}</p>
       </span>
       {columns[key].map((request) => (

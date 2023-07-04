@@ -6,7 +6,7 @@ import {
 import SuggestionCard from "../components/SuggestionCard";
 import bulb from "../assets/suggestions/icon-suggestions.svg";
 import { DropDown } from "../components/Input";
-import { CatButton } from "../components/components_styles";
+import { H1, H2, H3, CatButton } from "../components/components_styles";
 import { useState } from "react";
 import Empty from "./Empty";
 import { AddFeedback } from "../components/Button";
@@ -67,7 +67,7 @@ const SuggestionsPage = () => {
     <Suggestions>
       <CustomizationPane>
         <div className="label">
-          <h1>Frontend Mentor</h1>
+          <H1>Frontend Mentor</H1>
           <p>Feedback Board</p>
         </div>
         <div className="categories">
@@ -83,7 +83,7 @@ const SuggestionsPage = () => {
         </div>
         <div className="roadmap">
           <div className="heading">
-            <h1>Roadmap</h1>
+            <H1>Roadmap</H1>
             <span onClick={() => navigate("/roadmap")}>View</span>
           </div>
           <Status>
@@ -119,7 +119,7 @@ const SuggestionsPage = () => {
         <section className="headbar">
           <div className="left">
             <img src={bulb} alt="" />
-            <p>{productRequests.length}</p>
+            <H3>{productRequests.length} Suggestions</H3>
             <DropDown setSortParameter={setSortParameter} />
           </div>
           <AddFeedback />

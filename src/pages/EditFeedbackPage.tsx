@@ -1,9 +1,9 @@
 import { NewFeedback, InputSection } from "./page_styles";
 import { DropSelect } from "../components/Input";
-import { Text, Button, TextArea } from "../components/components_styles";
+import { H1, H2, H3, Text, Button, TextArea } from "../components/components_styles";
 import editIcon from "../assets/shared/icon-edit-feedback.svg";
 import { categoryOptions } from "./NewFeedbackPage";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { category } from "./NewFeedbackPage";
 import { RootState } from "../../store/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +38,7 @@ const EditFeedbackPage = () => {
   
 
 
-  const {register,handleSubmit,watch} = useForm<Inputs>({
+  const {register,handleSubmit,setValue} = useForm<Inputs>({
     defaultValues: {
 title: suggestion?.title,
 category: suggestion?.category,
@@ -52,35 +52,37 @@ dispatch(suggestionEdited({id:params.id,...editedData}))
 navigate("../")
   }
   return (
+    // <FormProvider {...methods}>
+
     <NewFeedback>
       <img src={editIcon} alt="" />
-      <h1>Create New Feedback</h1>
+      <H1>Create New Feedback</H1>
       <form action="" 
       onSubmit={handleSubmit(submitData)}>
         <InputSection>
           <label htmlFor="title">
-            <h3>Feedback Title</h3>
+            <H3>Feedback Title</H3>
             <p>Add a short descriptive headline</p>
           </label>
           <Text {...register("title")}/>
         </InputSection>
         <InputSection>
           <label htmlFor="category">
-            <h3>Category</h3>
+            <H3>Category</H3>
             <p>Choose a category for your feedback</p>
           </label>
-          <DropSelect {...register("category")}  options={categoryOptions} />
+          <DropSelect {...register("category")} setValue={setValue} value={suggestion?.category}  options={categoryOptions} />
         </InputSection>
         <InputSection>
           <label htmlFor="status">
-            <h3>Update Status</h3>
+            <H3>Update Status</H3>
             <p>Change feedback status</p>
           </label>
-          <DropSelect {...register("status")}  options={statusOptions} />
+          <DropSelect {...register("status")} setValue={setValue} value={suggestion?.status}  options={statusOptions} />
         </InputSection>
         <InputSection>
           <label htmlFor="description">
-            <h3>Feedback Detail</h3>
+            <H3>Feedback Detail</H3>
             <p>
               Include any specific comments on what should be improved, added,
               etc.
@@ -97,8 +99,8 @@ navigate("../")
           </div>
         </div>
       </form>
-      <pre>{JSON.stringify(watch(),null,2)}</pre>
     </NewFeedback>
+    // </FormProvider>
   );
 };
 

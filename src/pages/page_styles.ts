@@ -14,10 +14,13 @@ export const Suggestions = styled.main`
   gap: 30px;
   grid-template-columns: 1fr 4fr;
   @media (max-width: 768px) {
-    margin: 39px;
     margin: 56px 39px;
     max-width: 689px;
     display: block;
+  }
+  @media(max-width:375px) {
+    margin:0;
+
   }
 `;
 
@@ -43,6 +46,10 @@ export const SuggestionsSection = styled.section`
   > .suggestions {
     display: grid;
     gap: 2rem;
+  }
+  @media(max-width:375){
+    width:90%;
+    margin:auto;
   }
 `;
 
@@ -73,12 +80,16 @@ export const CustomizationPane = styled.aside`
     flex-direction: column;
     justify-content: flex-end;
     color: ${colors.white};
-    background: url("../assets/suggestions/desktop/background-header.png");
+    background: url(../assets/suggestions/desktop/background-header.png);
     height: 137px;
     @media (max-width: 768px) {
       height: auto;
-      background: url("../assets/suggestions/tablet/background-header.png");
+      background: url(../assets/suggestions/tablet/background-header.png);
     }
+    // @media (max-width:375px) {
+    //   width:100vw;
+    //   background:url(../assets/suggestions/mobile/background-header.png);
+    // }
   }
   > .categories {
     display: flex;
@@ -127,6 +138,12 @@ export const CustomizationPane = styled.aside`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     margin-bottom: 2rem;
+  }
+  @media(max-width:375px) {
+    display:block;
+    position:absolute;
+    top:0;
+    left:100vw;
   }
 `;
 export const Status = styled.div`
@@ -312,6 +329,7 @@ export const InputSection = styled.div`
  */
 
 export const Roadmap = styled.main`
+width: 90%;
   max-width: 1110px;
   margin: 78px auto;
   .back > button {
@@ -350,5 +368,9 @@ export const Roadmap = styled.main`
     .live > div {
       border-top: 6px solid ${colors.aqua};
     }
+  }
+  @media (max-width: 768px) {
+    margin: 56px 39px;
+    max-width: 689px;
   }
 `;

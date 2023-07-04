@@ -17,3 +17,4 @@ export const colors = {
   hoverdeepBlue: "#656EA3",
   hoverscorchedBlue: "#CFD7FF",
 };
+

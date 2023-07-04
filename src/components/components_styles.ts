@@ -15,7 +15,7 @@ export const Button = styled.button.attrs((props) => ({
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
+
   gap: 0.5rem;
   &:hover {
     cursor: pointer;
@@ -114,12 +114,11 @@ export const TextArea = styled.textarea<{ error?: boolean }>`
 `;
 
 export const Drop = styled.div`
-// z-index: 10;
-height: 72px;
-position:relative;
-text-transform: capitalize;
-> div {
-  
+  // z-index: 10;
+  height: 72px;
+  position: relative;
+  text-transform: capitalize;
+  > div {
     width: 255px;
     cursor: pointer;
     background: transparent;
@@ -130,41 +129,28 @@ text-transform: capitalize;
     justify-content: space-between;
     padding: 24px;
     border-radius: 5px;
+    background: ${colors.lightGrey};
   }
 `;
 export const Select = styled(Drop)`
-height:48px;
-> div {
-    background: ${colors.lightGrey};
-    
+  height: 48px;
+  input {
+    outline: none;
+    text-transform: capitalize;
+    background: none;
+    border: none;
+    width: 100%;
+    height: 48px;
   }
   border-radius: 10px;
 `;
-export const RealSelect = styled.select`
-height: 48px;
-position:relative;
-text-transform: capitalize;
-background: ${colors.lightGrey};
-> option {
-  z-index:10;
-  background-color: ${colors.white};
-  color: ${colors.deepBlue};
-  position:absolute;
-  top:100%;
-  margin-top: 1rem;
-  box-shadow: 2px 2px 10px rgba(55, 63, 104, 0.3505);
-  height: max-content;
-  width: 100%;
-  border-radius: 10px;
-}
-`
 
 export const Menu = styled.menu`
-z-index:10;
+  z-index: 10;
   background-color: ${colors.white};
   color: ${colors.deepBlue};
-  position:absolute;
-  top:100%;
+  position: absolute;
+  top: 100%;
   margin-top: 1rem;
   box-shadow: 2px 2px 10px rgba(55, 63, 104, 0.3505);
   height: max-content;
@@ -196,10 +182,14 @@ export const Suggestion = styled.div`
   grid-template-columns: 40px auto 44px;
   gap: 40px;
   .main {
-    cursor:pointer;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     gap: 4px;
+    h3:hover {
+      cursor: pointer;
+      color: ${colors.lightBlue};
+    }
     > p {
       margin-bottom: 8px;
     }
@@ -207,17 +197,38 @@ export const Suggestion = styled.div`
 `;
 
 export const Comments = styled.div`
-cursor:pointer;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
 `;
+
+export const H1 = styled.h1`
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 35px;
+  letter-spacing: -0.33px;
+`;
+export const H2 = styled.h2`
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: -0.25px;
+`;
+
 export const H3 = styled.h3`
-  &:hover {
-    cursor: pointer;
-    color: ${colors.lightBlue};
-  }
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.25px;
+`;
+
+export const H4 = styled.h4`
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
 `;
 
 export const Card = styled.div`

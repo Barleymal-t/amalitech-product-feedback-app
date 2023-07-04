@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, Drop, Menu, Select, RealSelect } from "./components_styles";
+import { Text, Drop, Menu, Select, H4 } from "./components_styles";
 import { IoIosArrowDown } from "react-icons/io";
 import check from "../assets/shared/icon-check.svg";
 
@@ -30,12 +30,12 @@ export const DropDown = ({
   return (
     <Drop>
       <div className="heading" onClick={() => setShow(!show)}>
-        Sort by :<b>{select}</b>
+        Sort by :<H4>{select}</H4>
         <IoIosArrowDown />
       </div>
       {show && (
         <Menu>
-          {sortOptions.map((option,index) => (
+          {sortOptions.map((option, index) => (
             <li key={index} onClick={() => setParameter(option)}>
               {option}
               {option === select && <img src={check} alt="" />}
@@ -48,75 +48,39 @@ export const DropDown = ({
 };
 
 export const DropSelect = React.forwardRef<
-  HTMLSelectElement,
+  HTMLInputElement,
   {
+    name: string;
     options: string[];
     value?: string;
+    setValue?: any;
   }
->((props, ref) => {
+>(({name,options,value,setValue,...props}, ref) => {
+  const [show, setShow] = useState(false);
+  const [select, setSelect] = useState(value || options[0]);
+
+  const setOption = (option: string) => {
+    setSelect(option);
+    setValue(name, option);
+    setShow(false);
+  };
+
   return (
-    <RealSelect {...props} ref={ref}>
-      {props.options.map((option,index) => (
-        <option key={index} value={option}>{option}</option>
-      ))}
-    </RealSelect>
+    <Select>
+      <div className="heading" onClick={() => setShow(!show)}>
+        <input ref={ref} {...props} value={select} />
+        <IoIosArrowDown />
+      </div>
+      {show && (
+        <Menu>
+          {options.map((option, index) => (
+            <li onClick={() => setOption(option)}>
+              {option}
+              {option === select && <img src={check} alt="" />}
+            </li>
+          ))}
+        </Menu>
+      )}
+    </Select>
   );
 });
-
-// export const DropSelect = React.forwardRef<
-//   HTMLInputElement,
-//   {
-//     options: string[];
-//     value?: string;
-//   }
-// >((props, ref) => {
-//   // useEffect(() => {
-//   //   ref.current = select
-//   // });
-
-//   const [show, setShow] = useState(false);
-//   const [select, setSelect] = useState(props.value || props.options[0]);
-//   const submit = useRef(null)
-
-// const setParameter = (option: string) => {
-//   setSelect(option);
-//   setSortParameter(option);
-//   setTimeout(() => setShow(!show), 1000);
-  
-  // ref.current = select
-  // ref && ref.value = select
-  // document.getElementById(`${props.name} hidden`) && document.getElementById(`${props.name} hidden`).value = select;
-// };
-// // console.log()
-//   return (
-//     <Select>
-//       <div className="heading" onClick={() => setShow(!show)}>
-//         {select}
-//         {/* <input
-//         type="hidden"
-//         // id={`${props.name} hidden`}
-//         value={select}
-//         ref={ref}
-//         onChange={(e) => setSelect(e.target.value)}
-
-//         {...props}
-//         /> */}
-//         <IoIosArrowDown />
-//       </div>
-//       {show && (
-//         <Menu>
-//           {props.options.map((option,index) => (
-//             <li
-      // id={index}
-//               onClick={() => setParameter}
-//             >
-//               {option}
-//               {option === select && <img src={check} alt="" />}
-//             </li>
-//           ))}
-//         </Menu>
-//       )}
-//     </Select>
-//   );
-
-// });
