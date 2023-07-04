@@ -84,8 +84,7 @@ const suggestionSlice = createSlice({
       }
     },
     suggestionDeleted: (state, action) => {
-      const suggestionIndex = state.findIndex(
-        (suggestion) => (suggestion.id = +action.payload)
+      const suggestionIndex = state.findIndex( suggestion => suggestion.id === +action.payload
       );
       state.splice(suggestionIndex, 1);
     },
@@ -95,7 +94,6 @@ const suggestionSlice = createSlice({
         suggestion.upvotes++;
         suggestion.upvoted = true;
       }
-      console.log(original(state))
     },
     suggestionUnUpvoted(state, action) {
       const suggestion = state.find((el) => el.id === action.payload);
@@ -103,7 +101,6 @@ const suggestionSlice = createSlice({
         suggestion.upvotes--;
         suggestion.upvoted = false;
       }
-      console.log(original(state))
     },
   },
 });

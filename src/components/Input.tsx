@@ -24,6 +24,7 @@ export const DropDown = ({
   const setParameter = (option: string) => {
     setSelect(option);
     setSortParameter(option);
+    setTimeout(() => setShow(!show), 1000);
   };
 
   return (
@@ -34,8 +35,8 @@ export const DropDown = ({
       </div>
       {show && (
         <Menu>
-          {sortOptions.map((option) => (
-            <li onClick={() => setParameter(option)}>
+          {sortOptions.map((option,index) => (
+            <li key={index} onClick={() => setParameter(option)}>
               {option}
               {option === select && <img src={check} alt="" />}
             </li>
@@ -55,8 +56,8 @@ export const DropSelect = React.forwardRef<
 >((props, ref) => {
   return (
     <RealSelect {...props} ref={ref}>
-      {props.options.map((option) => (
-        <option value={option}>{option}</option>
+      {props.options.map((option,index) => (
+        <option key={index} value={option}>{option}</option>
       ))}
     </RealSelect>
   );
@@ -76,6 +77,16 @@ export const DropSelect = React.forwardRef<
 //   const [show, setShow] = useState(false);
 //   const [select, setSelect] = useState(props.value || props.options[0]);
 //   const submit = useRef(null)
+
+// const setParameter = (option: string) => {
+//   setSelect(option);
+//   setSortParameter(option);
+//   setTimeout(() => setShow(!show), 1000);
+  
+  // ref.current = select
+  // ref && ref.value = select
+  // document.getElementById(`${props.name} hidden`) && document.getElementById(`${props.name} hidden`).value = select;
+// };
 // // console.log()
 //   return (
 //     <Select>
@@ -94,16 +105,10 @@ export const DropSelect = React.forwardRef<
 //       </div>
 //       {show && (
 //         <Menu>
-//           {props.options.map((option) => (
+//           {props.options.map((option,index) => (
 //             <li
-
-//               onClick={() => {
-//                 setSelect(option);
-//                 setShow(false);
-//                 // ref.current = select
-//                 // ref && ref.value = select
-//                 // document.getElementById(`${props.name} hidden`) && document.getElementById(`${props.name} hidden`).value = select;
-//               }}
+      // id={index}
+//               onClick={() => setParameter}
 //             >
 //               {option}
 //               {option === select && <img src={check} alt="" />}

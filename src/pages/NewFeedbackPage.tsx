@@ -3,6 +3,11 @@ import newIcon from "../assets/shared/icon-new-feedback.svg";
 import { DropSelect } from "../components/Input";
 import { Text, Button, TextArea } from "../components/components_styles";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { suggestionAdded } from "../../store/suggestionsSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+
 
 export type category = "UI" | "UX" | "feature" | "bug" | "enhancement";
 
@@ -15,6 +20,9 @@ type Inputs = {
 export const categoryOptions:category[] = ["feature", "UI", "UX", "enhancement", "bug"];
 
 const NewFeedbackPage = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const {register,handleSubmit,watch} = useForm<Inputs>({
     defaultValues: {
 title: "",
@@ -22,11 +30,17 @@ category: "feature",
 description:""
     }
   })
+
+  const submitData:SubmitHandler<Inputs> =({title,category,description})=> {
+    dispatch(suggestionAdded(title,category,description))
+    navigate("../")
+  }
+
   return (
     <NewFeedback>
       <img src={newIcon} alt="" />
       <h1>Create New Feedback</h1>
-      <form action="">
+      <form action="" onSubmit={handleSubmit(submitData)}>
         <InputSection>
           <label htmlFor="title">
             <h3>Feedback Title</h3>
@@ -52,10 +66,11 @@ description:""
           <TextArea  {...register("description")}  />
         </InputSection>
         <div className="buttons">
-          <Button color="deepBlue">Cancel</Button>
+          <Button color="deepBlue" onClick={()=>navigate("../")}>Cancel</Button>
           <Button color="purple">Add Feedback</Button>
         </div>
       </form>
+      <pre>{JSON.stringify(watch(),null,2)}</pre>
     </NewFeedback>
   );
 };

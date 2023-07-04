@@ -7,9 +7,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { category } from "./NewFeedbackPage";
 import { RootState } from "../../store/store";
 import { useDispatch, useSelector } from "react-redux";
-import { request, suggestionEdited } from "../../store/suggestionsSlice";
+import { request, suggestionDeleted, suggestionEdited } from "../../store/suggestionsSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { Params } from "./SuggestionDetailsPage";
+import { original } from 'immer'
 
 export type status = "suggestion" | "planned" | "in-progress" | "live";
 
@@ -88,10 +89,11 @@ navigate("../")
           <TextArea {...register("description")} />
         </InputSection>
         <div className="flex">
-          <Button color="red">Delete</Button>
+          <Button color="red" type="button" onClick={()=>{dispatch(suggestionDeleted(suggestion?.id))
+          navigate("/")}}>Delete</Button>
           <div className="buttons">
-            <Button color="deepBlue">Cancel</Button>
-            <Button color="purple">Save Changes</Button>
+            <Button color="deepBlue" type="button"  onClick={()=>navigate("../")}>Cancel</Button>
+            <Button color="purple" type="submit">Save Changes</Button>
           </div>
         </div>
       </form>

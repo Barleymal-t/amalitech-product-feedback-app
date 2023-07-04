@@ -21,7 +21,6 @@ type Params = {
 const FeedbackDetailsPage = () => {
   const params = useParams<Params>();
   
-  console.log(params);
   const navigate = useNavigate();
   const request = useSelector(
     (state: RootState) => state.request.find(
@@ -52,7 +51,7 @@ const FeedbackDetailsPage = () => {
   // }
 };
 
-const CommentComponent = ({ ...comment }) => {
+const CommentComponent = ({ ...comment }:comment) => {
   return (
     <Comment>
       <div className="main">
@@ -69,7 +68,7 @@ const CommentComponent = ({ ...comment }) => {
         <div className=""></div>
         <p>{comment.content}</p>
       </div>
-      {comment.replies?.map((reply: reply) => (
+      {comment.replies?.map((reply: reply,index:number) => (
         <Reply>
           <div className="main">
             <img src={`.${reply.user.image}`} alt="" />

@@ -8,7 +8,6 @@ import { RootState } from "../../store/store";
 
 const RoadmapPage = () => {
   const productRequests = useSelector((state: RootState) => state.request);
-console.log(typeof productRequests, productRequests)
   return (
     <Roadmap>
       <div className="headbar">

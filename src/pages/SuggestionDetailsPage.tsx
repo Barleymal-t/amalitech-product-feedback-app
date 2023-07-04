@@ -20,7 +20,6 @@ export type Params = {
 
 const FeedbackDetailsPage = () => {
   const params = useParams<Params>();
-  console.log(params);
   const navigate = useNavigate();
   const productRequests = useSelector(
     (state: RootState) => state.request
@@ -29,7 +28,6 @@ const FeedbackDetailsPage = () => {
   const suggestion = productRequests.find(
     (suggestion) => suggestion.id === parseInt(params.id ?? "0")
   );
-  console.log(suggestion,productRequests)
   
     
       return (
