@@ -9,10 +9,11 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import SuggestionCard from "../components/SuggestionCard";
 import { BackBtn } from "../components/Button";
-import {H1, H2,H3, Button } from "../components/components_styles";
+import {H1, H2,H3, H4, Button } from "../components/components_styles";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { comment, reply } from "../../store/suggestionsSlice";
+import { useForm } from "react-hook-form";
 
 type Params = {
   id: string;
@@ -59,7 +60,7 @@ const CommentComponent = ({ ...comment }:comment) => {
         <div className="greyline"> </div>
         <FeedbackTop>
           <div className="">
-            <H3>{comment.user.name}</H3>
+            <H4>{comment.user.name}</H4>
             <span>@{comment.user.username}</span>
           </div>
           <b>Reply</b>
@@ -74,7 +75,7 @@ const CommentComponent = ({ ...comment }:comment) => {
             <img src={`.${reply.user.image}`} alt="" />
             <FeedbackTop>
               <div className="">
-                <H3>{reply.user.name}</H3>
+                <H4>{reply.user.name}</H4>
                 <span>@{reply.user.username}</span>
               </div>
               <b>Reply</b>
@@ -93,18 +94,34 @@ const CommentComponent = ({ ...comment }:comment) => {
 
 const AddCommentComponent = () => {
 
+  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setInputValue(event.target.value);
+  // };
+
+  const {register,handleSubmit,watch,getValues} = useForm<{detail:string}>({
+    defaultValues: {
+      detail: ""
+    }
+  })
+  
+const value:string = getValues("detail")
+const left = 255 - value.length
   return (
     <AddComment>
       <H1>Add Comment</H1>
-      <textarea placeholder="Type your comment here"/>
+      <textarea cols={10} rows={5}
+        {...register("detail")} placeholder="Type your comment here"
+      />
       <div className="flex">
-        255 characters left
+        {left.toString()} characters left
         <Button
           color="purple"
         >
           Post Comment
         </Button>
+
       </div>
+      <pre>{JSON.stringify(watch(),null,2)}</pre>
     </AddComment>
   );
 };

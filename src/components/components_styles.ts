@@ -9,7 +9,7 @@ export const Button = styled.button.attrs((props) => ({
   color: ${({ color }) => (color ? "white" : colors.midGrey)};
   padding: 0 1.5rem;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   border: none;
   font-size: 1rem;
   display: flex;
@@ -34,16 +34,22 @@ export const BackButton = styled(Button)`
 export const Cat = styled.button`
   background-color: ${colors.scorchedBlue};
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   border: none;
   text-transform: capitalize;
-  padding: 6px 16px;
+  padding: 6px 1rem;
   height: 30px;
   width: max-content;
   color: ${colors.lightBlue};
 `;
 
 export const Vote = styled(Cat)<{ $active?: boolean }>`
+&:first-child {
+  @media(max-width:375px) {
+
+    display:none;
+  }
+}
   width: 40px;
   height: 53px;
   display: flex;
@@ -76,7 +82,7 @@ export const Text = styled.input<{ error?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 24px;
+  padding-left: 1.5rem;
   outline: none;
   border-radius: 5px;
   border: 1px solid ${(props) => (props.error ? colors.red : "transparent")};
@@ -97,8 +103,8 @@ export const TextArea = styled.textarea<{ error?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 24px;
-  padding-top: 24px;
+  padding-left: 1.5rem;
+  padding-top: 1.5rem;
   outline: none;
   border-radius: 5px;
   border: 1px solid ${(props) => (props.error ? colors.red : "transparent")};
@@ -127,9 +133,11 @@ export const Drop = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 24px;
+    padding: 1.5rem;
     border-radius: 5px;
-    background: ${colors.lightGrey};
+    @media(max-width:375px) {
+      padding:0;
+    }
   }
 `;
 export const Select = styled(Drop)`
@@ -142,7 +150,7 @@ export const Select = styled(Drop)`
     width: 100%;
     height: 48px;
   }
-  border-radius: 10px;
+  border-radius: 0.625rem;
 `;
 
 export const Menu = styled.menu`
@@ -155,9 +163,9 @@ export const Menu = styled.menu`
   box-shadow: 2px 2px 10px rgba(55, 63, 104, 0.3505);
   height: max-content;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   > li {
-    padding: 0 24px;
+    padding: 0 1.5rem;
     cursor: pointer;
     height: 47px;
     list-style-type: none;
@@ -174,10 +182,14 @@ export const Menu = styled.menu`
 `;
 
 export const Suggestion = styled.div`
-  background-color: ${colors.white};
-  border-radius: 10px;
+.bottom {
+  display:none;
+}
+
+background-color: ${colors.white};
+border-radius: 0.625rem;
   max-width: 825px;
-  padding: 32px 28px;
+  padding: 2rem 1.75rem;
   display: grid;
   grid-template-columns: 40px auto 44px;
   gap: 40px;
@@ -194,6 +206,21 @@ export const Suggestion = styled.div`
       margin-bottom: 8px;
     }
   }
+  @media (max-width: 375px) {
+    .button(:first-child) {
+      display:none;
+    }
+    .bottom {
+      display:flex;
+      flex-direction:row-reverse;
+      justify-content:space-between;
+      button {
+        flex-direction:row;
+      }
+    }
+    display:flex;
+    flex-direction:column;
+  }
 `;
 
 export const Comments = styled.div`
@@ -206,20 +233,20 @@ export const Comments = styled.div`
 
 export const H1 = styled.h1`
   font-weight: 700;
-  font-size: 24px;
-  line-height: 35px;
+  font-size: 1.5rem;
+  line-height: 2.188rem;
   letter-spacing: -0.33px;
 `;
 export const H2 = styled.h2`
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 29px;
   letter-spacing: -0.25px;
 `;
 
 export const H3 = styled.h3`
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 26px;
   letter-spacing: -0.25px;
 `;
@@ -227,25 +254,43 @@ export const H3 = styled.h3`
 export const H4 = styled.h4`
   font-weight: 700;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 1.25rem;
   letter-spacing: -0.2px;
-`;
+  `;
+  
+  export const P1 = styled.p`
+  font-size: 16px;
+  line-height: 23px;
+  
+  `
+  export const P2 = styled.p`
+  font-size: 15px;
+  line-height: 22px;
+  `
+  export const P3 = styled.p`
+  font-size: 13px;
+  line-height: 19px;
+  font-weight:semibold;
+`
 
 export const Card = styled.div`
   height: max-content;
   background-color: ${colors.white};
-  padding: 32px;
-  border-radius: 10px;
+  padding: 2rem;
+  border-radius: 0.625rem;
   .category {
     margin: 1rem 0;
   }
-  .bottom {
-    display: flex;
-    justify-content: space-between;
-    button {
-      flex-direction: row;
-      width: fit-content;
-      height: 40px;
-    }
-  }
+
 `;
+
+export const Bottom = styled.div`
+  display: flex;
+  flex-direction:row-reverse;
+  justify-content: space-between;
+  button {
+    flex-direction: row;
+    width: fit-content;
+    height: 40px;
+  }
+`

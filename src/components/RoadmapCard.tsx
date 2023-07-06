@@ -1,4 +1,4 @@
-import { Card, Cat, Comments, H3 } from "./components_styles";
+import { Bottom, Card, Cat, Comments, H3 } from "./components_styles";
 import { UpVote } from "./Button";
 import comment from "../assets/shared/icon-comments.svg";
 import { Status } from "../pages/page_styles";
@@ -26,13 +26,13 @@ const RoadmapCard = ({ ...suggestion }) => {
       <div className="category">
         <Cat>{category}</Cat>
       </div>
-      <div className="bottom">
-        <UpVote value={upvotes} id={id} upvoted={upvoted} />
+      <Bottom>
         <Comments>
           <img src={comment} alt="comment" />
           <p>{suggestion["comments"]?.length || 0}</p>
         </Comments>
-      </div>
+        <UpVote value={upvotes} id={id} upvoted={upvoted} />
+      </Bottom>
     </Card>
   );
 };

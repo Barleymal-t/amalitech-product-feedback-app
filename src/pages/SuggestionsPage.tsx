@@ -2,6 +2,9 @@ import {
   CustomizationPane,
   SuggestionsSection,
   Suggestions,
+  Label,
+  MobileLabel,
+  Headbar,
 } from "./page_styles";
 import SuggestionCard from "../components/SuggestionCard";
 import bulb from "../assets/suggestions/icon-suggestions.svg";
@@ -14,9 +17,15 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { Status } from "./page_styles";
+import { requestsType } from "../../store/suggestionsSlice";
+import close from "../assets/shared/mobile/icon-close.svg"
+import hamburger from "../assets/shared/mobile/icon-hamburger.svg"
 
 const SuggestionsPage = () => {
-  const productRequests = useSelector((state: RootState) => state.request);
+  const [open,setOpen] = useState(false)
+
+
+  const productRequests:requestsType = useSelector((state: RootState) => state.request);
 
   const [activeCategory, setActiveCategory] = useState("All");
   const [sortParameter, setSortParameter] = useState("most upvotes");
@@ -65,11 +74,22 @@ const SuggestionsPage = () => {
   const navigate = useNavigate();
   return (
     <Suggestions>
-      <CustomizationPane>
-        <div className="label">
+        <MobileLabel>
+
+          <div className="">
+
           <H1>Frontend Mentor</H1>
           <p>Feedback Board</p>
-        </div>
+          </div>
+            
+            <img src={open?close:hamburger} onClick={()=>setOpen(!open)} alt="close button" />
+        </MobileLabel>
+      <CustomizationPane $open={open}>
+        <Label>
+
+          <H1>Frontend Mentor</H1>
+          <p>Feedback Board</p>
+        </Label>
         <div className="categories">
           {categories.map((category, index) => (
             <CatButton
@@ -116,14 +136,17 @@ const SuggestionsPage = () => {
         </div>
       </CustomizationPane>
       <SuggestionsSection>
-        <section className="headbar">
+        <Headbar>
           <div className="left">
+            <div className="count">
+
             <img src={bulb} alt="" />
             <H3>{productRequests.length} Suggestions</H3>
+            </div>
             <DropDown setSortParameter={setSortParameter} />
           </div>
           <AddFeedback />
-        </section>
+        </Headbar>
         <section className="suggestions">
           {showSuggestions.length === 0 ? (
             <Empty />

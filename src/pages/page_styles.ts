@@ -6,7 +6,7 @@ SuggestionsPage Styles
 */
 
 export const Suggestions = styled.main`
-  max-width: 1110px;
+  max-width: 110.625rem;
   width: 90%;
   margin: 94px auto;
   background-color: ${colors.lightGrey};
@@ -18,46 +18,66 @@ export const Suggestions = styled.main`
     max-width: 689px;
     display: block;
   }
-  @media(max-width:375px) {
-    margin:0;
-
+  @media (max-width: 375px) {
+    display:block;
+    margin: 0;
+    width:100vw;
+    overflow:hidden;
   }
-`;
-
-export const SuggestionsSection = styled.section`
-  > .headbar {
-    max-width: 825px;
-    color: white;
-    background-color: ${colors.deepBlue};
-    height: 72px;
-    margin-bottom: 2rem;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    > .left {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-  }
-  > .suggestions {
+  `;
+  
+  export const SuggestionsSection = styled.section`
+  
+  .suggestions {
     display: grid;
     gap: 2rem;
-  }
-  @media(max-width:375){
-    width:90%;
-    margin:auto;
+    @media (max-width: 375px) {
+      width:90%;
+      margin:auto;
+    }
   }
 `;
 
-export const CustomizationPane = styled.aside`
+
+
+export const Headbar =styled.section`
+  width:100%;
+  max-width: 825px;
+  color: white;
+  background-color: ${colors.deepBlue};
+  height: 72px;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.625rem;
+  .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .count {
+    display: flex;
+    gap: 1rem;
+    @media (max-width: 375px) {
+      display:none;
+    }
+
+  }
+  @media (max-width: 375px) {
+    border-radius:0;
+  }
+
+`
+
+export const CustomizationPane = styled.aside<{ $open?: boolean }>`
+transition:all 0.3s linear;
   width: 255px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
   span {
     &:hover {
       cursor: pointer;
@@ -67,37 +87,25 @@ export const CustomizationPane = styled.aside`
   }
   > * {
     width: 100%;
-    border-radius: 10px;
+    height:178px;
+    border-radius: 0.625rem;
     background: ${colors.white};
-    padding: 24px;
+    padding: 1.5rem;
     @media (max-width: 768px) {
-      height: auto;
+      // height: auto;
       margin-bottom: 2rem;
     }
   }
-  > .label {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    color: ${colors.white};
-    background: url(../assets/suggestions/desktop/background-header.png);
-    height: 137px;
-    @media (max-width: 768px) {
-      height: auto;
-      background: url(../assets/suggestions/tablet/background-header.png);
-    }
-    // @media (max-width:375px) {
-    //   width:100vw;
-    //   background:url(../assets/suggestions/mobile/background-header.png);
-    // }
-  }
+
+ 
   > .categories {
+    
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    @media (max-width: 768px) {
-      padding-right: 0;
-    }
+    // @media (max-width: 768px) {
+    //   padding-right: 0;
+    // }
   }
   > .roadmap {
     > .heading {
@@ -107,8 +115,8 @@ export const CustomizationPane = styled.aside`
     }
     > .content {
       .dot {
-        height: 10px;
-        width: 10px;
+        height: 0.625rem;
+        width: 0.625rem;
         border-radius: 50%;
         display: inline-block;
         margin-right: 5px;
@@ -136,20 +144,59 @@ export const CustomizationPane = styled.aside`
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+    gap: 0.625rem;
     margin-bottom: 2rem;
   }
-  @media(max-width:375px) {
-    display:block;
-    position:absolute;
-    top:0;
-    left:100vw;
+  @media (max-width: 375px) {
+    z-index:10;
+    width:270px;
+    height:100vh;
+    display: block;
+    margin-top:5.5rem;
+    padding:1.5rem;
+    position: absolute;
+    top: 0;
+    right:0;
+    background-color:${colors.scorchedBlue};
+    ${(props) =>
+      props.$open ? "transform: translate(0);":"transform: translate(+100%);"}
   }
 `;
+
+export const Label = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: ${colors.white};
+  background: url(../assets/suggestions/desktop/background-header.png);
+  height: 137px;
+  @media (max-width: 768px) {
+    height: auto;
+    background: url(../assets/suggestions/tablet/background-header.png);
+  }
+  @media (max-width:375px) {
+    display:none;
+  }
+`
+export const MobileLabel = styled.div`
+color:${colors.white};
+display:none;
+@media (max-width:375px) {
+  width:100vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem;
+    background:url(../assets/suggestions/mobile/background-header.png);
+  }
+`
+
+
+
 export const Status = styled.div`
   .dot {
-    height: 10px;
-    width: 10px;
+    height: 0.625rem;
+    width: 0.625rem;
     border-radius: 50%;
     display: inline-block;
     margin-right: 5px;
@@ -177,7 +224,7 @@ export const EmptySuggestions = styled.section`
   background-color: ${colors.white};
   height: 70vh;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -195,16 +242,16 @@ export const FeedbackDetail = styled.main`
   width: 730px;
   margin: 80px auto;
   display: grid;
-  gap: 24px;
+  gap: 1.5rem;
 `;
 
 export const CommentsSection = styled.section`
   width: 100%;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   background: ${colors.white};
-  padding: 34px 24px;
+  padding: 34px 1.5rem;
   > h1 {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 `;
 
@@ -212,12 +259,12 @@ export const Comment = styled.div`
   position: relative;
   b {
     color: ${colors.purple};
-    font-size:15px;
+    font-size: 15px;
   }
   .main {
     display: grid;
     grid-template-columns: auto 90%;
-    gap: 17px 32px;
+    gap: 17px 2rem;
     .greyline {
       position: absolute;
       top: 100px;
@@ -232,7 +279,7 @@ export const Comment = styled.div`
       border-radius: 50%;
     }
   }
-  padding: 32px 0;
+  padding: 2rem 0;
   &:not(:last-child) {
     border-bottom: 1px solid ${colors.scorchedBlue};
   }
@@ -246,19 +293,21 @@ export const Reply = styled(Comment)`
   margin-left: 40px;
   border-bottom: 0 !important;
 `;
-export const AddComment = styled.section`
+export const AddComment = styled.form`
   background-color: ${colors.white};
   width: 100%;
   display: grid;
-  gap: 16px;
-  padding: 32px;
-  border-radius: 10px;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 0.625rem;
   textarea {
     background-color: ${colors.lightGrey};
-    width: 100%;
+    resize: none;
+    // text-wrap:wrap;
+    // max-width: 840px;
     border: 1px solid ${colors.deepBlue};
-    border-radius: 10px;
-    padding: 24px 16px;
+    border-radius: 0.625rem;
+    padding: 1.5rem 1rem;
   }
   .flex {
     display: flex;
@@ -272,7 +321,7 @@ export const FeedbackTop = styled.div`
   justify-content: space-between;
   b {
     color: ${colors.lightBlue};
-    font-size:13px;
+    font-size: 13px;
     &:hover {
       text-decoration: underline;
       cursor: pointer;
@@ -297,7 +346,7 @@ export const NewFeedback = styled.main`
   }
   form {
     display: grid;
-    gap: 24px;
+    gap: 1.5rem;
   }
   > img {
     position: absolute;
@@ -315,7 +364,7 @@ export const NewFeedback = styled.main`
 `;
 export const InputSection = styled.div`
   display: grid;
-  gap: 16px;
+  gap: 1rem;
   h3,
   p {
     font-size: 14px;
@@ -329,8 +378,8 @@ export const InputSection = styled.div`
  */
 
 export const Roadmap = styled.main`
-width: 90%;
-  max-width: 1110px;
+  width: 90%;
+  max-width: 110.625rem;
   margin: 78px auto;
   .back > button {
     padding: 0;
@@ -339,8 +388,8 @@ width: 90%;
   > .headbar {
     margin-bottom: 48px;
     height: 113px;
-    border-radius: 10px;
-    padding: 27px 32px;
+    border-radius: 0.625rem;
+    padding: 27px 2rem;
     color: ${colors.white};
     background-color: ${colors.deepBlue};
     display: flex;
