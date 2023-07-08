@@ -98,7 +98,7 @@ navigate("../")
         <div className="flex">
           <Button color="red" type="button" onClick={()=>{dispatch(suggestionDeleted(suggestion?.id))
           navigate("/")}}>Delete</Button>
-          <div className="buttons">
+          <div className="buttons flex">
             <Button color="deepBlue" type="button"  onClick={()=>navigate("../")}>Cancel</Button>
             <Button color="purple" type="submit">Save Changes</Button>
           </div>

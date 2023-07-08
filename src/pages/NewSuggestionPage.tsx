@@ -70,7 +70,7 @@ description:""
           <TextArea  {...register("description")}  />
           <Error>{errors["description"]?.message}</Error>
         </InputSection>
-        <div className="buttons">
+        <div className="buttons flex">
           <Button color="deepBlue" onClick={()=>navigate("../")}>Cancel</Button>
           <Button color="purple" type="submit">Add Suggestion</Button>
         </div>

@@ -10,7 +10,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import SuggestionCard from "../components/SuggestionCard";
 import { BackBtn } from "../components/Button";
-import {H1, H2,H3, H4, Button } from "../components/components_styles";
+import {H1, H2,H3, H4, Button, Comments, TextArea } from "../components/components_styles";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { comment, reply } from "../../store/suggestionsSlice";
@@ -58,7 +58,10 @@ const CommentComponent = ({ ...comment }:comment) => {
     <Comment>
       <div className="main">
         <img src={`.${comment.user.image}`} alt="" />
-        <Greyline/>
+        {
+          comment.replies &&
+          <Greyline/>
+        }
         <SuggestionTop>
           <div className="">
             <H4>{comment.user.name}</H4>
@@ -67,8 +70,13 @@ const CommentComponent = ({ ...comment }:comment) => {
           <b>Reply</b>
         </SuggestionTop>
 
-        <div className=""></div>
-        <p>{comment.content}</p>
+        <div className="shift"></div>
+        <p className="comment-content">{comment.content}</p>
+<div className=""></div>
+          <div className="flex">
+          <TextArea />
+          <Button color="purple">Post Reply</Button>
+          </div>
       </div>
       {comment.replies?.map((reply: reply) => (
         <Reply>
@@ -83,9 +91,14 @@ const CommentComponent = ({ ...comment }:comment) => {
             </SuggestionTop>
 
             <div className=""></div>
-            <p>
+            <p className="comment-content">
               <b>@{reply.replyingTo}</b> {reply.content}
             </p>
+<div className=""></div>
+          <div className="flex">
+          <TextArea />
+          <Button color="purple">Post Reply</Button>
+          </div>
           </div>
         </Reply>
       ))}
@@ -99,20 +112,18 @@ const AddCommentComponent = () => {
   //   setInputValue(event.target.value);
   // };
 
-  const {register,handleSubmit,watch,getValues} = useForm<{detail:string}>({
+  const {register,handleSubmit,watch,getValues} = useForm<{description:string}>({
     defaultValues: {
-      detail: ""
+      description: ""
     }
   })
   
-const value:string = getValues("detail")
+const value:string = getValues("description")
 const left = 255 - value.length
   return (
     <AddComment>
       <H1>Add Comment</H1>
-      <textarea cols={10} rows={5}
-        {...register("detail")} placeholder="Type your comment here"
-      />
+      <TextArea {...register("description")} placeholder="Type your comment here"/>
       <div className="flex">
         {left.toString()} characters left
         <Button
@@ -122,7 +133,7 @@ const left = 255 - value.length
         </Button>
 
       </div>
-      <pre>{JSON.stringify(watch(),null,2)}</pre>
+      {/* <pre>{JSON.stringify(watch(),null,2)}</pre> */}
     </AddComment>
   );
 };

@@ -5,6 +5,7 @@ export const Button = styled.button.attrs((props) => ({
   color: colors[props.color as keyof typeof colors],
   hoverColor: colors[`hover${props.color}` as keyof typeof colors],
 }))`
+    min-width:fit-content;
   background-color: ${({ color }) => color || "transparent"};
   color: ${({ color }) => (color ? "white" : colors.midGrey)};
   padding: 0 1.5rem;
@@ -21,6 +22,9 @@ export const Button = styled.button.attrs((props) => ({
     cursor: pointer;
     background-color: ${({ color, hoverColor }) =>
       color ? hoverColor : "transparent"};
+  }
+  @media(max-width:375px) {
+    padding:0 1rem;
   }
 `;
 export const BackButton = styled(Button)`
@@ -43,37 +47,41 @@ export const Cat = styled.button`
   color: ${colors.lightBlue};
 `;
 
-export const Vote = styled(Cat)<{ $active?: boolean }>`
-&:first-child {
-  @media(max-width:375px) {
-    display:none;
-  }
+export const CatButton = styled(Cat)<{ $active?: boolean }>`
+&:hover {
+  cursor: pointer;
+  background-color: ${colors.hoverscorchedBlue};
 }
-  width: 40px;
-  height: 53px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  &:hover {
-    cursor: pointer;
-    background-color: ${colors.hoverscorchedBlue};
-  }
-  ${(props) =>
-    props.$active &&
-    `
-    > svg path {
-      stroke: ${colors.white};
-    }
+${(props) =>
+  props.$active &&
+  `
   color: ${colors.white};
   background-color: ${colors.lightBlue};
   `}
-`;
-export const CatButton = styled(Vote)`
-  height: auto;
-  width: auto;
-`;
+  `;
+  
+  export const Vote = styled(CatButton)<{ $active?: boolean }>`
+  &:first-child {
+    @media(max-width:375px) {
+      display:none;
+    }
+  }
+    width: 40px;
+    height: 53px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    ${(props) =>
+      props.$active &&
+      `
+      > svg path {
+        stroke: ${colors.white};
+      }
+    `}
+  `;
+
 
 export const Text = styled.input<{ error?: boolean }>`
   height: 48px;
@@ -102,8 +110,8 @@ export const TextArea = styled.textarea<{ error?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 1.5rem;
-  padding-top: 1.5rem;
+  padding: 1.5rem;
+  padding: 1.5rem;
   outline: none;
   border-radius: 5px;
   border: 1px solid ${(props) => (props.error ? colors.red : "transparent")};
@@ -124,7 +132,6 @@ export const Drop = styled.div`
   position: relative;
   text-transform: capitalize;
   > div {
-    width: 255px;
     cursor: pointer;
     background: transparent;
     height: 100%;
@@ -206,9 +213,9 @@ border-radius: 0.625rem;
     }
   }
   @media (max-width: 375px) {
-    .button(:first-child) {
-      display:none;
-    }
+    // .button(:first-child) {
+    //   display:none;
+    // }
     .bottom {
       display:flex;
       flex-direction:row-reverse;

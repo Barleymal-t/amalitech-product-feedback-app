@@ -64,6 +64,8 @@ export const Headbar = styled.section`
   }
   @media (max-width: 375px) {
     border-radius: 0;
+    // display:grid;
+    // grid-template-columns:50% 50%;
   }
 `;
 
@@ -147,7 +149,7 @@ export const CustomizationPane = styled.aside<{ $open?: boolean }>`
     display: block;
     margin-top: 5.5rem;
     padding: 1.5rem;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     background-color: ${colors.scorchedBlue};
@@ -255,7 +257,7 @@ export const Comment = styled.div`
   }
   .main {
     display: grid;
-    grid-template-columns: auto 90%;
+    grid-template-columns: 40px auto;
     gap: 17px 2rem;
 
     > img {
@@ -263,6 +265,10 @@ export const Comment = styled.div`
       height: 40px;
       border-radius: 50%;
     }
+  }
+  .flex {
+    display:flex;
+    gap:1rem;
   }
   padding: 2rem 0;
   &:not(:last-child) {
@@ -272,6 +278,14 @@ export const Comment = styled.div`
   span {
     font-size: 14px;
   }
+  @media (max-width:375px) {
+    .shift {
+      display:none;
+    }
+    .comment-content {
+      grid-column: span 2 / span 2;
+    }
+  }
 `;
 
 export const Greyline = styled.div`
@@ -279,8 +293,12 @@ export const Greyline = styled.div`
   top: 100px;
   left: 17.5px;
   width: 1px;
-  height: calc(100% - 250px);
+  height: calc(100% - 270px);
   background-color: ${colors.scorchedBlue};
+  @media(max-width:375px) {
+    top:230px;
+    height: calc(100% - 470px);
+  }
 `
 
 export const Reply = styled(Comment)`
@@ -294,15 +312,6 @@ export const AddComment = styled.form`
   gap: 1rem;
   padding: 2rem;
   border-radius: 0.625rem;
-  textarea {
-    background-color: ${colors.lightGrey};
-    resize: none;
-    text-wrap: wrap;
-    max-width: 840px;
-    border: 1px solid ${colors.deepBlue};
-    border-radius: 0.625rem;
-    padding: 1.5rem 1rem;
-  }
   .flex {
     display: flex;
     justify-content: space-between;
@@ -350,6 +359,11 @@ export const NewSuggestion = styled.main`
   .flex {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    @media (max-width:375px) {
+      flex-direction:column;
+      gap:1rem;
+    }
   }
   .buttons {
     display: flex;
