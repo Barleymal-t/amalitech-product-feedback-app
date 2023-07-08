@@ -1,16 +1,15 @@
 import { NewSuggestion, InputSection } from "./page_styles";
 import { DropSelect } from "../components/Input";
-import { H1, H2, H3, Text, Button, TextArea } from "../components/components_styles";
-import editIcon from "../assets/shared/icon-edit-Suggestion.svg";
+import { H1, H3, Text, Button, TextArea } from "../components/components_styles";
+import editIcon from "../assets/shared/icon-edit-feedback.svg";
 import { categoryOptions } from "./NewSuggestionPage";
-import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { category } from "./NewSuggestionPage";
 import { RootState } from "../../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { request, suggestionDeleted, suggestionEdited } from "../../store/suggestionsSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { Params } from "./SuggestionDetailsPage";
-import { original } from 'immer'
 import { Error } from "../components/components_styles";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { suggestionSchema } from "../validation";
