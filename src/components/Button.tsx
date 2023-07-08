@@ -69,13 +69,13 @@ export const UpVote = ({
   );
 };
 
-export const AddFeedback = () => {
+export const AddSuggestion = () => {
   const navigate = useNavigate();
 
   return (
-    <Button onClick={() => navigate("/feedback/new")} color="purple">
+    <Button onClick={() => navigate("/Suggestion/new")} color="purple">
       <img src={plus} alt="plus" />
-      <H4>Add Feedback</H4>
+      <H4>Add Suggestion</H4>
     </Button>
   );
 };

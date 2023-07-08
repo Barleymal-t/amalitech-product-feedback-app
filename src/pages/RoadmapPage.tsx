@@ -1,5 +1,5 @@
 import { BackBtn } from "../components/Button";
-import { AddFeedback } from "../components/Button";
+import { AddSuggestion } from "../components/Button";
 import { Roadmap } from "./page_styles";
 import { H1, H2, H3 } from "../components/components_styles";
 import RoadmapCard from "../components/RoadmapCard";
@@ -16,7 +16,7 @@ const RoadmapPage = () => {
           <BackBtn color="deepBlue" />
           <H2>Roadmap</H2>
         </div>
-        <AddFeedback />
+        <AddSuggestion />
       </div>
       <RoadmapColumn productRequests={productRequests} />
     </Roadmap>

@@ -12,7 +12,7 @@ import { DropDown } from "../components/Input";
 import { H1, H2, H3, CatButton } from "../components/components_styles";
 import { useState } from "react";
 import Empty from "./Empty";
-import { AddFeedback } from "../components/Button";
+import { AddSuggestion } from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
@@ -79,7 +79,7 @@ const SuggestionsPage = () => {
           <div className="">
 
           <H1>Frontend Mentor</H1>
-          <p>Feedback Board</p>
+          <p>Suggestion Board</p>
           </div>
             
             <img src={open?close:hamburger} onClick={()=>setOpen(!open)} alt="close button" />
@@ -88,7 +88,7 @@ const SuggestionsPage = () => {
         <Label>
 
           <H1>Frontend Mentor</H1>
-          <p>Feedback Board</p>
+          <p>Suggestion Board</p>
         </Label>
         <div className="categories">
           {categories.map((category, index) => (
@@ -145,7 +145,7 @@ const SuggestionsPage = () => {
             </div>
             <DropDown setSortParameter={setSortParameter} />
           </div>
-          <AddFeedback />
+          <AddSuggestion />
         </Headbar>
         <section className="suggestions">
           {showSuggestions.length === 0 ? (

@@ -1,10 +1,11 @@
 import {
-  FeedbackDetail,
-  FeedbackTop,
+  SuggestionDetail,
+  SuggestionTop,
   CommentsSection,
   Comment,
   Reply,
   AddComment,
+  Greyline,
 } from "./page_styles";
 import { useNavigate, useParams } from "react-router-dom";
 import SuggestionCard from "../components/SuggestionCard";
@@ -15,11 +16,11 @@ import { RootState } from "../../store/store";
 import { comment, reply } from "../../store/suggestionsSlice";
 import { useForm } from "react-hook-form";
 
-type Params = {
+export type Params = {
   id: string;
 };
 
-const FeedbackDetailsPage = () => {
+const SuggestionDetailsPage = () => {
   const params = useParams<Params>();
   
   const navigate = useNavigate();
@@ -31,11 +32,11 @@ const FeedbackDetailsPage = () => {
   // const dispatch = useDispatch();
 
       return (
-        <FeedbackDetail>
-          <FeedbackTop>
+        <SuggestionDetail>
+          <SuggestionTop>
             <BackBtn />
-            <Button color="lightBlue" onClick={()=>navigate("edit")}>Edit Feedback</Button>
-          </FeedbackTop>
+            <Button color="lightBlue" onClick={()=>navigate("edit")}>Edit Suggestion</Button>
+          </SuggestionTop>
           <SuggestionCard {...request} />
           <CommentsSection>
             <H1>{request?.comments?.length} Comments</H1>
@@ -44,7 +45,7 @@ const FeedbackDetailsPage = () => {
             ))}
           </CommentsSection>
           <AddCommentComponent />
-        </FeedbackDetail>
+        </SuggestionDetail>
       );
   //   } else {
   //     return <H1>No request found</H1>;
@@ -57,14 +58,14 @@ const CommentComponent = ({ ...comment }:comment) => {
     <Comment>
       <div className="main">
         <img src={`.${comment.user.image}`} alt="" />
-        <div className="greyline"> </div>
-        <FeedbackTop>
+        <Greyline/>
+        <SuggestionTop>
           <div className="">
             <H4>{comment.user.name}</H4>
             <span>@{comment.user.username}</span>
           </div>
           <b>Reply</b>
-        </FeedbackTop>
+        </SuggestionTop>
 
         <div className=""></div>
         <p>{comment.content}</p>
@@ -73,13 +74,13 @@ const CommentComponent = ({ ...comment }:comment) => {
         <Reply>
           <div className="main">
             <img src={`.${reply.user.image}`} alt="" />
-            <FeedbackTop>
+            <SuggestionTop>
               <div className="">
                 <H4>{reply.user.name}</H4>
                 <span>@{reply.user.username}</span>
               </div>
               <b>Reply</b>
-            </FeedbackTop>
+            </SuggestionTop>
 
             <div className=""></div>
             <p>
@@ -125,4 +126,4 @@ const left = 255 - value.length
     </AddComment>
   );
 };
-export default FeedbackDetailsPage;
+export default SuggestionDetailsPage;

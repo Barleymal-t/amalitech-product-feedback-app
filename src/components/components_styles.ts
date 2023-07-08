@@ -46,7 +46,6 @@ export const Cat = styled.button`
 export const Vote = styled(Cat)<{ $active?: boolean }>`
 &:first-child {
   @media(max-width:375px) {
-
     display:none;
   }
 }
@@ -293,4 +292,17 @@ export const Bottom = styled.div`
     width: fit-content;
     height: 40px;
   }
+`
+
+export const Mobile = styled.div`
+@media(min-width:375px) {
+  display:none;
+}
+`
+
+export const Error = styled(P3)`
+margin-top:-10px;
+margin-left:10px;
+height:2px;
+color:${colors.red};
 `

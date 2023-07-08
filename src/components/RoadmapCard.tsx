@@ -21,7 +21,7 @@ const RoadmapCard = ({ ...suggestion }) => {
           </div>
         </div>
       </Status>
-      <H3 onClick={() => navigate(`/feedback/${id}`)}>{title}</H3>
+      <H3 onClick={() => navigate(`/Suggestion/${id}`)}>{title}</H3>
       <p>{description}</p>
       <div className="category">
         <Cat>{category}</Cat>

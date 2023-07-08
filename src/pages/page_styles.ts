@@ -6,7 +6,7 @@ SuggestionsPage Styles
 */
 
 export const Suggestions = styled.main`
-  max-width: 110.625rem;
+  max-width: 1110px;
   width: 90%;
   margin: 94px auto;
   background-color: ${colors.lightGrey};
@@ -19,29 +19,26 @@ export const Suggestions = styled.main`
     display: block;
   }
   @media (max-width: 375px) {
-    display:block;
+    display: block;
     margin: 0;
-    width:100vw;
-    overflow:hidden;
+    width: 100vw;
+    overflow: hidden;
   }
-  `;
-  
-  export const SuggestionsSection = styled.section`
-  
+`;
+
+export const SuggestionsSection = styled.section`
   .suggestions {
     display: grid;
     gap: 2rem;
     @media (max-width: 375px) {
-      width:90%;
-      margin:auto;
+      width: 90%;
+      margin: auto;
     }
   }
 `;
 
-
-
-export const Headbar =styled.section`
-  width:100%;
+export const Headbar = styled.section`
+  width: 100%;
   max-width: 825px;
   color: white;
   background-color: ${colors.deepBlue};
@@ -62,18 +59,16 @@ export const Headbar =styled.section`
     display: flex;
     gap: 1rem;
     @media (max-width: 375px) {
-      display:none;
+      display: none;
     }
-
   }
   @media (max-width: 375px) {
-    border-radius:0;
+    border-radius: 0;
   }
-
-`
+`;
 
 export const CustomizationPane = styled.aside<{ $open?: boolean }>`
-transition:all 0.3s linear;
+  transition: all 0.3s linear;
   width: 255px;
   display: flex;
   flex-direction: column;
@@ -87,7 +82,7 @@ transition:all 0.3s linear;
   }
   > * {
     width: 100%;
-    height:178px;
+    height: 178px;
     border-radius: 0.625rem;
     background: ${colors.white};
     padding: 1.5rem;
@@ -97,9 +92,7 @@ transition:all 0.3s linear;
     }
   }
 
- 
   > .categories {
-    
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -148,18 +141,18 @@ transition:all 0.3s linear;
     margin-bottom: 2rem;
   }
   @media (max-width: 375px) {
-    z-index:10;
-    width:270px;
-    height:100vh;
+    z-index: 10;
+    width: 270px;
+    height: 100vh;
     display: block;
-    margin-top:5.5rem;
-    padding:1.5rem;
+    margin-top: 5.5rem;
+    padding: 1.5rem;
     position: absolute;
     top: 0;
-    right:0;
-    background-color:${colors.scorchedBlue};
+    right: 0;
+    background-color: ${colors.scorchedBlue};
     ${(props) =>
-      props.$open ? "transform: translate(0);":"transform: translate(+100%);"}
+      props.$open ? "transform: translate(0);" : "transform: translate(+100%);"}
   }
 `;
 
@@ -174,24 +167,22 @@ export const Label = styled.div`
     height: auto;
     background: url(../assets/suggestions/tablet/background-header.png);
   }
-  @media (max-width:375px) {
-    display:none;
+  @media (max-width: 375px) {
+    display: none;
   }
-`
+`;
 export const MobileLabel = styled.div`
-color:${colors.white};
-display:none;
-@media (max-width:375px) {
-  width:100vw;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:1rem;
-    background:url(../assets/suggestions/mobile/background-header.png);
+  color: ${colors.white};
+  display: none;
+  @media (max-width: 375px) {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: url(../assets/suggestions/mobile/background-header.png);
   }
-`
-
-
+`;
 
 export const Status = styled.div`
   .dot {
@@ -234,12 +225,13 @@ export const EmptySuggestions = styled.section`
 `;
 
 /*
-Feedback Details
+Suggestion Details
 */
 
-export const FeedbackDetail = styled.main`
+export const SuggestionDetail = styled.main`
+  width: 90%;
   background-color: ${colors.lightGrey};
-  width: 730px;
+  max-width: 730px;
   margin: 80px auto;
   display: grid;
   gap: 1.5rem;
@@ -265,14 +257,7 @@ export const Comment = styled.div`
     display: grid;
     grid-template-columns: auto 90%;
     gap: 17px 2rem;
-    .greyline {
-      position: absolute;
-      top: 100px;
-      left: 17.5px;
-      width: 1px;
-      height: calc(100% - 250px);
-      background-color: ${colors.scorchedBlue};
-    }
+
     > img {
       width: 40px;
       height: 40px;
@@ -289,6 +274,15 @@ export const Comment = styled.div`
   }
 `;
 
+export const Greyline = styled.div`
+  position: absolute;
+  top: 100px;
+  left: 17.5px;
+  width: 1px;
+  height: calc(100% - 250px);
+  background-color: ${colors.scorchedBlue};
+`
+
 export const Reply = styled(Comment)`
   margin-left: 40px;
   border-bottom: 0 !important;
@@ -303,8 +297,8 @@ export const AddComment = styled.form`
   textarea {
     background-color: ${colors.lightGrey};
     resize: none;
-    // text-wrap:wrap;
-    // max-width: 840px;
+    text-wrap: wrap;
+    max-width: 840px;
     border: 1px solid ${colors.deepBlue};
     border-radius: 0.625rem;
     padding: 1.5rem 1rem;
@@ -316,7 +310,7 @@ export const AddComment = styled.form`
   }
 `;
 
-export const FeedbackTop = styled.div`
+export const SuggestionTop = styled.div`
   display: flex;
   justify-content: space-between;
   b {
@@ -331,11 +325,11 @@ export const FeedbackTop = styled.div`
 
 /**
  *
- * New Feedback
+ * New Suggestion
  *
  */
 
-export const NewFeedback = styled.main`
+export const NewSuggestion = styled.main`
   position: relative;
   background: ${colors.white};
   width: 540px;

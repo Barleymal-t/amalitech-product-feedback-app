@@ -2,8 +2,8 @@ import data from "../src/assets/data.json";
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { original } from 'immer'
-import { category } from "../src/pages/NewFeedbackPage";
-import { status } from "../src/pages/EditFeedbackPage";
+import { category } from "../src/pages/NewSuggestionPage";
+import { status } from "../src/pages/EditSuggestionPage";
     
   
 export type reply ={
