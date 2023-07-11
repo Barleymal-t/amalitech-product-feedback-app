@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, BackButton, Vote, H4 } from "./components_styles";
 import { IoIosArrowBack } from "react-icons/io";
 import plus from "../assets/shared/icon-plus.svg";
@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import {
   suggestionUnUpvoted,
   suggestionUpvoted,
-} from "../../store/suggestionsSlice";
+} from "../store/suggestionsSlice";
 
 export const Btn = ({
   children,

@@ -4,7 +4,7 @@ import SuggestionDetailsPage from './pages/SuggestionDetailsPage';
 import NewSuggestionPage from './pages/NewSuggestionPage';
 import EditSuggestionPage from './pages/EditSuggestionPage';
 import { Provider } from 'react-redux';
-import store from "../store/store"
+import store from "./store/store"
 import Roadmap from './pages/RoadmapPage';
 
 

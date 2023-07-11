@@ -2,12 +2,11 @@ import { NewSuggestion, InputSection } from "./page_styles";
 import { DropSelect } from "../components/Input";
 import { H1, H3, Text, Button, TextArea } from "../components/components_styles";
 import editIcon from "../assets/shared/icon-edit-feedback.svg";
-import { categoryOptions } from "./NewSuggestionPage";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { category } from "./NewSuggestionPage";
-import { RootState } from "../../store/store";
+import { RootState } from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
-import { request, suggestionDeleted, suggestionEdited } from "../../store/suggestionsSlice";
+import { Request, suggestionDeleted, suggestionEdited } from "../store/suggestionsSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { Params } from "./SuggestionDetailsPage";
 import { Error } from "../components/components_styles";
@@ -17,6 +16,7 @@ import { suggestionSchema } from "../validation";
 export type status = "suggestion" | "planned" | "in-progress" | "live";
 
 const statusOptions:status[] = ["suggestion", "planned", "in-progress", "live"];
+const categoryOptions:category[] = ["feature", "UI", "UX", "enhancement", "bug"];
 
 type Inputs = {
   title: string;
@@ -34,7 +34,7 @@ const EditSuggestionPage = () => {
     (state: RootState) => state.request
   );
 
-  const suggestion:request |undefined = productRequests.find(
+  const suggestion:Request |undefined = productRequests.find(
     (suggestion) => suggestion.id === parseInt(params.id ?? "0")
   );
   

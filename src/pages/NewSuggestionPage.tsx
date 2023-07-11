@@ -1,9 +1,9 @@
 import { NewSuggestion, InputSection } from "./page_styles";
 import newIcon from "../assets/shared/icon-new-feedback.svg";
 import { DropSelect } from "../components/Input";
-import { H1,H2,H3, Text, Button, TextArea, Error } from "../components/components_styles";
+import { H1,H3, Text, Button, TextArea, Error } from "../components/components_styles";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { suggestionAdded } from "../../store/suggestionsSlice";
+import { suggestionAdded } from "../store/suggestionsSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,7 +19,7 @@ type Inputs = {
   description: string;
 };
 
-export const categoryOptions:category[] = ["feature", "UI", "UX", "enhancement", "bug"];
+const categoryOptions:category[] = ["feature", "UI", "UX", "enhancement", "bug"];
 
 const NewSuggestionPage = () => {
   const dispatch = useDispatch()

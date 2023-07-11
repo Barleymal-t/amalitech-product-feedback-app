@@ -1,8 +1,7 @@
-import data from "../src/assets/data.json";
-import { createSlice, current, nanoid, PayloadAction } from "@reduxjs/toolkit";
-import { original } from "immer";
-import { category } from "../src/pages/NewSuggestionPage";
-import { status } from "../src/pages/EditSuggestionPage";
+import data from "../assets/data.json";
+import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
+import { category } from "../pages/NewSuggestionPage";
+import { status } from "../pages/EditSuggestionPage";
 
 const currentUser: User = {
   image: "./assets/user-images/image-victoria.jpg",

@@ -9,15 +9,15 @@ import {
 import SuggestionCard from "../components/SuggestionCard";
 import bulb from "../assets/suggestions/icon-suggestions.svg";
 import { DropDown } from "../components/Input";
-import { H1, H2, H3, CatButton } from "../components/components_styles";
+import { H1, H3, CatButton } from "../components/components_styles";
 import { useState } from "react";
 import Empty from "./Empty";
 import { AddSuggestion } from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "../store/store";
 import { Status } from "./page_styles";
-import { requestsType } from "../../store/suggestionsSlice";
+import { requestsType } from "../store/suggestionsSlice";
 import close from "../assets/shared/mobile/icon-close.svg"
 import hamburger from "../assets/shared/mobile/icon-hamburger.svg"
 

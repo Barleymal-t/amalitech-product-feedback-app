@@ -1,11 +1,10 @@
 import { BackBtn } from "../components/Button";
 import { AddSuggestion } from "../components/Button";
 import { Roadmap } from "./page_styles";
-import { H1, H2, H3 } from "../components/components_styles";
-import RoadmapCard from "../components/RoadmapCard";
+import {  H2 } from "../components/components_styles";
 import RoadmapColumn from "../components/RoadmapColumn";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "../store/store";
 
 const RoadmapPage = () => {
   const productRequests = useSelector((state: RootState) => state.request);

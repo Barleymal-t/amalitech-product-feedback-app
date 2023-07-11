@@ -1,6 +1,6 @@
 import RoadmapCard from "../components/RoadmapCard";
-import { request,requestsType } from "../../store/suggestionsSlice";
-import { H1,H2,H3 } from "./components_styles";
+import { Request,requestsType } from "../store/suggestionsSlice";
+import { H2 } from "./components_styles";
 
 const RoadmapColumn = ({
   productRequests,
@@ -13,7 +13,7 @@ const RoadmapColumn = ({
     live: "Released features",
   };
   const statuses = Array.from(
-    new Set<string>(productRequests.map((item:request) => item.status))
+    new Set<string>(productRequests.map((item:Request) => item.status))
   );
 
   const index = statuses.indexOf("suggestion");

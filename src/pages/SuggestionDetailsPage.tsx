@@ -12,21 +12,18 @@ import SuggestionCard from "../components/SuggestionCard";
 import { BackBtn } from "../components/Button";
 import {
   H1,
-  H2,
-  H3,
   H4,
   Button,
   TextArea,
 } from "../components/components_styles";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { RootState } from "../store/store";
 import {
   commentAdded,
   replyAdded,
   Comment,
   Reply,
-} from "../../store/suggestionsSlice";
-import { useForm } from "react-hook-form";
+} from "../store/suggestionsSlice";
 import { useState } from "react";
 
 export type Params = {
@@ -40,7 +37,6 @@ const SuggestionDetailsPage = () => {
   const request = useSelector((state: RootState) =>
     state.request.find((request) => request.id === Number(params.id))
   );
-  const dispatch = useDispatch();
   if (request) {
     return (
       <SuggestionDetail>
@@ -70,9 +66,7 @@ const SuggestionDetailsPage = () => {
 };
 
 const CommentComponent = (props: { sugId: number; comment: Comment }) => {
-  const dispatch = useDispatch();
   const { sugId, comment } = props;
-  const [content, setContent] = useState("");
   const [newReply, setNewReply] = useState(false);
   // const submitReply = ()=> {
   //   dispatch(replyAdded({sugId,comment.user.username,content}))
@@ -104,7 +98,7 @@ const CommentComponent = (props: { sugId: number; comment: Comment }) => {
   );
 };
 
-const ReplyForm = ({ replyingTo,sugId,comId,setNewReply }: { replyingTo: string,sugId:number,comId?:number, setNewReply:any }) => {
+const ReplyForm = ({ replyingTo,sugId,comId,setNewReply }: { replyingTo: string,sugId:number,comId?:number, setNewReply:(newReply: boolean) => void }) => {
   const dispatch = useDispatch();
 
   const [content, setContent] = useState("");
@@ -156,11 +150,6 @@ const ReplyComponent = ({ comId, reply,sugId }: { comId:number, reply: Reply,sug
 
 const AddCommentComponent = ({ sugId }: { sugId: number }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setInputValue(event.target.value);
-  // };
 
   const [content, setContent] = useState("");
   const left = 255 - content.length;

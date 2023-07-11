@@ -74,7 +74,7 @@ export const DropSelect = React.forwardRef<
       {show && (
         <Menu>
           {options.map((option, index) => (
-            <li onClick={() => setOption(option)}>
+            <li key={index} onClick={() => setOption(option)}>
               {option}
               {option === select && <img src={check} alt="" />}
             </li>
