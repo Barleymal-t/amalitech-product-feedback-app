@@ -13,24 +13,27 @@ export const Suggestions = styled.main`
   display: grid;
   gap: 30px;
   grid-template-columns: 1fr 4fr;
-  @media (max-width: 768px) {
-    margin: 56px 39px;
-    max-width: 689px;
+  @media (max-width: 1110px) {
+    margin: 56px auto;
+    width:90%;
+    // max-width: 689px;
     display: block;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 768px) {
     display: block;
-    margin: 0;
-    width: 100vw;
+    margin: 0 auto;
+    width: 100%;
     overflow: hidden;
   }
 `;
 
 export const SuggestionsSection = styled.section`
+max-width:825px;
+margin:auto;
   .suggestions {
     display: grid;
     gap: 2rem;
-    @media (max-width: 375px) {
+    @media (max-width: 768px) {
       width: 90%;
       margin: auto;
     }
@@ -43,6 +46,7 @@ export const Headbar = styled.section`
   color: white;
   background-color: ${colors.deepBlue};
   height: 72px;
+  margin:auto;
   margin-bottom: 2rem;
   padding: 0 1rem;
   display: flex;
@@ -58,11 +62,11 @@ export const Headbar = styled.section`
   .count {
     display: flex;
     gap: 1rem;
-    @media (max-width: 375px) {
+    @media (max-width: 768px) {
       display: none;
     }
   }
-  @media (max-width: 375px) {
+  @media (max-width: 768px) {
     border-radius: 0;
     // display:grid;
     // grid-template-columns:50% 50%;
@@ -70,8 +74,9 @@ export const Headbar = styled.section`
 `;
 
 export const CustomizationPane = styled.aside<{ $open?: boolean }>`
-  transition: all 0.3s linear;
-  width: 255px;
+max-width: 825px;
+transition: all 0.3s linear;
+width: 255px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -88,6 +93,8 @@ export const CustomizationPane = styled.aside<{ $open?: boolean }>`
     border-radius: 0.625rem;
     background: ${colors.white};
     padding: 1.5rem;
+    
+
     @media (max-width: 768px) {
       // height: auto;
       margin-bottom: 2rem;
@@ -134,7 +141,8 @@ export const CustomizationPane = styled.aside<{ $open?: boolean }>`
       }
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1110px) {
+    margin:auto;
     height: max-content;
     width: 100%;
     display: grid;
@@ -142,7 +150,7 @@ export const CustomizationPane = styled.aside<{ $open?: boolean }>`
     gap: 0.625rem;
     margin-bottom: 2rem;
   }
-  @media (max-width: 375px) {
+  @media (max-width: 768px) {
     z-index: 10;
     width: 270px;
     height: 100vh;
@@ -164,25 +172,30 @@ export const Label = styled.div`
   justify-content: flex-end;
   color: ${colors.white};
   background: url(../assets/suggestions/desktop/background-header.png);
+  background-size:cover;
+
   height: 137px;
-  @media (max-width: 768px) {
+  @media (max-width: 1110px) {
     height: auto;
-    background: url(../assets/suggestions/tablet/background-header.png);
+    // background: url(../assets/suggestions/tablet/background-header.png);
   }
-  @media (max-width: 375px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
 export const MobileLabel = styled.div`
   color: ${colors.white};
   display: none;
-  @media (max-width: 375px) {
+  @media (max-width: 768px) {
     width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0 1rem;
     background: url(../assets/suggestions/mobile/background-header.png);
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size: 768px 1000px;
   }
 `;
 
@@ -278,7 +291,7 @@ export const CommentStyles = styled.div`
   span {
     font-size: 14px;
   }
-  @media (max-width:375px) {
+  @media (max-width:768px) {
     .shift {
       display:none;
     }
@@ -295,7 +308,7 @@ export const Greyline = styled.div`
   width: 1px;
   height: calc(100% - 270px);
   background-color: ${colors.scorchedBlue};
-  @media(max-width:375px) {
+  @media(max-width:768px) {
     top:230px;
     height: calc(100% - 470px);
   }
@@ -360,7 +373,7 @@ export const NewSuggestion = styled.main`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media (max-width:375px) {
+    @media (max-width:768px) {
       flex-direction:column;
       gap:1rem;
     }
@@ -426,7 +439,7 @@ export const Roadmap = styled.main`
       border-top: 6px solid ${colors.aqua};
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1110px) {
     margin: 56px 39px;
     max-width: 689px;
   }

@@ -62,7 +62,7 @@ ${(props) =>
   
   export const Vote = styled(CatButton)<{ $active?: boolean }>`
   &:first-child {
-    @media(max-width:375px) {
+    @media(max-width:768px) {
       display:none;
     }
   }
@@ -141,7 +141,7 @@ export const Drop = styled.div`
     justify-content: space-between;
     padding: 1.5rem;
     border-radius: 5px;
-    @media(max-width:375px) {
+    @media(max-width:768px) {
       padding:0;
     }
   }
@@ -212,7 +212,7 @@ border-radius: 0.625rem;
       margin-bottom: 8px;
     }
   }
-  @media (max-width: 375px) {
+  @media (max-width: 768px) {
     // .button(:first-child) {
     //   display:none;
     // }
@@ -302,7 +302,7 @@ export const Bottom = styled.div`
 `
 
 export const Mobile = styled.div`
-@media(min-width:375px) {
+@media(min-width:768px) {
   display:none;
 }
 `
