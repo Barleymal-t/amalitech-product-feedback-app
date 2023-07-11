@@ -1,31 +1,45 @@
 import data from "../src/assets/data.json";
-import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { PayloadAction } from "@reduxjs/toolkit";
-import { original } from 'immer'
+import { createSlice, current, nanoid, PayloadAction } from "@reduxjs/toolkit";
+import { original } from "immer";
 import { category } from "../src/pages/NewSuggestionPage";
 import { status } from "../src/pages/EditSuggestionPage";
-    
-  
-export type reply ={
+
+const currentUser: User = {
+  image: "./assets/user-images/image-victoria.jpg",
+  name: "Victoria Mejia",
+  username: "arlen_the_marlin",
+};
+
+export type User = {
+  image: string;
+  name: string;
+  username: string;
+};
+
+export type Base = {
+  content: string;
+  user: User;
+} & {
+  type: Comment;
+  id: number;
+  replies?: Reply[];
+} & {
+  type: Reply;
+  replyingTo: string;
+};
+
+export type Reply = {
   content: string;
   replyingTo: string;
-  user: {
-    image: string;
-    name: string;
-    username: string;
-  };
-}
-export type comment = {
+  user: User;
+};
+export type Comment = {
   id: number;
   content: string;
-  user: {
-    image: string;
-    name: string;
-    username: string;
-  };
-  replies?: reply[];
+  user: User;
+  replies?: Reply[];
 };
-export type request = {
+export type Request = {
   id: number;
   title: string;
   category: category;
@@ -33,29 +47,26 @@ export type request = {
   status: status;
   description: string;
   upvoted: boolean;
-  comments?: comment[];
+  comments?: Comment[];
 };
 
-export type requestsType = request[];
+export type requestsType = Request[];
 
-const initialState: requestsType = data.productRequests.map((request):request => {
-  return { ...request, upvoted: false } as request;
-});
+const initialState: requestsType = data.productRequests.map(
+  (request): Request => {
+    return { ...request, upvoted: false } as Request;
+  }
+);
 
 const suggestionSlice = createSlice({
   name: "suggestions",
   initialState,
   reducers: {
     suggestionAdded: {
-      reducer: (state: requestsType, action: PayloadAction<request>) => {
+      reducer: (state: requestsType, action: PayloadAction<Request>) => {
         state.push(action.payload);
       },
-      prepare(
-        title: string,
-        category: category,
-        description: string,
-        
-      ) {
+      prepare(title: string, category: category, description: string) {
         return {
           payload: {
             id: +nanoid(),
@@ -66,16 +77,13 @@ const suggestionSlice = createSlice({
             description,
             upvoted: false,
             comments: [],
-          } as request,
+          } as Request,
         };
       },
     },
     suggestionEdited: (state, action) => {
-      const { id, title, category, status, description } =
-        action.payload;
-      const suggestion = state.find(
-        (suggestion) => suggestion.id === +id
-      );
+      const { id, title, category, status, description } = action.payload;
+      const suggestion = state.find((suggestion) => suggestion.id === +id);
       if (suggestion) {
         suggestion.title = title;
         suggestion.category = category;
@@ -84,7 +92,8 @@ const suggestionSlice = createSlice({
       }
     },
     suggestionDeleted: (state, action) => {
-      const suggestionIndex = state.findIndex( suggestion => suggestion.id === +action.payload
+      const suggestionIndex = state.findIndex(
+        (suggestion) => suggestion.id === +action.payload
       );
       state.splice(suggestionIndex, 1);
     },
@@ -102,6 +111,59 @@ const suggestionSlice = createSlice({
         suggestion.upvoted = false;
       }
     },
+    commentAdded(state: requestsType, action) {
+      const suggestion = state.find(
+        (suggestion) => suggestion.id === +action.payload.sugId
+      );
+      const comment: Comment = {
+        id: +nanoid(),
+        content: action.payload.content,
+        user: currentUser,
+      };
+      suggestion?.comments?.push(comment);
+    },
+    replyAdded(state: requestsType, action) {
+      const { comId, sugId, content, replyingTo } = action.payload;
+      const suggestion = state.find((suggestion) => suggestion.id === +sugId);
+      const reply: Reply = {
+        content: content,
+        replyingTo: replyingTo,
+        user: currentUser,
+      };
+
+      // if(comId) {
+
+      // }
+      if (suggestion && suggestion.comments) {
+        // find the user I am replying to
+        const targetComment = suggestion.comments.find(
+          (comment) => comment.user.username === replyingTo
+        );
+        // If the comment has replies add mine otherwise create a new reply array
+        if (targetComment && targetComment.replies) {
+          targetComment.replies.push(reply);
+        } else if (targetComment) {
+          targetComment.replies = [reply];
+        } else {
+          // Find the comment id
+          const targetComment = suggestion.comments.find(
+            (comment) => comment.id === comId
+          );
+          // find the reply I am replyingTo
+          const targetReply = targetComment?.replies?.find(
+            (reply) => reply.user.username === replyingTo
+          );
+          if (targetReply && targetComment?.replies) {
+            const index = targetComment.replies.indexOf(targetReply);
+            targetComment?.replies?.splice(index + 1, 0, reply);
+          }
+        }
+      }
+      // Finish this reducer
+      /**
+       * Basically add the reply right after whatever it is replying
+       */
+    },
   },
 });
 
@@ -111,6 +173,8 @@ export const {
   suggestionDeleted,
   suggestionUpvoted,
   suggestionUnUpvoted,
+  commentAdded,
+  replyAdded,
 } = suggestionSlice.actions;
 
 export default suggestionSlice.reducer;

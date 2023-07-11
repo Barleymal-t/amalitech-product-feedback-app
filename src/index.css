@@ -1,15 +1,15 @@
-*{
-  margin:0;
-  padding: 0;
-  box-sizing: border-box;
-}
 @font-face {
   font-family: "Jost";
   src: url(/assets/font/Jost-VariableFont_wght.ttf);
 }
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Jost', sans-serif;
+}
 :root {
   color:#3A4374;
-  font-family: 'Jost', sans-serif;
   font-size: 16px;
 }
 a {

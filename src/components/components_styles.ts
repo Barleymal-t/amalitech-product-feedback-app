@@ -23,7 +23,7 @@ export const Button = styled.button.attrs((props) => ({
     background-color: ${({ color, hoverColor }) =>
       color ? hoverColor : "transparent"};
   }
-  @media(max-width:375px) {
+  @media(max-width:768px) {
     padding:0 1rem;
   }
 `;
