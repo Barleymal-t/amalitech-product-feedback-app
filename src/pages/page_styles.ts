@@ -270,7 +270,7 @@ export const CommentsSection = styled.section`
   }
 `;
 
-export const CommentStyles = styled.div`
+export const CommentStyles = styled(motion.div)`
   position: relative;
   b {
     color: ${colors.purple};
@@ -322,7 +322,7 @@ export const Greyline = styled.div`
   }
 `
 
-export const ReplyStyles = styled.div`
+export const ReplyStyles = styled(motion.div)`
   margin-left: 40px;
   border-bottom: 0 !important;
 `;

@@ -3,12 +3,17 @@ import { ReplyStyles, SuggestionTop } from "../pages/page_styles";
 import { Reply } from "../store/suggestionsSlice";
 import { H4 } from "./components_styles";
 import ReplyForm from "./ReplyForm";
+import { popUp } from "../pages/SuggestionsPage";
 
 const ReplyComponent = ({ comId, reply,sugId }: { comId:number, reply: Reply,sugId:number }) => {
     const [newReply, setNewReply] = useState(false);
   
     return (
-      <ReplyStyles>
+      <ReplyStyles
+      variants={popUp}
+      initial="hidden"
+      animate="visible"
+      exit="exit">
         <div className="main">
           <img src={`.${reply.user.image}`} alt="" />
           <SuggestionTop>

@@ -4,13 +4,19 @@ import { Comment,Reply } from "../store/suggestionsSlice";
 import { H4 } from "./components_styles";
 import ReplyComponent from "./ReplyComponent";
 import ReplyForm from "./ReplyForm";
+import { popUp } from "../pages/SuggestionsPage";
 
 const CommentComponent = (props: { sugId: number; comment: Comment }) => {
     const { sugId, comment } = props;
     const [newReply, setNewReply] = useState(false);
   
     return (
-      <CommentStyles>
+      <CommentStyles
+      variants={popUp}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      >
         <div className="main">
           <img src={`.${comment.user.image}`} alt="" />
           {comment.replies && <Greyline />}

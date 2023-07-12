@@ -39,7 +39,7 @@ export const popUp = {
       duration: 0.5,
       type: "spring",
       damping: 25,
-      stiffness: 300,
+      stiffness: 500,
     },
   },
   exit: {

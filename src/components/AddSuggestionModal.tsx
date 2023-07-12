@@ -25,9 +25,9 @@ export const dropIn = {
       staggerChildren:1,
       staggerDirection:1,
       duration: 1,
-      type: "linear",
+      type: "spring",
       damping: 25,
-      stiffness: 200,
+      stiffness: 500,
     },
   },
   exit: {
