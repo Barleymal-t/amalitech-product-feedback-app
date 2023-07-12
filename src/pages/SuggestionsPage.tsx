@@ -20,8 +20,9 @@ import { Status } from "./page_styles";
 import { requestsType } from "../store/suggestionsSlice";
 import close from "../assets/shared/mobile/icon-close.svg"
 import hamburger from "../assets/shared/mobile/icon-hamburger.svg"
-import AddSuggestionModal, { dropIn } from "../components/AddSuggestionModal";
+import AddSuggestionModal from "../components/AddSuggestionModal";
 import {AnimatePresence, motion} from "framer-motion"
+
 export const popUp = {
   hidden: {
     y: "100vh",
@@ -31,12 +32,14 @@ export const popUp = {
     y: "0",
     opacity: 1,
     transition: {
+      when:"beforeChildren",
       delayChildren:1,
       staggerChildren:1,
+      staggerDirection:1,
       duration: 0.5,
       type: "spring",
       damping: 25,
-      stiffness: 500,
+      stiffness: 300,
     },
   },
   exit: {
@@ -133,9 +136,6 @@ const SuggestionsPage = () => {
             </div>
         </MobileLabel>
       <CustomizationPane
-              variants={dropIn}
-              initial="hidden"
-              animate="visible"
              $open={open}>
         <Label>
 
@@ -191,7 +191,7 @@ const SuggestionsPage = () => {
               variants={popUp}
               initial="hidden"
               animate="visible"
-              // exit="exit"
+              exit="exit"
               >
         <Headbar>
           <div className="left">
@@ -211,7 +211,7 @@ const SuggestionsPage = () => {
                 variants={popUp}
                 initial="hidden"
                 animate="visible"
-                // exit="exit"
+                exit="exit"
                  className="suggestions">
           {showSuggestions.length === 0 ? (
             <Empty onClick={toggleModal}/>

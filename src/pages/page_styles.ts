@@ -78,9 +78,9 @@ export const Headbar = styled.section`
   }
 `;
 
-export const CustomizationPane = styled(motion.aside)<{ $open?: boolean }>`
+export const CustomizationPane = styled.aside<{ $open?: boolean }>`
 max-width: 825px;
-// transition: all 0.3s linear;
+transition: all 0.3s linear;
 width: 255px;
   display: flex;
   flex-direction: column;
