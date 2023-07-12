@@ -9,7 +9,7 @@ import {
 import SuggestionCard from "../components/SuggestionCard";
 import bulb from "../assets/suggestions/icon-suggestions.svg";
 import { DropDown } from "../components/Input";
-import { H1, H3, CatButton } from "../components/components_styles";
+import { H1, CatButton } from "../components/components_styles";
 import { useState } from "react";
 import Empty from "./Empty";
 import { AddSuggestion } from "../components/Button";
@@ -122,7 +122,7 @@ const SuggestionsPage = () => {
                           <div className={"dot" + ` ${stat}`}></div>
                           {stat}
                         </div>
-                        <span>{result.length}</span>
+                        <p>{result.length}</p>
                       </li>
                     </div>
                   );
@@ -141,7 +141,7 @@ const SuggestionsPage = () => {
             <div className="count">
 
             <img src={bulb} alt="" />
-            <H3>{productRequests.length} Suggestions</H3>
+            <p>{productRequests.length} Suggestions</p>
             </div>
             <DropDown setSortParameter={setSortParameter} />
           </div>

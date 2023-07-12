@@ -15,7 +15,9 @@ const RoadmapPage = () => {
           <BackBtn color="deepBlue" />
           <H2>Roadmap</H2>
         </div>
+        <div className="">
         <AddSuggestion />
+        </div>
       </div>
       <RoadmapColumn productRequests={productRequests} />
     </Roadmap>

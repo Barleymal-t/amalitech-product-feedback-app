@@ -24,7 +24,7 @@ export const DropDown = ({
   const setParameter = (option: string) => {
     setSelect(option);
     setSortParameter(option);
-    setTimeout(() => setShow(!show), 1000);
+    setShow(!show);
   };
 
   return (

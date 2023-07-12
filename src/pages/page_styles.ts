@@ -62,6 +62,8 @@ export const Headbar = styled.section`
   .count {
     display: flex;
     gap: 1rem;
+    font-size:1.3rem;
+    font-weight:bold;
     @media (max-width: 768px) {
       display: none;
     }
@@ -86,6 +88,9 @@ width: 255px;
       color: ${colors.lightBlue};
       text-decoration: underline;
     }
+  }
+  p {
+    font-weight:bold;
   }
   > * {
     width: 100%;
@@ -295,7 +300,7 @@ export const CommentStyles = styled.div`
     .shift {
       display:none;
     }
-    .comment-content {
+    .comment-content,form {
       grid-column: span 2 / span 2;
     }
   }
@@ -357,6 +362,7 @@ export const NewSuggestion = styled.main`
   width: 540px;
   margin: 92px auto;
   padding: 52px 42px;
+  border-radius:10px;
   h1 {
     margin-bottom: 40px;
   }
@@ -379,8 +385,18 @@ export const NewSuggestion = styled.main`
     }
   }
   .buttons {
-    display: flex;
     gap: 1rem;
+    @media (max-width:768px) {
+      margin:auto;
+      width:100%;
+      max-width:320px;
+    }
+
+  }
+  @media (max-width:768px) {
+    width:90%;
+    min-width:320px;
+    
   }
 `;
 export const InputSection = styled.div`
@@ -416,14 +432,58 @@ export const Roadmap = styled.main`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 768px) {
+      width:100%;
+      border-radius:0;
+      margin-bottom:0;
+    }
   }
-  .content {
+  .statusHeadings {
+    display:none;
+    @media (max-width: 768px) {
+      text-align:center;
+      margin-bottom:1.5rem;
+      >h3 {
+        padding:1.5rem 1rem;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      
+      .inactive {
+        opacity:0.4;
+      }
+      .planned {
+        border-bottom: 4px solid ${colors.orange};
+      }
+      .in-progress {
+        border-bottom: 4px solid ${colors.purple};
+      }
+      .live {
+        border-bottom: 4px solid ${colors.aqua};
+      }
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      border-bottom:1px solid ${colors.scorchedBlue}
+    }
+  }
+  .large {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
-    h2 {
-      text-transform: capitalize;
+    @media (max-width: 768px) {
+    display:none;
     }
+  }
+  .small {
+    display:none;
+    @media (max-width: 768px) {
+    display:grid;
+    grid-template-columns:100%;
+    }
+  }
+  .content {
+    padding:1rem;
     .column {
       display: flex;
       flex-direction: column;
@@ -441,6 +501,11 @@ export const Roadmap = styled.main`
   }
   @media (max-width: 1110px) {
     margin: 56px 39px;
-    max-width: 689px;
+    // max-width: 689px;
   }
+  @media (max-width:768px) {
+    width:100%;
+    margin:0;
+  }
+  
 `;

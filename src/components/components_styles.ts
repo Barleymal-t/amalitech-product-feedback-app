@@ -5,10 +5,9 @@ export const Button = styled.button.attrs((props) => ({
   color: colors[props.color as keyof typeof colors],
   hoverColor: colors[`hover${props.color}` as keyof typeof colors],
 }))`
-    min-width:fit-content;
   background-color: ${({ color }) => color || "transparent"};
   color: ${({ color }) => (color ? "white" : colors.midGrey)};
-  padding: 0 1.5rem;
+  padding: 0.75rem 1.5rem;
   height: 44px;
   border-radius: 0.625rem;
   border: none;
@@ -16,15 +15,17 @@ export const Button = styled.button.attrs((props) => ({
   display: flex;
   justify-content: center;
   align-items: center;
-
+  white-space:nowrap;
   gap: 0.5rem;
   &:hover {
     cursor: pointer;
     background-color: ${({ color, hoverColor }) =>
       color ? hoverColor : "transparent"};
   }
-  @media(max-width:768px) {
-    padding:0 1rem;
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 320px;
   }
 `;
 export const BackButton = styled(Button)`
@@ -48,40 +49,39 @@ export const Cat = styled.button`
 `;
 
 export const CatButton = styled(Cat)<{ $active?: boolean }>`
-&:hover {
-  cursor: pointer;
-  background-color: ${colors.hoverscorchedBlue};
-}
-${(props) =>
-  props.$active &&
-  `
+  &:hover {
+    cursor: pointer;
+    background-color: ${colors.hoverscorchedBlue};
+  }
+  ${(props) =>
+    props.$active &&
+    `
   color: ${colors.white};
   background-color: ${colors.lightBlue};
   `}
-  `;
-  
-  export const Vote = styled(CatButton)<{ $active?: boolean }>`
+`;
+
+export const Vote = styled(CatButton)<{ $active?: boolean }>`
   &:first-child {
-    @media(max-width:768px) {
-      display:none;
+    @media (max-width: 768px) {
+      display: none;
     }
   }
-    width: 40px;
-    height: 53px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    ${(props) =>
-      props.$active &&
-      `
+  width: 40px;
+  height: 53px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  ${(props) =>
+    props.$active &&
+    `
       > svg path {
         stroke: ${colors.white};
       }
     `}
-  `;
-
+`;
 
 export const Text = styled.input<{ error?: boolean }>`
   height: 48px;
@@ -141,8 +141,8 @@ export const Drop = styled.div`
     justify-content: space-between;
     padding: 1.5rem;
     border-radius: 5px;
-    @media(max-width:768px) {
-      padding:0;
+    @media (max-width: 768px) {
+      padding: 0;
     }
   }
 `;
@@ -188,12 +188,12 @@ export const Menu = styled.menu`
 `;
 
 export const Suggestion = styled.div`
-.bottom {
-  display:none;
-}
+  .bottom {
+    display: none;
+  }
 
-background-color: ${colors.white};
-border-radius: 0.625rem;
+  background-color: ${colors.white};
+  border-radius: 0.625rem;
   max-width: 825px;
   padding: 2rem 1.75rem;
   display: grid;
@@ -217,15 +217,15 @@ border-radius: 0.625rem;
     //   display:none;
     // }
     .bottom {
-      display:flex;
-      flex-direction:row-reverse;
-      justify-content:space-between;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
       button {
-        flex-direction:row;
+        flex-direction: row;
       }
     }
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -262,22 +262,21 @@ export const H4 = styled.h4`
   font-size: 14px;
   line-height: 1.25rem;
   letter-spacing: -0.2px;
-  `;
-  
-  export const P1 = styled.p`
+`;
+
+export const P1 = styled.p`
   font-size: 16px;
   line-height: 23px;
-  
-  `
-  export const P2 = styled.p`
+`;
+export const P2 = styled.p`
   font-size: 15px;
   line-height: 22px;
-  `
-  export const P3 = styled.p`
+`;
+export const P3 = styled.p`
   font-size: 13px;
   line-height: 19px;
-  font-weight:semibold;
-`
+  font-weight: semibold;
+`;
 
 export const Card = styled.div`
   height: max-content;
@@ -287,29 +286,28 @@ export const Card = styled.div`
   .category {
     margin: 1rem 0;
   }
-
 `;
 
 export const Bottom = styled.div`
   display: flex;
-  flex-direction:row-reverse;
+  flex-direction: row-reverse;
   justify-content: space-between;
   button {
     flex-direction: row;
     width: fit-content;
     height: 40px;
   }
-`
+`;
 
 export const Mobile = styled.div`
-@media(min-width:768px) {
-  display:none;
-}
-`
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
 
 export const Error = styled(P3)`
-margin-top:-10px;
-margin-left:10px;
-height:2px;
-color:${colors.red};
-`
+  margin-top: -10px;
+  margin-left: 10px;
+  height: 2px;
+  color: ${colors.red};
+`;

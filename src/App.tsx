@@ -15,9 +15,9 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route index element={<SuggestionsPage/>}/>
-      <Route path="/Suggestion/:id" element={<SuggestionDetailsPage/>}/>
-        <Route path="/Suggestion/new" element={<NewSuggestionPage />} />
-        <Route path="/Suggestion/:id/edit" element={<EditSuggestionPage />} />
+      <Route path="/suggestion/:id" element={<SuggestionDetailsPage/>}/>
+        <Route path="/suggestion/new" element={<NewSuggestionPage />} />
+        <Route path="/suggestion/:id/edit" element={<EditSuggestionPage />} />
         <Route path="/roadmap" element={<Roadmap />} />
 
 
