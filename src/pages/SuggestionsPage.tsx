@@ -81,8 +81,9 @@ const SuggestionsPage = () => {
           <H1>Frontend Mentor</H1>
           <p>Suggestion Board</p>
           </div>
-            
+            <div className="hamburger">
             <img src={open?close:hamburger} onClick={()=>setOpen(!open)} alt="close button" />
+            </div>
         </MobileLabel>
       <CustomizationPane $open={open}>
         <Label>
@@ -145,7 +146,10 @@ const SuggestionsPage = () => {
             </div>
             <DropDown setSortParameter={setSortParameter} />
           </div>
+          <div className="">
+
           <AddSuggestion />
+          </div>
         </Headbar>
         <section className="suggestions">
           {showSuggestions.length === 0 ? (

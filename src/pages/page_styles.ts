@@ -28,6 +28,8 @@ export const Suggestions = styled.main`
 `;
 
 export const SuggestionsSection = styled.section`
+width:100%;
+height:100%;
 max-width:825px;
 margin:auto;
   .suggestions {
@@ -101,7 +103,6 @@ width: 255px;
     
 
     @media (max-width: 768px) {
-      // height: auto;
       margin-bottom: 2rem;
     }
   }
@@ -110,9 +111,6 @@ width: 255px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    // @media (max-width: 768px) {
-    //   padding-right: 0;
-    // }
   }
   > .roadmap {
     > .heading {
@@ -160,7 +158,7 @@ width: 255px;
     width: 270px;
     height: 100vh;
     display: block;
-    margin-top: 5.5rem;
+    margin-top: 3.5rem;
     padding: 1.5rem;
     position: fixed;
     top: 0;
@@ -182,7 +180,8 @@ export const Label = styled.div`
   height: 137px;
   @media (max-width: 1110px) {
     height: auto;
-    // background: url(../assets/suggestions/tablet/background-header.png);
+    background: url(../assets/suggestions/tablet/background-header.png);
+    background-size:cover;
   }
   @media (max-width: 768px) {
     display: none;
@@ -201,6 +200,9 @@ export const MobileLabel = styled.div`
     background-repeat:no-repeat;
     background-position:center center;
     background-size: 768px 1000px;
+    .hamburger {
+      cursor:pointer;
+    }
   }
 `;
 
@@ -364,6 +366,7 @@ export const NewSuggestion = styled.main`
   padding: 52px 42px;
   border-radius:10px;
   h1 {
+    text-transform:none;
     margin-bottom: 40px;
   }
   form {

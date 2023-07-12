@@ -46,19 +46,28 @@ export const Cat = styled.button`
   height: 30px;
   width: max-content;
   color: ${colors.lightBlue};
+  cursor: pointer;
 `;
 
 export const CatButton = styled(Cat)<{ $active?: boolean }>`
-  &:hover {
-    cursor: pointer;
-    background-color: ${colors.hoverscorchedBlue};
-  }
-  ${(props) =>
-    props.$active &&
-    `
+&:hover {
+  background-color: ${colors.hoverscorchedBlue};
+}
+&:active {
   color: ${colors.white};
   background-color: ${colors.lightBlue};
-  `}
+}
+  ${(props) =>
+    props.$active &&
+    
+    `
+    &:focus {
+      color: ${colors.white};
+      background-color: ${colors.lightBlue};
+    }
+      color: ${colors.white};
+      background-color: ${colors.lightBlue};
+      `}
 `;
 
 export const Vote = styled(CatButton)<{ $active?: boolean }>`
@@ -74,6 +83,7 @@ export const Vote = styled(CatButton)<{ $active?: boolean }>`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  
   ${(props) =>
     props.$active &&
     `
@@ -127,7 +137,6 @@ export const TextArea = styled.textarea<{ error?: boolean }>`
 `;
 
 export const Drop = styled.div`
-  // z-index: 10;
   height: 72px;
   position: relative;
   text-transform: capitalize;
@@ -139,7 +148,7 @@ export const Drop = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem;
+    padding: 0 1.5rem;
     border-radius: 5px;
     @media (max-width: 768px) {
       padding: 0;
@@ -147,6 +156,7 @@ export const Drop = styled.div`
   }
 `;
 export const Select = styled(Drop)`
+  background-color:${colors.scorchedBlue};
   height: 48px;
   input {
     outline: none;
@@ -213,9 +223,6 @@ export const Suggestion = styled.div`
     }
   }
   @media (max-width: 768px) {
-    // .button(:first-child) {
-    //   display:none;
-    // }
     .bottom {
       display: flex;
       flex-direction: row-reverse;
@@ -285,6 +292,10 @@ export const Card = styled.div`
   border-radius: 0.625rem;
   .category {
     margin: 1rem 0;
+  }
+  h3:hover {
+    cursor: pointer;
+    color: ${colors.lightBlue};
   }
 `;
 

@@ -20,7 +20,7 @@ const SuggestionCard = ({ ...suggestion }) => {
         upvoted={suggestion.upvoted}
       />
       <div
-        onClick={() => navigate(`/Suggestion/${suggestion.id}`)}
+        onClick={() => navigate(`/suggestion/${suggestion.id}`)}
         className="main"
       >
         <H3>{suggestion.title}</H3>

@@ -55,11 +55,10 @@ dispatch(suggestionEdited({id:params.id,...editedData}))
 navigate("../")
   }
   return (
-    // <FormProvider {...methods}>
 
     <NewSuggestion>
       <img src={editIcon} alt="" />
-      <H1>Create New Suggestion</H1>
+      <H1>Editing '{suggestion?.title}'</H1>
       <form action="" 
       onSubmit={handleSubmit(submitData)}>
         <InputSection>
@@ -105,7 +104,6 @@ navigate("../")
         </div>
       </form>
     </NewSuggestion>
-    // </FormProvider>
   );
 };
 

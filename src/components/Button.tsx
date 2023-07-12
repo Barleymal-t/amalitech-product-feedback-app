@@ -54,7 +54,9 @@ export const UpVote = ({
   };
 
   return (
-    <Vote onClick={() => handleUpvoteClick()} $active={upvoted}>
+    <Vote
+    aria-pressed={upvoted} 
+     onClick={() => handleUpvoteClick()} $active={upvoted}>
       <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M1 6l4-4 4 4"

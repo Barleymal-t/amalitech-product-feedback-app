@@ -8,10 +8,6 @@ import ReplyForm from "./ReplyForm";
 const CommentComponent = (props: { sugId: number; comment: Comment }) => {
     const { sugId, comment } = props;
     const [newReply, setNewReply] = useState(false);
-    // const submitReply = ()=> {
-    //   dispatch(replyAdded({sugId,comment.user.username,content}))
-    //   setContent('')
-    // }
   
     return (
       <CommentStyles>

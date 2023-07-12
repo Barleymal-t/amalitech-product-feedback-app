@@ -14,7 +14,10 @@ const Empty = () => {
         Got a suggestion? Found a bug that needs to be squashed?
         <br /> We love hearing about new ideas to improve our app.
       </p>
+      <div className="">
+
       <AddSuggestion/>
+      </div>
     </EmptySuggestions>
   );
 };

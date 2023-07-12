@@ -29,17 +29,6 @@ const RoadmapColumn = ({
     );
   });
 
-  // const content = Object.keys(columns).map((key) => (
-  //   <div className={`${key} column`}>
-  //     <span className="">
-  //       <H2>{`${key} (${columns[key].length})`}</H2>
-  //       <p>{description[key]}</p>
-  //     </span>
-  //     {columns[key].map((request) => (
-  //       <RoadmapCard {...request} />
-  //     ))}
-  //   </div>
-  // ));
   const largeContent = Object.keys(columns).map((key) => (
     <div className={`${key} column`}>
       <span className="">
