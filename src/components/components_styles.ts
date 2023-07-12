@@ -199,7 +199,7 @@ export const Menu = styled.menu`
   }
 `;
 
-export const Suggestion = styled.div`
+export const Suggestion = styled(motion.div)`
 // transition: all 0.3s linear;
   .bottom {
     display: none;
@@ -300,6 +300,7 @@ export const Card = styled.div`
     cursor: pointer;
     color: ${colors.lightBlue};
   }
+  
 `;
 
 export const Bottom = styled.div`
@@ -335,6 +336,7 @@ export const Backdrop = styled(motion.div)`
 z-index:10;
 position:absolute;
 height:100vh;
+overflow:clip;
 width:100vw;
 top:0;
 left:0;

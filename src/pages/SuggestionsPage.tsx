@@ -20,12 +20,36 @@ import { Status } from "./page_styles";
 import { requestsType } from "../store/suggestionsSlice";
 import close from "../assets/shared/mobile/icon-close.svg"
 import hamburger from "../assets/shared/mobile/icon-hamburger.svg"
-import AddSuggestionModal from "../components/AddSuggestionModal";
-import {AnimatePresence} from "framer-motion"
+import AddSuggestionModal, { dropIn } from "../components/AddSuggestionModal";
+import {AnimatePresence, motion} from "framer-motion"
+export const popUp = {
+  hidden: {
+    y: "100vh",
+    opacity: 0,
+  },
+  visible: {
+    y: "0",
+    opacity: 1,
+    transition: {
+      delayChildren:1,
+      staggerChildren:1,
+      duration: 0.5,
+      type: "spring",
+      damping: 25,
+      stiffness: 500,
+    },
+  },
+  exit: {
+    y: "100vh",
+    opacity: 0,
+  },
+};
+
+
 
 const SuggestionsPage = () => {
   const [open,setOpen] = useState(false)
-
+  
 
   const productRequests:requestsType = useSelector((state: RootState) => state.request);
 
@@ -78,6 +102,9 @@ const SuggestionsPage = () => {
   const [modalOpen,setModalOpen] = useState(false)
   const closeModal = ()=>setModalOpen(false) 
   const openModal = ()=>setModalOpen(true) 
+
+  
+
   
   const toggleModal = ()=> {
     modalOpen ? closeModal():openModal()
@@ -105,7 +132,11 @@ const SuggestionsPage = () => {
             <img src={open?close:hamburger} onClick={()=>setOpen(!open)} alt="close button" />
             </div>
         </MobileLabel>
-      <CustomizationPane $open={open}>
+      <CustomizationPane
+              variants={dropIn}
+              initial="hidden"
+              animate="visible"
+             $open={open}>
         <Label>
 
           <H1>Frontend Mentor</H1>
@@ -156,7 +187,12 @@ const SuggestionsPage = () => {
           </Status>
         </div>
       </CustomizationPane>
-      <SuggestionsSection>
+      <SuggestionsSection
+              variants={popUp}
+              initial="hidden"
+              animate="visible"
+              // exit="exit"
+              >
         <Headbar>
           <div className="left">
             <div className="count">
@@ -171,7 +207,12 @@ const SuggestionsPage = () => {
           <AddSuggestion onClick={toggleModal} />
           </div>
         </Headbar>
-        <section className="suggestions">
+        <motion.section
+                variants={popUp}
+                initial="hidden"
+                animate="visible"
+                // exit="exit"
+                 className="suggestions">
           {showSuggestions.length === 0 ? (
             <Empty onClick={toggleModal}/>
           ) : (
@@ -179,7 +220,7 @@ const SuggestionsPage = () => {
               <SuggestionCard key={item.id} {...item} />
             ))
           )}
-        </section>
+        </motion.section>
       </SuggestionsSection>
     </Suggestions>
     </>

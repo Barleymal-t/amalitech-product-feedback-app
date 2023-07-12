@@ -2,6 +2,8 @@ import { useState } from "react";
 import RoadmapCard from "../components/RoadmapCard";
 import { Request, requestsType } from "../store/suggestionsSlice";
 import { H2, H3 } from "./components_styles";
+import { motion } from "framer-motion";
+import { popUp } from "../pages/SuggestionsPage";
 
 const RoadmapColumn = ({
   productRequests,
@@ -30,15 +32,28 @@ const RoadmapColumn = ({
   });
 
   const largeContent = Object.keys(columns).map((key) => (
-    <div className={`${key} column`}>
+    <motion.div
+    variants={popUp}
+    initial="hidden"
+    animate="visible"
+    exit="exit"
+     className=" column">
       <span className="">
         <H2>{`${key} (${columns[key].length})`}</H2>
         <p>{description[key]}</p>
       </span>
-      {columns[key].map((request) => (
-        <RoadmapCard {...request} />
-      ))}
-    </div>
+      <motion.div
+          variants={popUp}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className={`${key}`}>
+         {columns[key].map((request) => (
+           <RoadmapCard {...request} />
+           ))}
+
+        </motion.div>
+    </motion.div>
   ));
 
   const [activeStatus, setActiveStatus] = useState("planned");

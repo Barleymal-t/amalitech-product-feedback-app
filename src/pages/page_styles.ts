@@ -28,7 +28,7 @@ export const Suggestions = styled.main`
   }
 `;
 
-export const SuggestionsSection = styled.section`
+export const SuggestionsSection = styled(motion.section)`
 width:100%;
 height:100%;
 max-width:825px;
@@ -78,7 +78,7 @@ export const Headbar = styled.section`
   }
 `;
 
-export const CustomizationPane = styled.aside<{ $open?: boolean }>`
+export const CustomizationPane = styled(motion.aside)<{ $open?: boolean }>`
 max-width: 825px;
 // transition: all 0.3s linear;
 width: 255px;

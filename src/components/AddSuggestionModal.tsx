@@ -1,5 +1,4 @@
 import ModalContainer from "./ModalContainer";
-import { motion } from "framer-motion";
 import { InputSection, NewSuggestion } from "../pages/page_styles";
 import { Button, H1, H3 } from "./components_styles";
 import {  useNavigate } from "react-router-dom";
@@ -21,7 +20,9 @@ export const dropIn = {
     y: "0",
     opacity: 1,
     transition: {
-      duration: 0.1,
+        delayChildren:2,
+        staggerChildren:2,
+      duration: 0.2,
       type: "spring",
       damping: 25,
       stiffness: 500,
@@ -44,7 +45,7 @@ type Inputs = {
 
 const categoryOptions:category[] = ["feature", "UI", "UX", "enhancement", "bug"];
 
-const AddSuggestionModal=({onClick}:{onClick?:any})=>{
+const AddSuggestionModal=({onClick}:{onClick?:()=>void})=>{
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

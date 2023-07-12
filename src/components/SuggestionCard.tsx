@@ -9,11 +9,18 @@ import {
 import { UpVote } from "./Button";
 import comment from "../assets/shared/icon-comments.svg";
 import { useNavigate } from "react-router-dom";
+import { popUp } from "../pages/SuggestionsPage";
+
 
 const SuggestionCard = ({ ...suggestion }) => {
   const navigate = useNavigate();
   return (
-    <Suggestion>
+    <Suggestion
+    variants={popUp}
+    initial="hidden"
+    animate="visible"
+    exit="exit"
+    >
       <UpVote
         value={suggestion.upvotes}
         id={suggestion.id}
