@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { colors } from "../colors";
+import { motion } from "framer-motion";
 
 export const Button = styled.button.attrs((props) => ({
   color: colors[props.color as keyof typeof colors],
@@ -52,6 +53,7 @@ export const Cat = styled.button`
 export const CatButton = styled(Cat)<{ $active?: boolean }>`
 &:hover {
   background-color: ${colors.hoverscorchedBlue};
+  transform:scale(1.1);
 }
 &:active {
   color: ${colors.white};
@@ -198,6 +200,7 @@ export const Menu = styled.menu`
 `;
 
 export const Suggestion = styled.div`
+// transition: all 0.3s linear;
   .bottom {
     display: none;
   }
@@ -322,3 +325,21 @@ export const Error = styled(P3)`
   height: 2px;
   color: ${colors.red};
 `;
+
+
+/**
+ * Modal
+ */
+
+export const Backdrop = styled(motion.div)`
+z-index:10;
+position:absolute;
+height:100vh;
+width:100vw;
+top:0;
+left:0;
+background:#000000e1;
+display:flex;
+justify-content:center;
+align-items:center;
+`

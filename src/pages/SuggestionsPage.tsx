@@ -20,6 +20,8 @@ import { Status } from "./page_styles";
 import { requestsType } from "../store/suggestionsSlice";
 import close from "../assets/shared/mobile/icon-close.svg"
 import hamburger from "../assets/shared/mobile/icon-hamburger.svg"
+import AddSuggestionModal from "../components/AddSuggestionModal";
+import {AnimatePresence} from "framer-motion"
 
 const SuggestionsPage = () => {
   const [open,setOpen] = useState(false)
@@ -72,7 +74,25 @@ const SuggestionsPage = () => {
       sortedSuggestions = showSuggestions;
   }
   const navigate = useNavigate();
+
+  const [modalOpen,setModalOpen] = useState(false)
+  const closeModal = ()=>setModalOpen(false) 
+  const openModal = ()=>setModalOpen(true) 
+  
+  const toggleModal = ()=> {
+    modalOpen ? closeModal():openModal()
+  }
+
+
   return (
+    <>
+    <AnimatePresence
+    initial={false}
+    mode="wait"
+    >
+
+    {modalOpen && <AddSuggestionModal onClick={toggleModal}/>}
+    </AnimatePresence>
     <Suggestions>
         <MobileLabel>
 
@@ -148,12 +168,12 @@ const SuggestionsPage = () => {
           </div>
           <div className="">
 
-          <AddSuggestion />
+          <AddSuggestion onClick={toggleModal} />
           </div>
         </Headbar>
         <section className="suggestions">
           {showSuggestions.length === 0 ? (
-            <Empty />
+            <Empty onClick={toggleModal}/>
           ) : (
             sortedSuggestions.map((item) => (
               <SuggestionCard key={item.id} {...item} />
@@ -162,6 +182,7 @@ const SuggestionsPage = () => {
         </section>
       </SuggestionsSection>
     </Suggestions>
+    </>
   );
 };
 

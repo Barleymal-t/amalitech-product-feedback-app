@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { colors } from "../colors";
+import { motion } from "framer-motion";
 
 /*
 SuggestionsPage Styles
@@ -79,7 +80,7 @@ export const Headbar = styled.section`
 
 export const CustomizationPane = styled.aside<{ $open?: boolean }>`
 max-width: 825px;
-transition: all 0.3s linear;
+// transition: all 0.3s linear;
 width: 255px;
   display: flex;
   flex-direction: column;
@@ -358,7 +359,7 @@ export const SuggestionTop = styled.div`
  *
  */
 
-export const NewSuggestion = styled.main`
+export const NewSuggestion = styled(motion.main)`
   position: relative;
   background: ${colors.white};
   width: 540px;

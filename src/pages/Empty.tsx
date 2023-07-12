@@ -2,7 +2,7 @@ import { EmptySuggestions } from "./page_styles";
 import { AddSuggestion } from "../components/Button";
 import { H1 } from "../components/components_styles";
 
-const Empty = () => {
+const Empty = ({onClick}:{onClick:()=>void}) => {
   return (
     <EmptySuggestions>
       <img
@@ -16,7 +16,7 @@ const Empty = () => {
       </p>
       <div className="">
 
-      <AddSuggestion/>
+      <AddSuggestion onClick={onClick}/>
       </div>
     </EmptySuggestions>
   );

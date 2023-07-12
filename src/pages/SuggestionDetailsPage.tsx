@@ -3,7 +3,7 @@ import {
   SuggestionTop,
   CommentsSection,
 } from "./page_styles";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import SuggestionCard from "../components/SuggestionCard";
 import { BackBtn } from "../components/Button";
 import {
@@ -17,20 +17,38 @@ import {
 } from "../store/suggestionsSlice";
 import AddCommentComponent from "../components/AddCommentComponent";
 import CommentComponent from "../components/CommentComponent";
+import { useState } from "react";
+import AddSuggestionModal from "../components/AddSuggestionModal";
+import { AnimatePresence } from "framer-motion";
 
 export type Params = {
   id: string;
 };
 
 const SuggestionDetailsPage = () => {
+const [modalOpen,setModalOpen] = useState(false)
+const closeModal = ()=>setModalOpen(false) 
+const openModal = ()=>setModalOpen(true) 
+
+const toggleModal = ()=> {
+  modalOpen ? closeModal():openModal()
+}
+
   const params = useParams<Params>();
 
-  const navigate = useNavigate();
   const request = useSelector((state: RootState) =>
     state.request.find((request) => request.id === Number(params.id))
   );
   if (request) {
     return (
+      <>
+      <AnimatePresence
+      initial={false}
+      mode="wait"
+      >
+
+      {modalOpen && <AddSuggestionModal onClick={toggleModal}/>}
+      </AnimatePresence>
       <SuggestionDetail>
         <SuggestionTop>
           <div className="">
@@ -39,7 +57,8 @@ const SuggestionDetailsPage = () => {
           </div>
           <div className="">
 
-          <Button color="lightBlue" onClick={() => navigate("edit")}>
+          {/* <Button color="lightBlue" onClick={() => navigate("edit")}> */}
+          <Button color="lightBlue" onClick={toggleModal}>
             Edit Feedback
           </Button>
           </div>
@@ -59,6 +78,7 @@ const SuggestionDetailsPage = () => {
   }
         <AddCommentComponent sugId={request.id} />
       </SuggestionDetail>
+      </>
     );
   } else {
     return <H1>No request found</H1>;
