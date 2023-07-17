@@ -3,9 +3,9 @@ import { replyAdded } from "../store/suggestionsSlice";
 import { useState } from "react";
 import { TextArea,Button } from "./components_styles";
 import { motion } from "framer-motion";
-import { popUp } from "../pages/SuggestionsPage";
+import { popUp } from "./animations";
 
-const ReplyForm = ({ replyingTo,sugId,comId,setNewReply }: { replyingTo: string,sugId:number,comId?:number, setNewReply:(newReply: boolean) => void }) => {
+const ReplyForm = ({ replyingTo,sugId,comId,setNewReply }: { replyingTo: string,sugId:number,comId:number, setNewReply:(newReply: boolean) => void }) => {
     const dispatch = useDispatch();
   
     const [content, setContent] = useState("");

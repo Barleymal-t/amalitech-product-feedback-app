@@ -1,7 +1,7 @@
 import ModalContainer from "./ModalContainer";
 import { InputSection, NewSuggestion } from "../pages/page_styles";
 import { Button, H1, H3 } from "./components_styles";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { newSuggestionSchema } from "../validation";
@@ -9,32 +9,8 @@ import { suggestionAdded } from "../store/suggestionsSlice";
 import newIcon from "../assets/shared/icon-new-feedback.svg";
 import { Error,Text,TextArea } from "./components_styles";
 import { DropSelect } from "./Input";
-import { RootState } from "../store/store";
+import { dropIn } from "./animations";
 
-export const dropIn = {
-  hidden: {
-    y: "-100vh",
-    opacity: 0,
-  },
-  visible: {
-    y: "0",
-    opacity: 1,
-    transition: {
-      when:"beforeChildren",
-      delayChildren:1,
-      staggerChildren:1,
-      staggerDirection:1,
-      duration: 1,
-      type: "spring",
-      damping: 20,
-      stiffness: 200,
-    },
-  },
-  exit: {
-    y: "100vh",
-    opacity: 0,
-  },
-};
 
 
 export type category = "UI" | "UX" | "feature" | "bug" | "enhancement";
@@ -59,11 +35,8 @@ description:""
     resolver:zodResolver(newSuggestionSchema)
   })
 
-  const sugId= useSelector((state: RootState) =>
-  state.request.length
-);
   const submitNewData:SubmitHandler<Inputs> =(newData)=> {
-    dispatch(suggestionAdded({id:sugId,...newData}))
+    dispatch(suggestionAdded({...newData}))
     onClick()
   }
   return (

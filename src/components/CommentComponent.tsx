@@ -4,7 +4,7 @@ import { Comment,Reply } from "../store/suggestionsSlice";
 import { H4 } from "./components_styles";
 import ReplyComponent from "./ReplyComponent";
 import ReplyForm from "./ReplyForm";
-import { popUp } from "../pages/SuggestionsPage";
+import { popUp } from "./animations";
 
 const CommentComponent = (props: { sugId: number; comment: Comment }) => {
     const { sugId, comment } = props;
@@ -31,7 +31,7 @@ const CommentComponent = (props: { sugId: number; comment: Comment }) => {
           <div className="shift"></div>
           <p className="comment-content"> {comment.content}</p>
           <div className="shift"></div>
-          {newReply && <ReplyForm setNewReply={setNewReply} replyingTo={comment.user.username} sugId={sugId} />}
+          {newReply && <ReplyForm setNewReply={setNewReply} comId={comment.id} replyingTo={comment.user.username} sugId={sugId} />}
         </div>
         {comment.replies?.map((reply: Reply, index: number) => (
           <ReplyComponent key={index} comId={comment.id} reply={reply}  sugId={sugId} />

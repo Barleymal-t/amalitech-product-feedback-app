@@ -35,7 +35,7 @@ description:""
   })
 
   const submitData:SubmitHandler<Inputs> =({title,category,description})=> {
-    dispatch(suggestionAdded(title,category,description))
+    dispatch(suggestionAdded({title,category,description}))
     navigate("../")
   }
 

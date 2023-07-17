@@ -51,8 +51,10 @@ description:suggestion?.description,
   })
 
   const submitData:SubmitHandler<Inputs> = (editedData)=> {
-dispatch(suggestionEdited({id:params.id,...editedData}))
-navigate("../")
+    if(suggestion?.id) {
+      dispatch(suggestionEdited({id:suggestion.id,...editedData}))
+      navigate("../")
+    }
   }
   return (
 

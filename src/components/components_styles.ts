@@ -201,7 +201,6 @@ export const Menu = styled.menu`
 `;
 
 export const Suggestion = styled(motion.div)`
-// transition: all 0.3s linear;
   .bottom {
     display: none;
   }

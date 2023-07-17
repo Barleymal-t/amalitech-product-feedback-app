@@ -3,7 +3,7 @@ import { ReplyStyles, SuggestionTop } from "../pages/page_styles";
 import { Reply } from "../store/suggestionsSlice";
 import { H4 } from "./components_styles";
 import ReplyForm from "./ReplyForm";
-import { popUp } from "../pages/SuggestionsPage";
+import { popUp } from "./animations";
 
 const ReplyComponent = ({ comId, reply,sugId }: { comId:number, reply: Reply,sugId:number }) => {
     const [newReply, setNewReply] = useState(false);

@@ -17,7 +17,6 @@ export const Suggestions = styled.main`
   @media (max-width: 1110px) {
     margin: 56px auto;
     width:90%;
-    // max-width: 689px;
     display: block;
   }
   @media (max-width: 768px) {
@@ -73,8 +72,6 @@ export const Headbar = styled.section`
   }
   @media (max-width: 768px) {
     border-radius: 0;
-    // display:grid;
-    // grid-template-columns:50% 50%;
   }
 `;
 
@@ -505,7 +502,6 @@ export const Roadmap = styled.main`
   }
   @media (max-width: 1110px) {
     margin: 56px 39px;
-    // max-width: 689px;
   }
   @media (max-width:768px) {
     width:100%;
