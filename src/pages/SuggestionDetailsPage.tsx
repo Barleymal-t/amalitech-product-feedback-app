@@ -18,8 +18,8 @@ import {
 import AddCommentComponent from "../components/AddCommentComponent";
 import CommentComponent from "../components/CommentComponent";
 import { useState } from "react";
-import AddSuggestionModal from "../components/AddSuggestionModal";
 import { AnimatePresence } from "framer-motion";
+import EditSuggestionModal from "../components/EditSuggestionModal";
 
 export type Params = {
   id: string;
@@ -47,7 +47,7 @@ const toggleModal = ()=> {
       mode="wait"
       >
 
-      {modalOpen && <AddSuggestionModal onClick={toggleModal}/>}
+      {modalOpen && <EditSuggestionModal onClick={toggleModal}/>}
       </AnimatePresence>
       <SuggestionDetail>
         <SuggestionTop>

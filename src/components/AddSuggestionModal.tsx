@@ -1,15 +1,15 @@
 import ModalContainer from "./ModalContainer";
 import { InputSection, NewSuggestion } from "../pages/page_styles";
 import { Button, H1, H3 } from "./components_styles";
-import {  useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { suggestionSchema } from "../validation";
+import { newSuggestionSchema } from "../validation";
 import { suggestionAdded } from "../store/suggestionsSlice";
 import newIcon from "../assets/shared/icon-new-feedback.svg";
 import { Error,Text,TextArea } from "./components_styles";
 import { DropSelect } from "./Input";
+import { RootState } from "../store/store";
 
 export const dropIn = {
   hidden: {
@@ -26,8 +26,8 @@ export const dropIn = {
       staggerDirection:1,
       duration: 1,
       type: "spring",
-      damping: 25,
-      stiffness: 500,
+      damping: 20,
+      stiffness: 200,
     },
   },
   exit: {
@@ -47,9 +47,8 @@ type Inputs = {
 
 const categoryOptions:category[] = ["feature", "UI", "UX", "enhancement", "bug"];
 
-const AddSuggestionModal=({onClick}:{onClick?:()=>void})=>{
+const AddSuggestionModal=({onClick}:{onClick:()=>void})=>{
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const {register,handleSubmit,formState: {errors}} = useForm<Inputs>({
     defaultValues: {
@@ -57,25 +56,28 @@ title: "",
 category: "feature",
 description:""
     },
-    resolver:zodResolver(suggestionSchema)
+    resolver:zodResolver(newSuggestionSchema)
   })
 
-  const submitData:SubmitHandler<Inputs> =({title,category,description})=> {
-    dispatch(suggestionAdded(title,category,description))
-    navigate("../")
+  const sugId= useSelector((state: RootState) =>
+  state.request.length
+);
+  const submitNewData:SubmitHandler<Inputs> =(newData)=> {
+    dispatch(suggestionAdded({id:sugId,...newData}))
+    onClick()
   }
   return (
     <ModalContainer onClick={onClick}>
 <NewSuggestion
+          onClick={(e) => e.stopPropagation()}
           variants={dropIn}
           initial="hidden"
           animate="visible"
           exit="exit"
-          onClick={(e) => e.stopPropagation()}
 >
       <img src={newIcon} alt="" />
       <H1>Create New Suggestion</H1>
-      <form action="" onSubmit={handleSubmit(submitData)}>
+      <form action="" onSubmit={handleSubmit(submitNewData)}>
         <InputSection>
           <label htmlFor="title">
             <H3>Suggestion Title</H3>

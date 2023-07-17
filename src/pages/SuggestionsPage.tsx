@@ -36,10 +36,10 @@ export const popUp = {
       delayChildren:1,
       staggerChildren:1,
       staggerDirection:1,
-      duration: 0.5,
+      duration: 0.1,
       type: "spring",
-      damping: 25,
-      stiffness: 500,
+      damping: 30,
+      stiffness: 300,
     },
   },
   exit: {

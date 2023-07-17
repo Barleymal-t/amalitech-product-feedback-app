@@ -76,7 +76,7 @@ const EditSuggestionModal = ({ onClick }: { onClick: () => void }) => {
 
   const submitData: SubmitHandler<Inputs> = (editedData) => {
     dispatch(suggestionEdited({ id: params.id, ...editedData }));
-    navigate("../");
+    onClick()
   };
   return (
     <ModalContainer onClick={onClick}>
@@ -148,7 +148,7 @@ const EditSuggestionModal = ({ onClick }: { onClick: () => void }) => {
               <Button
                 color="deepBlue"
                 type="button"
-                onClick={() => navigate("../")}
+                onClick={onClick}
               >
                 Cancel
               </Button>

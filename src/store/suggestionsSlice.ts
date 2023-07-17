@@ -61,24 +61,24 @@ const suggestionSlice = createSlice({
   name: "suggestions",
   initialState,
   reducers: {
-    suggestionAdded: {
-      reducer: (state: requestsType, action: PayloadAction<Request>) => {
-        state.push(action.payload);
-      },
-      prepare(title: string, category: category, description: string) {
-        return {
-          payload: {
-            id: +nanoid(),
-            title,
-            category,
-            upvotes: 0,
-            status: "suggestion",
-            description,
-            upvoted: false,
-            comments: [],
-          } as Request,
-        };
-      },
+    suggestionAdded: (state: requestsType, action: PayloadAction<{id:number,title:string,category:category,description:string}>) => {
+      
+        state.push({...action.payload,upvotes:0,status:"suggestion",upvoted:false,comments:[]});
+      console.log(state)
+      // prepare(title: string, category: category, description: string) {
+      //   return {
+      //     payload: {
+      //       id: +nanoid(),
+      //       title,
+      //       category,
+      //       upvotes: 0,
+      //       status: "suggestion",
+      //       description,
+      //       upvoted: false,
+      //       comments: [],
+      //     } as Request,
+      //   };
+      // },
     },
     suggestionEdited: (state, action) => {
       const { id, title, category, status, description } = action.payload;

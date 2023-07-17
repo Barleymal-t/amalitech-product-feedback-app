@@ -117,6 +117,7 @@ export const Text = styled.input<{ error?: boolean }>`
 `;
 
 export const TextArea = styled.textarea<{ error?: boolean }>`
+resize:none;
   height: 96px;
   width: 100%;
   display: flex;

@@ -61,8 +61,10 @@ export const DropSelect = React.forwardRef<
 
   const setOption = (option: string) => {
     setSelect(option);
-    setValue(name, option);
     setShow(false);
+    if(setValue){
+      setValue(name, option);
+    }
   };
 
   return (
