@@ -3,7 +3,7 @@ import RoadmapCard from "../components/RoadmapCard";
 import { Request, requestsType } from "../store/suggestionsSlice";
 import { H2, H3 } from "./components_styles";
 import { motion } from "framer-motion";
-import { popUp } from "../pages/SuggestionsPage";
+import { popUp } from "./animations";
 
 const RoadmapColumn = ({
   productRequests,

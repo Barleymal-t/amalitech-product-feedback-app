@@ -23,7 +23,7 @@ import { Error } from "../components/components_styles";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { suggestionSchema } from "../validation";
 import ModalContainer from "./ModalContainer";
-import { dropIn } from "./AddSuggestionModal";
+import { dropIn } from "./animations";
 
 export type status = "suggestion" | "planned" | "in-progress" | "live";
 
@@ -75,7 +75,9 @@ const EditSuggestionModal = ({ onClick }: { onClick: () => void }) => {
   });
 
   const submitData: SubmitHandler<Inputs> = (editedData) => {
-    dispatch(suggestionEdited({ id: params.id, ...editedData }));
+    if(params.id){
+      dispatch(suggestionEdited({ id: +params.id, ...editedData }));
+    }
     onClick()
   };
   return (
