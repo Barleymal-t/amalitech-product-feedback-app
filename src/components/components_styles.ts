@@ -16,7 +16,7 @@ export const Button = styled.button.attrs((props) => ({
   display: flex;
   justify-content: center;
   align-items: center;
-  white-space:nowrap;
+  white-space: nowrap;
   gap: 0.5rem;
   &:hover {
     cursor: pointer;
@@ -51,17 +51,16 @@ export const Cat = styled.button`
 `;
 
 export const CatButton = styled(Cat)<{ $active?: boolean }>`
-&:hover {
-  background-color: ${colors.hoverscorchedBlue};
-  transform:scale(1.1);
-}
-&:active {
-  color: ${colors.white};
-  background-color: ${colors.lightBlue};
-}
+  &:hover {
+    background-color: ${colors.hoverscorchedBlue};
+    transform: scale(1.1);
+  }
+  &:active {
+    color: ${colors.white};
+    background-color: ${colors.lightBlue};
+  }
   ${(props) =>
     props.$active &&
-    
     `
     &:focus {
       color: ${colors.white};
@@ -85,7 +84,7 @@ export const Vote = styled(CatButton)<{ $active?: boolean }>`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  
+
   ${(props) =>
     props.$active &&
     `
@@ -117,7 +116,7 @@ export const Text = styled.input<{ error?: boolean }>`
 `;
 
 export const TextArea = styled.textarea<{ error?: boolean }>`
-resize:none;
+  resize: none;
   height: 96px;
   width: 100%;
   display: flex;
@@ -159,8 +158,11 @@ export const Drop = styled.div`
   }
 `;
 export const Select = styled(Drop)`
-  background-color:${colors.scorchedBlue};
+  background-color: ${colors.scorchedBlue};
   height: 48px;
+  .heading {
+    padding: 0 1.5rem;
+  }
   input {
     outline: none;
     text-transform: capitalize;
@@ -300,7 +302,6 @@ export const Card = styled.div`
     cursor: pointer;
     color: ${colors.lightBlue};
   }
-  
 `;
 
 export const Bottom = styled.div`
@@ -327,21 +328,20 @@ export const Error = styled(P3)`
   color: ${colors.red};
 `;
 
-
 /**
  * Modal
  */
 
 export const Backdrop = styled(motion.div)`
-z-index:10;
-position:absolute;
-height:100vh;
-overflow:clip;
-width:100vw;
-top:0;
-left:0;
-background:#000000e1;
-display:flex;
-justify-content:center;
-align-items:center;
-`
+  z-index: 10;
+  position: absolute;
+  height: 100vh;
+  overflow: clip;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: #000000e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

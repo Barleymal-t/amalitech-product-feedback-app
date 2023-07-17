@@ -6,10 +6,14 @@ import EditSuggestionPage from './pages/EditSuggestionPage';
 import { Provider } from 'react-redux';
 import store from "./store/store"
 import Roadmap from './pages/RoadmapPage';
+import { Cover } from './pages/page_styles';
 
 
 function App() {
   return (
+    <Cover>
+
+      
     <Provider store={store}>
 
     <BrowserRouter>
@@ -25,6 +29,7 @@ function App() {
     </Routes>
     </BrowserRouter>
     </Provider>
+  </Cover>
   );
 }
 

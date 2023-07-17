@@ -9,35 +9,31 @@ SuggestionsPage Styles
 export const Suggestions = styled.main`
   max-width: 1110px;
   width: 90%;
-  margin: 94px auto;
+  margin: auto;
   background-color: ${colors.lightGrey};
   display: grid;
   gap: 30px;
   grid-template-columns: 1fr 4fr;
   @media (max-width: 1110px) {
-    margin: 56px auto;
-    width:90%;
     display: block;
   }
   @media (max-width: 768px) {
-    display: block;
-    margin: 0 auto;
     width: 100%;
     overflow: hidden;
   }
 `;
 
 export const SuggestionsSection = styled(motion.section)`
-width:100%;
-height:100%;
-max-width:825px;
-margin:auto;
+  width: 100%;
+  height: 100%;
+  max-width: 825px;
+  margin: auto;
   .suggestions {
     display: grid;
     gap: 2rem;
+    margin:2rem auto;
     @media (max-width: 768px) {
       width: 90%;
-      margin: auto;
     }
   }
 `;
@@ -48,8 +44,7 @@ export const Headbar = styled.section`
   color: white;
   background-color: ${colors.deepBlue};
   height: 72px;
-  margin:auto;
-  margin-bottom: 2rem;
+  margin: auto;
   padding: 0 1rem;
   display: flex;
   align-items: center;
@@ -64,8 +59,8 @@ export const Headbar = styled.section`
   .count {
     display: flex;
     gap: 1rem;
-    font-size:1.3rem;
-    font-weight:bold;
+    font-size: 1.3rem;
+    font-weight: bold;
     @media (max-width: 768px) {
       display: none;
     }
@@ -76,9 +71,9 @@ export const Headbar = styled.section`
 `;
 
 export const CustomizationPane = styled.aside<{ $open?: boolean }>`
-max-width: 825px;
-transition: all 0.3s linear;
-width: 255px;
+  max-width: 825px;
+  transition: all 0.3s linear;
+  width: 255px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -90,7 +85,7 @@ width: 255px;
     }
   }
   p {
-    font-weight:bold;
+    font-weight: bold;
   }
   > * {
     width: 100%;
@@ -98,11 +93,7 @@ width: 255px;
     border-radius: 0.625rem;
     background: ${colors.white};
     padding: 1.5rem;
-    
 
-    @media (max-width: 768px) {
-      margin-bottom: 2rem;
-    }
   }
 
   > .categories {
@@ -143,19 +134,18 @@ width: 255px;
     }
   }
   @media (max-width: 1110px) {
-    margin:auto;
+    margin: auto;
     height: max-content;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.625rem;
     margin-bottom: 2rem;
   }
   @media (max-width: 768px) {
     z-index: 10;
     width: 270px;
     height: 100vh;
-    display: block;
+    display: flex;
     margin-top: 3.5rem;
     padding: 1.5rem;
     position: fixed;
@@ -173,13 +163,13 @@ export const Label = styled.div`
   justify-content: flex-end;
   color: ${colors.white};
   background: url(../assets/suggestions/desktop/background-header.png);
-  background-size:cover;
+  background-size: cover;
 
   height: 137px;
   @media (max-width: 1110px) {
     height: auto;
     background: url(../assets/suggestions/tablet/background-header.png);
-    background-size:cover;
+    background-size: cover;
   }
   @media (max-width: 768px) {
     display: none;
@@ -195,11 +185,11 @@ export const MobileLabel = styled.div`
     align-items: center;
     padding: 0 1rem;
     background: url(../assets/suggestions/mobile/background-header.png);
-    background-repeat:no-repeat;
-    background-position:center center;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: 768px 1000px;
     .hamburger {
-      cursor:pointer;
+      cursor: pointer;
     }
   }
 `;
@@ -252,7 +242,7 @@ export const SuggestionDetail = styled.main`
   width: 90%;
   background-color: ${colors.lightGrey};
   max-width: 730px;
-  margin: 80px auto;
+  margin:auto;
   display: grid;
   gap: 1.5rem;
 `;
@@ -285,8 +275,8 @@ export const CommentStyles = styled(motion.div)`
     }
   }
   .flex {
-    display:flex;
-    gap:1rem;
+    display: flex;
+    gap: 1rem;
   }
   padding: 2rem 0;
   &:not(:last-child) {
@@ -296,11 +286,12 @@ export const CommentStyles = styled(motion.div)`
   span {
     font-size: 14px;
   }
-  @media (max-width:768px) {
+  @media (max-width: 768px) {
     .shift {
-      display:none;
+      display: none;
     }
-    .comment-content,form {
+    .comment-content,
+    form {
       grid-column: span 2 / span 2;
     }
   }
@@ -313,11 +304,11 @@ export const Greyline = styled.div`
   width: 1px;
   height: calc(100% - 270px);
   background-color: ${colors.scorchedBlue};
-  @media(max-width:768px) {
-    top:230px;
+  @media (max-width: 768px) {
+    top: 230px;
     height: calc(100% - 470px);
   }
-`
+`;
 
 export const ReplyStyles = styled(motion.div)`
   margin-left: 40px;
@@ -362,9 +353,9 @@ export const NewSuggestion = styled(motion.main)`
   width: 540px;
   margin: 92px auto;
   padding: 52px 42px;
-  border-radius:10px;
+  border-radius: 10px;
   h1 {
-    text-transform:none;
+    text-transform: none;
     margin-bottom: 40px;
   }
   form {
@@ -380,24 +371,22 @@ export const NewSuggestion = styled(motion.main)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media (max-width:768px) {
-      flex-direction:column;
-      gap:1rem;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
     }
   }
   .buttons {
     gap: 1rem;
-    @media (max-width:768px) {
-      margin:auto;
-      width:100%;
-      max-width:320px;
+    @media (max-width: 768px) {
+      margin: auto;
+      width: 100%;
+      max-width: 320px;
     }
-
   }
-  @media (max-width:768px) {
-    width:90%;
-    min-width:320px;
-    
+  @media (max-width: 768px) {
+    width: 90%;
+    min-width: 320px;
   }
 `;
 export const InputSection = styled.div`
@@ -418,7 +407,7 @@ export const InputSection = styled.div`
 export const Roadmap = styled.main`
   width: 90%;
   max-width: 110.625rem;
-  margin: 78px auto;
+  margin: auto;
   .back > button {
     padding: 0;
     height: auto;
@@ -434,25 +423,25 @@ export const Roadmap = styled.main`
     justify-content: space-between;
     align-items: center;
     @media (max-width: 768px) {
-      width:100%;
-      border-radius:0;
-      margin-bottom:0;
+      width: 100%;
+      border-radius: 0;
+      margin-bottom: 0;
     }
   }
   .statusHeadings {
-    display:none;
+    display: none;
     @media (max-width: 768px) {
-      text-align:center;
-      margin-bottom:1.5rem;
-      >h3 {
-        padding:1.5rem 1rem;
-        display:flex;
-        justify-content:center;
-        align-items:center;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      > h3 {
+        padding: 1.5rem 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      
+
       .inactive {
-        opacity:0.4;
+        opacity: 0.4;
       }
       .planned {
         border-bottom: 4px solid ${colors.orange};
@@ -463,9 +452,9 @@ export const Roadmap = styled.main`
       .live {
         border-bottom: 4px solid ${colors.aqua};
       }
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      border-bottom:1px solid ${colors.scorchedBlue}
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-bottom: 1px solid ${colors.scorchedBlue};
     }
   }
   .large {
@@ -473,18 +462,18 @@ export const Roadmap = styled.main`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
     @media (max-width: 768px) {
-    display:none;
+      display: none;
     }
   }
   .small {
-    display:none;
+    display: none;
     @media (max-width: 768px) {
-    display:grid;
-    grid-template-columns:100%;
+      display: grid;
+      grid-template-columns: 100%;
     }
   }
   .content {
-    padding:1rem;
+    padding: 1rem;
     .column {
       display: flex;
       flex-direction: column;
@@ -501,11 +490,22 @@ export const Roadmap = styled.main`
     }
   }
   @media (max-width: 1110px) {
-    margin: 56px 39px;
+    margin:auto;
   }
-  @media (max-width:768px) {
-    width:100%;
-    margin:0;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0;
   }
-  
 `;
+
+export const Cover = styled.main`
+margin:5.75rem auto;
+background-color:${colors.lightGrey};
+@media (max-width: 1110px) {
+  margin: 3.5rem auto;
+}
+
+@media(max-width:768px){
+  margin:0;
+}
+`
