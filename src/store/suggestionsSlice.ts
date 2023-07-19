@@ -69,7 +69,7 @@ const suggestionSlice = createSlice({
         description: string;
       }>
     ) => {
-        const sugId = current(state).length++
+        const sugId = current(state).length+1
       state.push({
         id:sugId,
         ...action.payload,
