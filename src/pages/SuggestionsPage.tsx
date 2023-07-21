@@ -174,7 +174,7 @@ const SuggestionsPage = () => {
             <div className="count">
 
             <img src={bulb} alt="" />
-            <p>{productRequests.length} Suggestions</p>
+            <p>{showSuggestions.length} Suggestions</p>
             </div>
             <DropDown setSortParameter={setSortParameter} />
           </div>
