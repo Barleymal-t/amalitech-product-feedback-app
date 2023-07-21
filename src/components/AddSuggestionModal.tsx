@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { newSuggestionSchema } from "../validation";
 import { suggestionAdded } from "../store/suggestionsSlice";
-import newIcon from "../assets/shared/icon-new-feedback.svg";
+import newIcon from "/assets/shared/icon-new-feedback.svg";
 import { Error,Text,TextArea } from "./components_styles";
 import { DropSelect } from "./Input";
 import { dropIn } from "./animations";

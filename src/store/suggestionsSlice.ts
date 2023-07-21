@@ -1,4 +1,4 @@
-import data from "../assets/data.json";
+import data from "/assets/data.json";
 import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
 import { category } from "../pages/NewSuggestionPage";
 import { status } from "../pages/EditSuggestionPage";

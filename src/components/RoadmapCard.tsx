@@ -1,6 +1,6 @@
 import { Bottom, Card, Cat, Comments, H3 } from "./components_styles";
 import { UpVote } from "./Button";
-import comment from "../assets/shared/icon-comments.svg";
+import comment from "/assets/shared/icon-comments.svg";
 import { Status } from "../pages/page_styles";
 import { useNavigate } from "react-router-dom";
 

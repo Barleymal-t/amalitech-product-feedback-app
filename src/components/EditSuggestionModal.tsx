@@ -7,7 +7,7 @@ import {
   Button,
   TextArea,
 } from "../components/components_styles";
-import editIcon from "../assets/shared/icon-edit-feedback.svg";
+import editIcon from "/assets/shared/icon-edit-feedback.svg";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { category } from "../pages/NewSuggestionPage";
 import { RootState } from "../store/store";

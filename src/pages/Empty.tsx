@@ -6,8 +6,8 @@ const Empty = ({onClick}:{onClick:()=>void}) => {
   return (
     <EmptySuggestions>
       <img
-        src="../../public/assets/suggestions/illustration-empty.svg"
-        alt=""
+        src="/assets/suggestions/illustration-empty.svg"
+        alt="No suggestions"
       />
       <H1>There is no Suggestion yet.</H1>
       <p>

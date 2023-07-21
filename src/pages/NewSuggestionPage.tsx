@@ -1,5 +1,5 @@
 import { NewSuggestion, InputSection } from "./page_styles";
-import newIcon from "../assets/shared/icon-new-feedback.svg";
+import newIcon from "/assets/shared/icon-new-feedback.svg";
 import { DropSelect } from "../components/Input";
 import { H1,H3, Text, Button, TextArea, Error } from "../components/components_styles";
 import { useForm, SubmitHandler } from "react-hook-form";

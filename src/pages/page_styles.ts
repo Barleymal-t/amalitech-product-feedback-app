@@ -162,13 +162,13 @@ export const Label = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   color: ${colors.white};
-  background: url(../assets/suggestions/desktop/background-header.png);
+  background: url(/assets/suggestions/desktop/background-header.png);
   background-size: cover;
 
   height: 137px;
   @media (max-width: 1110px) {
     height: auto;
-    background: url(../assets/suggestions/tablet/background-header.png);
+    background: url(/assets/suggestions/tablet/background-header.png);
     background-size: cover;
   }
   @media (max-width: 768px) {
@@ -184,7 +184,7 @@ export const MobileLabel = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
-    background: url(../assets/suggestions/mobile/background-header.png);
+    background: url(/assets/suggestions/mobile/background-header.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 768px 1000px;

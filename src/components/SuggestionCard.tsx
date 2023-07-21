@@ -7,7 +7,7 @@ import {
   Mobile,
 } from "./components_styles";
 import { UpVote } from "./Button";
-import comment from "../assets/shared/icon-comments.svg";
+import comment from "/assets/shared/icon-comments.svg";
 import { useNavigate } from "react-router-dom";
 import { popUp } from "./animations";
 

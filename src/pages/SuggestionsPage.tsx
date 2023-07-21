@@ -7,7 +7,7 @@ import {
   Headbar,
 } from "./page_styles";
 import SuggestionCard from "../components/SuggestionCard";
-import bulb from "../assets/suggestions/icon-suggestions.svg";
+import bulb from "/assets/suggestions/icon-suggestions.svg";
 import { DropDown } from "../components/Input";
 import { H1, CatButton } from "../components/components_styles";
 import { useState } from "react";
@@ -18,8 +18,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Status } from "./page_styles";
 import { requestsType } from "../store/suggestionsSlice";
-import close from "../assets/shared/mobile/icon-close.svg"
-import hamburger from "../assets/shared/mobile/icon-hamburger.svg"
+import close from "/assets/shared/mobile/icon-close.svg"
+import hamburger from "/assets/shared/mobile/icon-hamburger.svg"
 import AddSuggestionModal from "../components/AddSuggestionModal";
 import {AnimatePresence, motion} from "framer-motion"
 import { popUp } from "../components/animations";

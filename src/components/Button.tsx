@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, BackButton, Vote, H4 } from "./components_styles";
 import { IoIosArrowBack } from "react-icons/io";
-import plus from "../assets/shared/icon-plus.svg";
+import plus from "/assets/shared/icon-plus.svg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {

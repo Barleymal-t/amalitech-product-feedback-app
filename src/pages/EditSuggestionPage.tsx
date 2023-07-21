@@ -1,7 +1,7 @@
 import { NewSuggestion, InputSection } from "./page_styles";
 import { DropSelect } from "../components/Input";
 import { H1, H3, Text, Button, TextArea } from "../components/components_styles";
-import editIcon from "../assets/shared/icon-edit-feedback.svg";
+import editIcon from "/assets/shared/icon-edit-feedback.svg";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { category } from "./NewSuggestionPage";
 import { RootState } from "../store/store";
