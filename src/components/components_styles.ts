@@ -335,14 +335,10 @@ export const Error = styled(P3)`
 
 export const Backdrop = styled(motion.div)`
   z-index: 10;
-  position: absolute;
+  position: fixed;
   height: 100vh;
-  overflow: clip;
+  overflow-y: auto;
   width: 100vw;
-  top: 0;
-  left: 0;
+  inset:0;
   background: #000000e1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
