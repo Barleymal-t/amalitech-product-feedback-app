@@ -47,7 +47,7 @@ const RoadmapColumn = ({
           initial="hidden"
           animate="visible"
           exit="exit"
-          className={`${key}`}>
+          className={`column ${key}`}>
          {columns[key].map((request) => (
            <RoadmapCard {...request} />
            ))}
