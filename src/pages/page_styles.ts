@@ -504,13 +504,15 @@ export const Roadmap = styled.main`
 `;
 
 export const Cover = styled.main`
-margin:5.75rem auto;
+margin:auto;
+padding:5.7rem 0;
 background-color:${colors.lightGrey};
 @media (max-width: 1110px) {
-  margin: 3.5rem auto;
+  padding: 3.5rem 0;
 }
 
 @media(max-width:768px){
   margin:0;
+  padding:0;
 }
 `
