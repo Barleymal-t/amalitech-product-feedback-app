@@ -266,7 +266,7 @@ export const CommentStyles = styled(motion.div)`
   .main {
     display: grid;
     grid-template-columns: 40px auto;
-    gap: 17px 2rem;
+    gap: 1rem 2rem;
 
     > img {
       width: 40px;
@@ -305,14 +305,19 @@ export const Greyline = styled.div`
   height: calc(100% - 270px);
   background-color: ${colors.scorchedBlue};
   @media (max-width: 768px) {
-    top: 230px;
-    height: calc(100% - 470px);
+    top: 180px;
+    height: calc(100% - 320px);
+  }
+  @media (max-width: 375px) {
+    top: 215px;
+    height: calc(100% - 400px);
   }
 `;
 
 export const ReplyStyles = styled(motion.div)`
   margin-left: 40px;
   border-bottom: 0 !important;
+  margin-top:1.5rem;
 `;
 export const AddComment = styled.form`
   background-color: ${colors.white};

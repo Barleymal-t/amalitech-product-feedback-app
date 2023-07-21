@@ -24,7 +24,7 @@ const ReplyComponent = ({ comId, reply,sugId }: { comId:number, reply: Reply,sug
             <b onClick={() => setNewReply(!newReply)}>Reply</b>
           </SuggestionTop>
   
-          <div className=""></div>
+          <div className="shift"></div>
           <p className="comment-content">
             <b>@{reply.replyingTo}</b> {reply.content}
           </p>
