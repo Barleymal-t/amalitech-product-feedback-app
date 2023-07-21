@@ -62,16 +62,13 @@ export const CatButton = styled(Cat)<{ $active?: boolean }>`
   ${(props) =>
     props.$active &&
     `
-    &:active {
+    &:focus,&:active,&:hover {
       color: ${colors.white};
       background-color: ${colors.lightBlue};
     }
-    &:focus {
-      color: ${colors.white};
-      background-color: ${colors.lightBlue};
-    }
-      color: ${colors.white};
-      background-color: ${colors.lightBlue};
+    color: ${colors.white};
+    background-color: ${colors.lightBlue};
+    
       `}
 `;
 
